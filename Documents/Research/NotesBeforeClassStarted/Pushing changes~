@@ -1,0 +1,5 @@
+New file?
+git add <nameOfFile>
+
+
+git commit -m 'message'

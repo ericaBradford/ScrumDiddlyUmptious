@@ -1,0 +1,61 @@
+Remember when looking up instructions to look for directions of how to do stuff in 
+Ruby 2.0.0p451
+and
+Rails 4.0.4
+
+
+Divide and Conquer
+*Ruby
+*Rails
+*SASS
+*Javascript
+*SQL(brush up)
+*CoffeeScript
+
+
+
+
+Finish watching ScreenCasts How To Use RVM
+http://screencasts.org/episodes/how-to-use-rvm
+
+
+
+RAILS TUTORIALS
+type 'rails console' to load up a rails environment
+
+Watch RailsCast Getting Started With Rails
+https://www.youtube.com/watch?v=nGt81GSdzHY
+
+Go through the Rails guides again
+http://guides.rubyonrails.org/
+
+Rails For Zombies
+http://railsforzombies.org/
+
+
+
+
+
+
+
+
+
+
+
+
+RUBY TUTORIALS
+To run Ruby code in the terminal just type irb and enter, then you can code Ruby. (type 'exit' to exit irb)
+
+
+
+old but good
+rubyquiz.com
+
+other ruby challenges
+ruby-challenge.rubylearning.org
+
+Ruby Tutorial
+tryruby.org
+
+very hard
+codebrawl.com
