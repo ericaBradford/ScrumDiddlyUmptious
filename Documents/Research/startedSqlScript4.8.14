@@ -1,0 +1,6 @@
+CREATE TABLE recipes
+(
+RecipeID int,
+IngredientIDs multiset,
+
+);

@@ -3,6 +3,7 @@ git add <nameOfFile>
 
 
 git commit -m 'message'
+git push -u
 
 
 

@@ -1,0 +1,7 @@
+http://www.tomjewett.com/dbdesign/dbdesign.php?page=manymany.php
+Describing a many-to-many relationship. This means we will need a junction table that holds the relationships. I will directly cut and paste their example and change it to how it would work for this project.
+“Each Recipe is associated with one or more IngredientRecipeMapping.”
+“Each IngredientRecipeMapping is associated with one and only one Recipe.”
+“Each IngredientRecipeMapping is associated with one or more Ingredients.”
+“Each Ingredient is associated with zero or more IngredientRecipeMapping.”
+From here I will do a more-correct ORM diagram. This will be diagram v2.
