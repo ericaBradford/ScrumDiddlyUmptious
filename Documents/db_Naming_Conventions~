@@ -1,0 +1,7 @@
+are the pks auto incrementing?
+are the ids in the form 'idUsers'?
+Does the table start with a lower case and end plural?
+
+are the foreign keys singular, have the table name in them, and match up with the others table col(idUsers not idOwners)?
+Are the foreign keys in the form 'fk_idUser_Tablename'?
+Are the foreign keys set to cascase on Update and on Delete? 

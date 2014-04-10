@@ -1,0 +1,60 @@
+USERS
+idUsers 		int			pk nn ai
+Username 		varchar45		nn
+Email 			varchar255		nn
+
+FOODS
+idFoods 		int			pk nn ai
+FoodName 		varchar			nn
+Description 		mediumtext		nn
+IsDairyFree 		binary			nn
+IsEggFree 		binary			nn
+IsFishFree 		binary			nn
+IsMeatFree 		binary			nn
+IsShellfishFree 	binary			nn
+IsGlutenFree		binary			nn
+IsHighFiber 		binary			nn
+IsSugarFree 		binary			nn
+IsPeanutFree 		binary			nn
+IsTreeNutFree 		binary			nn
+IsWheatFree 		binary			nn
+IsSoyFree 		binary			nn
+
+RECIPES
+idRecipes 		int			pk nn ai
+Title 			varchar(45)		nn
+Directions 		longtext		nn
+CookTime decimal 	(3, 2)			nn
+CostOfIngredients 	decimal(5,2)		nn
+CanPrepareAhead 	binary			nn
+idUser 			int			nn
+fk_idUser_Recipes			cascade
+
+USERFAVORITES
+idUserFavorites 	int			pk nn ai
+idUser 			int			nn
+idRecipe 		int			nn
+fk_idUser_UserFavorites			cascade
+fk_idRecipe_UserFavorites		cascade
+
+RECIPEINGREDIENTS
+idRecipeIngredients 	int			pk nn ai
+idRecipe 		int			nn
+idFood 			int			nn
+fk_idRecipe_RecipeIngredients		cascade
+fk_idFood_RecipeIngredients		cascade
+
+USERSRATINGS
+idUsersRatings 		int			pk nn ai
+idUser			int			nn
+idRecipe 		int			nn
+Rating 			int			nn
+fk_idUser_UserRatings			cascade
+fk_idRecipe_UserRatings			cascade
+
+USERPREFERENCES
+idUserPreferences	int			pk nn ai
+idAvoidedFood		int			nn
+idUser	 		int			nn
+fk_idAvoidedFood_UserPreferences	cascade
+fk_idUser_UserPreferences		cascade

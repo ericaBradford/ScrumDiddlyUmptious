@@ -1,0 +1,16 @@
+are the pks auto incrementing?
+are the ids in the form 'idUsers'?
+Does the table start with a lower case and end plural?
+
+are the foreign keys singular, have the table name in them, and match up with the others table col(idUsers not idOwners)?
+Are the foreign keys in the form 'fk_idUser_Tablename'?
+Are the foreign keys set to cascase on Update and on Delete? 
+
+all bool values are of type binary in the database. A 1 is true and a 0 is false. That being said, in the food table there are a bunch of bools. They will be centered on if a food DOESN'T contain an element of the food (i.e. dairy, gluten, ect.)
+
+
+Note to making diabetic friendly foods!
+Basically healthy eating. High-fiber options(slow release carbs)
+
+
+So, for example, if the IsSoyFree field returns a 1 then that food DOESN'T have soy in it; because IsSoyFree=true.

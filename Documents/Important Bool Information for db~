@@ -1,0 +1,3 @@
+all bool values are of type binary in the database. A 1 is true and a 0 is false. That being said, in the food table there are a bunch of bools. They will be centered on if a food DOESN'T contain an element of the food (i.e. dairy, gluten, ect.)
+
+So, for example, if the IsSoyFree field returns a 1 then that food DOESN'T have soy in it; because IsSoyFree=true.

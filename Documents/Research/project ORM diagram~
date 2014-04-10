@@ -1,0 +1,17 @@
+Users can have many favorites. A recipe can be favorited by many users. A user can create 0 or more recipes. A recipe is created by many users. A recipe has 3 or more ingredients. An ingredient can be in 0 or more recipes. A recipe has 1 rating. A rating belongs to a recipe.
+----------------------------------
+
+Users created(recipes) 0 to many
+User has 0..* recipes
+recipes HAS A owner(user)
+
+Recipe rating 1 to 1
+Rating BELONGS TO recipe
+Recipe HAS A rating
+
+JOIN TABLES
+--Users favorites(recipes) many to many--
+UsersFavorites
+
+--Recipes Ingredients many to many--
+RecipesIngredients
