@@ -4,4 +4,4 @@ Describing a many-to-many relationship. This means we will need a junction table
 “Each IngredientRecipeMapping is associated with one and only one Recipe.”
 “Each IngredientRecipeMapping is associated with one or more Ingredients.”
 “Each Ingredient is associated with zero or more IngredientRecipeMapping.”
-From here I will do a more-correct ORM diagram. This will be diagram v2.
+See relation scheme diagram v1.

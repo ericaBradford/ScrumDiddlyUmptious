@@ -5,3 +5,6 @@ Describing a many-to-many relationship. This means we will need a junction table
 “Each IngredientRecipeMapping is associated with one or more Ingredients.”
 “Each Ingredient is associated with zero or more IngredientRecipeMapping.”
 See relation scheme diagram v1.
+
+
+with foreign keys, the table containing the foreign key is the child table.

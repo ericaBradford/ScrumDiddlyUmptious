@@ -1,6 +1,8 @@
 New file?
 git add <nameOfFile>
 
+git add -u
+
 
 git commit -m 'message'
 git push -u
