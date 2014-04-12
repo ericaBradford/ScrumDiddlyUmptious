@@ -1,0 +1,2 @@
+class UsersPreferences < ActiveRecord::Base
+end

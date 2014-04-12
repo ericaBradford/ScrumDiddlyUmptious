@@ -1,0 +1,140 @@
+http://guides.rubyonrails.org/association_basics.html
+Goes through the basics on how to declare and use different associations (1 to 1, many to 1, ect.) using Active Record (the way rails does databases). 
+
+Choosing between has_many :through and has_and_belongs_to_many:
+ You should use has_many :through if you need validations, callbacks, or extra attributes on the join model.
+ If you don't need to do anything with the relationship model, it may be simpler to set up a has_and_belongs_to_many relationship (though you'll need to remember to create the joining table in the database).
+
+Choosing between belongs_to and has_one:
+class with belongs_to should contain the foreign key. If the other class has the fk, then use has_one
+
+Below are several examples of the more complicated associations.
+
+Example for has_and_belongs_to_many:
+
+class Assembly < ActiveRecord::Base
+  has_and_belongs_to_many :parts
+end
+ 
+class Part < ActiveRecord::Base
+  has_and_belongs_to_many :assemblies
+end
+----------------------
+class CreateAssembliesAndParts < ActiveRecord::Migration
+  def change
+    create_table :assemblies do |t|
+      t.string :name
+      t.timestamps
+    end
+ 
+    create_table :parts do |t|
+      t.string :part_number
+      t.timestamps
+    end
+ 
+    create_table :assemblies_parts, id: false do |t|
+      t.belongs_to :assembly
+      t.belongs_to :part
+    end
+  end
+end
+
+Example of polymorphic associations:
+A picture model can belong to EITHER an employee model or a product model.
+
+class Picture < ActiveRecord::Base
+  belongs_to :imageable, polymorphic: true
+end
+ 
+class Employee < ActiveRecord::Base
+  has_many :pictures, as: :imageable
+end
+ 
+class Product < ActiveRecord::Base
+  has_many :pictures, as: :imageable
+end
+---------------
+class CreatePictures < ActiveRecord::Migration
+  def change
+    create_table :pictures do |t|
+      t.string :name
+      t.references :imageable, polymorphic: true
+      t.timestamps
+    end
+  end
+end
+
+Self joins example:
+store all employees in a single database model, but be able to trace relationships such as between manager and subordinates. 
+class Employee < ActiveRecord::Base
+  has_many :subordinates, class_name: "Employee",
+                          foreign_key: "manager_id"
+ 
+  belongs_to :manager, class_name: "Employee"
+end
+---------------
+class CreateEmployees < ActiveRecord::Migration
+  def change
+    create_table :employees do |t|
+      t.references :manager
+      t.timestamps
+    end
+  end
+end
+
+
+Tips, Tricks, and Warnings
+Controlling Cashing
+associations use caching to keep the result from the most recent query. To reload the cache and avoid previously cached data, pass true to association call.
+customer.orders                # retrieves orders from the database
+customer.orders.size           # uses the cached copy of orders
+customer.orders(true).empty?   # discards the cached copy of orders
+                               # and goes back to the database
+
+Updating Schema
+You are responsible for maintaining db schema to match associations. For belongs_to associations you need to create foreign keys, and for has_and_belongs_to_many associations you need to create the appropriate join table.
+
+
+Scope
+To associate a model with a model in a different namespace, you must specify the complete class name in your association declaration:
+module MyApplication
+  module Business
+    class Supplier < ActiveRecord::Base
+       has_one :account,
+        class_name: "MyApplication::Billing::Account"
+    end
+  end
+ 
+  module Billing
+    class Account < ActiveRecord::Base
+       belongs_to :supplier,
+        class_name: "MyApplication::Business::Supplier"
+    end
+  end
+end
+
+Bi-directional associations
+By default, Active Record doesn't know about the connection between these associations. This can lead to two copies of an object getting out of sync:
+c = Customer.first
+o = c.orders.first
+c.first_name == o.customer.first_name # => true
+c.first_name = 'Manny'
+c.first_name == o.customer.first_name # => false
+----------
+Active Record provides the :inverse_of option so that you can inform it of these relations:
+class Customer < ActiveRecord::Base
+  has_many :orders, inverse_of: :customer
+end
+ 
+class Order < ActiveRecord::Base
+  belongs_to :customer, inverse_of: :orders
+end
+------------
+There are a few limitations to inverse_of support:
+
+    They do not work with :through associations.
+    They do not work with :polymorphic associations.
+    They do not work with :as associations.
+    For belongs_to associations, has_many inverse associations are ignored.
+
+

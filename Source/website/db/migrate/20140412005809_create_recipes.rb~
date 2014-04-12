@@ -1,0 +1,14 @@
+class CreateRecipes < ActiveRecord::Migration
+  def change
+    create_table :recipes do |t|
+      t.string :title
+      t.text :directions
+      t.decimal{4, 2} :cookTime
+      t.decimal{6, 2} :costOfIngredients
+      t.boolean :canPrepareAhead
+      t.integer :id_Users
+
+      t.timestamps
+    end
+  end
+end

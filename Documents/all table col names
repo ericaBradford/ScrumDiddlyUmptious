@@ -1,10 +1,11 @@
-USERS
-idUsers 		int			pk nn ai
+*****Users*****
+id_Users 		int			pk nn ai
 Username 		varchar45		nn
 Email 			varchar255		nn
+Password		string			nn
 
-FOODS
-idFoods 		int			pk nn ai
+*****Foods*****
+id_Foods 		int			pk nn ai
 FoodName 		varchar			nn
 Description 		mediumtext		nn
 IsDairyFree 		binary			nn
@@ -20,41 +21,35 @@ IsTreeNutFree 		binary			nn
 IsWheatFree 		binary			nn
 IsSoyFree 		binary			nn
 
-RECIPES
-idRecipes 		int			pk nn ai
+*****Recipes*****
+id_Recipes 		int			pk nn ai
 Title 			varchar(45)		nn
 Directions 		longtext		nn
-CookTime decimal 	(3, 2)			nn
+CookTime 		decimal(3, 2)		nn
 CostOfIngredients 	decimal(5,2)		nn
 CanPrepareAhead 	binary			nn
-idUser 			int			nn
-fk_idUser_Recipes			cascade
+id_Users		int			nn
 
-USERFAVORITES
-idUserFavorites 	int			pk nn ai
-idUser 			int			nn
-idRecipe 		int			nn
-fk_idUser_UserFavorites			cascade
-fk_idRecipe_UserFavorites		cascade
 
-RECIPEINGREDIENTS
-idRecipeIngredients 	int			pk nn ai
-idRecipe 		int			nn
-idFood 			int			nn
-fk_idRecipe_RecipeIngredients		cascade
-fk_idFood_RecipeIngredients		cascade
+~~going to use has_many :through for all below to avoid naming issues~~
 
-USERSRATINGS
-idUsersRatings 		int			pk nn ai
-idUser			int			nn
-idRecipe 		int			nn
+*****Users_Favorites*****
+id_Users_Favorites 	int			pk nn ai
+id_Users		int			nn
+id_Recipes		int			nn
+
+*****Recipes_Ingredients*****
+id*Recipes_Ingredients 	int			pk nn ai
+id_Recipes 		int			nn
+id_Foods 		int			nn
+
+*****Users_Ratings*****
+id_Users_Ratings 	int			pk nn ai
+id_Users		int			nn
+id_Recipes 		int			nn
 Rating 			int			nn
-fk_idUser_UserRatings			cascade
-fk_idRecipe_UserRatings			cascade
 
-USERPREFERENCES
-idUserPreferences	int			pk nn ai
-idAvoidedFood		int			nn
-idUser	 		int			nn
-fk_idAvoidedFood_UserPreferences	cascade
-fk_idUser_UserPreferences		cascade
+*****Users_Preferences*****
+id_Users_Preferences	int			pk nn ai
+id_Foods		int			
+id_Users 		int			

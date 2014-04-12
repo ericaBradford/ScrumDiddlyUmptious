@@ -1,0 +1,150 @@
+http://guides.rubyonrails.org/active_record_validations.html
+Validation is how you know that an object has the data it needs before it is saved to the db. For example
+
+class Person < ActiveRecord::Base
+  validates :name, presence: true
+end
+ 
+Person.create(name: "John Doe").valid? # => true
+Person.create(name: nil).valid? # => false
+
+will validate that a Person object has a name before it will save that object to the database.
+----------------------------------------------
+Validations include:
+
+~acceptance: validates that checkbox was checked when form submitted~
+  validates :terms_of_service, acceptance: true
+
+~validates_associated: model has associations with other models and they also need to be validated~
+  has_many :books
+  validates_associated :books
+
+~confirmation: two text fields should recieve exact same content~
+  validates :email, confirmation: true
+  validates :email_confirmation, presence: true
+ In view template
+  <%= text_field :person, :email %>
+  <%= text_field :person, :email_confirmation %>
+
+~exclusion: attributes' values not included in given set~
+  validates :subdomain, exclusion: { in: %w(www us ca jp),
+  message: "%{value} is reserved." }
+
+~format: fits regular expression~
+  validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/,
+  message: "only allows letters" }
+
+~inclusion: opposite of exclusion~
+  validates :size, inclusion: { in: %w(small medium large),
+  message: "%{value} is not a valid size" }
+
+~length: length of attributes' values. Variety of options.~
+  validates :name, length: { minimum: 2 }
+  validates :bio, length: { maximum: 500 }
+  validates :password, length: { in: 6..20 }
+  validates :registration_number, length: { is: 6 }
+!The default error messages depend on the type of length validation being performed. You can personalize these messages using the :wrong_length, :too_long, and :too_short options and %{count} as a placeholder for the number corresponding to the length constraint being used.
+ you can split the value in a different way using the :tokenizer  option:
+validates :content, length: {
+    minimum: 300,
+    maximum: 400,
+    tokenizer: lambda { |str| str.scan(/\w+/) },
+    too_short: "must have at least %{count} words",
+    too_long: "must have at most %{count} words"
+
+~numericality: makes sure attributes are number~
+  validates :points, numericality: true
+  validates :games_played, numericality: { only_integer: true }
+(besides :only_integer can also use :greater_than :greater_than_or_equal_to :equal_to :less_than 
+:less_than :less_than_or_equal_to :odd and :even)
+
+~presence: makes sure not empty~
+  validates :name, :login, :email, presence: true
+  belongs_to :order
+  validates :order, presence: true
+ In order to validate associated records whose presence is  required, you must specify the :inverse_of option for the association
+  has_many :line_items, inverse_of: :order
+!!!if you want to validate the presence of a boolean field you should use validates :field_name, inclusion: { in: [true, false] }.
+
+~absence: opposite of presence~
+  belongs_to :order
+  validates :order, absence: true
+
+~uniqueness~
+  validates :email, uniqueness: true
+
+  validates :name, uniqueness: { case_sensitive: false }
+
+  class Holiday < ActiveRecord::Base
+    validates :name, uniqueness: { scope: :year,
+    message: "should happen once per year" }
+  end
+
+~validates_with: passes record to seperate class for validation~
+  class GoodnessValidator < ActiveModel::Validator
+    def validate(record)
+      if record.first_name == "Evil"
+        record.errors[:base] << "This person is evil"
+      end
+    end
+  end
+ 
+  class Person < ActiveRecord::Base
+    validates_with GoodnessValidator
+  end
+
+~validates_each: validates attributes against a block. Doesn't have to be a predifined validation function.~
+  class Person < ActiveRecord::Base
+    validates_each :name, :surname do |record, attr, value|
+      record.errors.add(attr, 'must start with upper case') if  value =~ /\A[a-z]/
+    end
+  end
+----------------------------------------------
+!!!There are many ways to change the state of an object in the database. Some methods will trigger validations, but some will not. This means that it's possible to save an object in the database in an invalid state if you aren't careful.
+
+The following methods trigger validations, and will save the object to the database only if the object is valid:
+
+    create
+    create!
+    save
+    save!
+    update
+    update!
+The bang versions (e.g. save!) raise an exception if the record is invalid. The non-bang versions don't. Save and update return false, create just returns the object.
+------------------
+The following methods skip validations, and will save the object to the database regardless of its validity. They should be used with caution.
+
+    decrement!
+    decrement_counter
+    increment!
+    increment_counter
+    toggle!
+    touch
+    update_all
+    update_attribute
+    update_column
+    update_columns
+    update_counters
+
+Note that save also has the ability to skip validations if passed validate: false as argument. This technique should be used with caution.
+
+    save(validate: false)
+--------------
+To verify whether or not an object is valid, Rails uses the valid? method.
+class Person < ActiveRecord::Base
+  validates :name, presence: true
+end
+ 
+Person.create(name: "John Doe").valid? # => true
+Person.create(name: nil).valid? # => false
+----------
+After Active Record has performed validations, any errors found can be accessed through the errors.messages method
+---------------
+2.2 validates_associated
+
+You should use this helper when your model has associations with other models and they also need to be validated. When you try to save your object, valid? will be called upon each one of the associated objects.
+class Library < ActiveRecord::Base
+  has_many :books
+  validates_associated :books
+end
+Don't use validates_associated on both ends of your associations. They would call each other in an infinite loop.

@@ -2,14 +2,16 @@
 
 one:
   title: MyString
-  description: MyText
+  directions: MyText
   cookTime: 9.99
   costOfIngredients: 9.99
-  canPrepareAhead: 
+  canPrepareAhead: false
+  id_Users: 1
 
 two:
   title: MyString
-  description: MyText
+  directions: MyText
   cookTime: 9.99
   costOfIngredients: 9.99
-  canPrepareAhead: 
+  canPrepareAhead: false
+  id_Users: 1
