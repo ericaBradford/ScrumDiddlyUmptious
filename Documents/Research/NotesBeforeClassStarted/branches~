@@ -1,22 +1,48 @@
-git branch
+https://www.atlassian.com/git/tutorial/git-branches#!branch
+Quick list of all branch commands
 
-List all of the branches in your repository.
+# Start a new feature
+git checkout -b new-feature master
 
-git branch <branch>
+# Edit some files
+git add <file>
+git commit -m "Start a feature"
 
-Create a new branch called <branch>. This does not check out the new branch.
+# Edit some files
+git add <file>
+git commit -m "Finish a feature"
 
-git branch -d <branch>
+# Merge in the new-feature branch
+git checkout master
+git merge new-feature
+git branch -d new-feature
 
-Delete the specified branch. This is a “safe” operation in that Git prevents you from deleting the branch if it has unmerged changes.
 
-git branch -D <branch>
 
-Force delete the specified branch, even if it has unmerged changes. This is the command to use if you want to permanently throw away all of the commits associated with a particular line of development.
+3-Way Merge
 
-git branch -m <branch>
+The next example is very similar, but requires a 3-way merge because master progresses while the feature is in-progress. This is a common scenario for large features or when several developers are working on a project simultaneously.
 
-Rename the current branch to <branch>.
+# Start a new feature
+git checkout -b new-feature master
 
+# Edit some files
+git add <file>
+git commit -m "Start a feature"
+
+# Edit some files
+git add <file>
+git commit -m "Finish a feature"
+
+# Develop the master branch
+git checkout master
+
+# Edit some files
+git add <file>
+git commit -m "Make some super-stable changes to master"
+
+# Merge in the new-feature branch
+git merge new-feature
+git branch -d new-feature
 
 

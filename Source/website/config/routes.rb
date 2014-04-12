@@ -1,9 +1,22 @@
 Rails.application.routes.draw do
 
+  get 'foods/show'
+
+  get 'foods/new'
+
+  get 'foods/create'
+
+  get 'foods/edit'
+
+  get 'foods/update'
+
+  get 'foods/delete'
+
   resources :recipes
+  resources :foods
+  resources :users
 
   root 'home#index'
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.
