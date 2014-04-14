@@ -1,0 +1,70 @@
+<%= form_for @food do |f| %>
+  <% if @food.errors.any? %>
+
+  <div class="error_explanations">
+   <h2>The following errors are keeping this food from being saved <h2>
+   <h3><%= pluralize(@food.errors.count, "error") %> </h3>
+   <ul>
+    <% @food.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <%end%>
+   <ul>
+  </div>
+<% end %>
+
+  <p>
+    <%= f.label :foodName, "Food Name" %>
+    <%= f.text_field :foodName %>
+  </p>
+
+  <p>
+    <%= f.label :description, "Description" %>
+    <%= f.text_area  :description %>
+  </p>
+
+  <p>
+    <%= f.label :isDairyFree, "Is it Dairy-free?" %>
+    <%= f.check_box :isDairyFree %>
+
+    <%= f.label :isEggFree, "Is it Egg-free?" %>
+    <%= f.check_box :isEggFree %>
+
+    <%= f.label :isShellfishFree, "Is it Shellfish-free?" %>
+    <%= f.check_box :isShellfishFree %>
+
+    <%= f.label :isFishFree, "Is it Fish-free?" %>
+    <%= f.check_box :isFishFree %>
+  </p>
+
+  <p>
+    <%= f.label :isMeatFree, "Is it Meat-free?" %>
+    <%= f.check_box :isMeatFree %>
+
+    <%= f.label :isGlutenFree, "Is it Gluten-free?" %>
+    <%= f.check_box :isGlutenFree %>
+
+    <%= f.label :isWheatFree, "Is it Wheat-free?" %>
+    <%= f.check_box :isWheatFree %>
+ 
+    <%= f.label :isHighFiber, "Is it High in Fiber?" %>
+    <%= f.check_box :isHighFiber %>
+  </p>
+
+  <p>
+    <%= f.label :isSugarFree, "Is it Sugar-free?" %>
+    <%= f.check_box :isSugarFree %>
+
+    <%= f.label :isPeanutFree, "Is it Peanut-free?" %>
+    <%= f.check_box :isPeanutFree %>
+
+    <%= f.label :isTreeNutFree, "Is it TreeNut-free?" %>
+    <%= f.check_box :isTreeNutFree %>
+
+    <%= f.label :isSoyFree, "Is it Soy-free?" %>
+    <%= f.check_box :isSoyFree %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<%end%>

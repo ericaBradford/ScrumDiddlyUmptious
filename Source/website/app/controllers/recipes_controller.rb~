@@ -1,10 +1,9 @@
 class RecipesController < ApplicationController
 
-def new
+ private
+  def recipe_params
+    params.require(:recipe).permit(:title, :directions, :cookTime, :costOfIngredients, :canPrepareAhead)
+  end
 end
 
-
-def create
-end
-
-end
+#deal with getting ingredients into here later

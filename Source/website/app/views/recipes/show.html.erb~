@@ -1,0 +1,28 @@
+<% if @message %>
+    <%= @message %>
+<%end%>
+
+<p>
+  <b>Title: <%=@recipe.title %> </b>
+</p>
+
+<p>
+  <h5>Ingredients: <h5><br>
+<%-#ingedients will go here...somehow6%>
+</p>
+
+<p>
+  <span>Directions: <%= @recipe.directions %> </span>
+</p>
+
+<p>
+  <span>Estimated cost of ingredients: $<%=@recipe.costOfIngredients%></span>
+</p>
+
+<p>
+  <span>Estimated cook time in hours: <%=@recipe.cookTime%></span>
+</p>
+
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %>
+<%= link_to 'Back', recipes_path %>
