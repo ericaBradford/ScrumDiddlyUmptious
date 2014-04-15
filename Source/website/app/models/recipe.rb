@@ -1,11 +1,13 @@
 class Recipe < ActiveRecord::Base
   belongs_to :user
-  has_many :recipes_ingredient
-  has_many :food, through: :recipes_ingredient
-  has_many :users_rating
-  has_many :user, through: :users_rating
-  has_many :users_favorite
-  has_many :user, through: :users_favorite
+  has_many :recipes_ingredients
+  has_many :foods, through: :recipes_ingredients
+  has_many :users_ratings
+  has_many :users, through: :users_ratings
+  has_many :users_favorites
+  has_many :users, through: :users_favorites
+
+  accepts_nested_attributes_for :foods
 
   validates_associated :food
 

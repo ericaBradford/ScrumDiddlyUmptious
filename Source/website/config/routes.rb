@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'foods/delete'
 
   resources :recipes do
-    ingredient do
+    member do
       get 'recipes_ingredient'
     end
   end

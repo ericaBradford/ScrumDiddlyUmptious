@@ -4,5 +4,5 @@ class UsersRating < ActiveRecord::Base
 
   validates_associated :user, :recipe
   validates :rating, presence: true
-  validates :rating, format: {with: [1-5], message: "rating can only be 1-5"}
+  validates :rating, format: {with: /[1-5]/, message: "rating can only be 1-5"}
 end

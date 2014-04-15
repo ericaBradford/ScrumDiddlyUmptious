@@ -1,6 +1,6 @@
-<% if @message %>
-    <%= @message %>
-<%end%>
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end =%>
 
 <p>
   <b>Title: <%=@recipe.title %> </b>
@@ -8,7 +8,7 @@
 
 <p>
   <h5>Ingredients: <h5><br>
-<%-#ingedients will go here...somehow6%>
+  
 </p>
 
 <p>
@@ -23,7 +23,7 @@
   <span>Estimated cook time in hours: <%=@recipe.cookTime%></span>
 </p>
 
-<% if recipe.canPrepareAhead == 1 %>
+<% if @recipe.canPrepareAhead == 1 %>
   <%= This recipe can be prepared ahead of time!%>
 <%end%>
 

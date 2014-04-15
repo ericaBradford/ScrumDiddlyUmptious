@@ -1,6 +1,6 @@
-<% if @message %>
-    <%= @message %>
-<%end%>
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end =%>
 
 <p>
   <b>Name: <%=@food.foodName %> </b>

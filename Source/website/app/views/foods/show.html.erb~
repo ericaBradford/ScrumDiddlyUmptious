@@ -1,4 +1,4 @@
-<% unless @message.blank? %>
+<% if @message %>
     <%= @message %>
 <%end%>
 

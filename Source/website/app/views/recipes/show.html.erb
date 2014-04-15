@@ -1,6 +1,6 @@
-<% if @message %>
-    <%= @message %>
-<%end%>
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end =%>
 
 <p>
   <b>Title: <%=@recipe.title %> </b>
@@ -8,7 +8,11 @@
 
 <p>
   <h5>Ingredients: <h5><br>
-<%-#ingedients will go here...somehow6%>
+    <ul>
+      <% @foods.each do |food| %>
+        <li><%= food.foodName %> </li>
+      <% end %>
+    <ul>
 </p>
 
 <p>

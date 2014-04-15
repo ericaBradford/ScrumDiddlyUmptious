@@ -1,8 +1,10 @@
 class Food < ActiveRecord::Base
-  has_many :recipes_ingredient
-  has_many :recipe, through: :recipes_ingredient
-  has_many :users_preference
-  has_many :user, through: :users_preference
+  has_many :recipes_ingredients
+  has_many :recipes, through: :recipes_ingredients
+  has_many :users_preferences
+  has_many :users, through: :users_preferences
+
+  accepts_nested_attributes_for :recipes
 
   validates :foodName, :description, presence: true 
   validates :foodName, format: {with: /\A([a-zA-Z]+\s)*[a-zA-Z]+\Z/, message: "Title can only has alphabetical characters and spaces"}
