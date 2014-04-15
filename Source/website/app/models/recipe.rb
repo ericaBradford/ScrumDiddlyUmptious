@@ -13,8 +13,9 @@ class Recipe < ActiveRecord::Base
   validates :title, length: {in: 4..40, message: "Title must be 4-40 characters long"}
   validates :title, uniqueness: {case_sensitive: false, message: "There is already a recipe with that name"}
   validates :directions, length: {in: 30..15000, message: "Directions should be 30-15000 characters long"}
-  validates :cookTime, format: {with: [0-9]+(\.[0-9][0-9]?)?, message: "Cook time can only be a number or a decimal"}
-  validates :costOfIngredients, format: {with: ^\d+(.\d{1,2})?$, message: "Cost of ingredients can only be in the form '39.00'"}
+  VALID_NUMBER_REGEX = /?[0-9]*\.?[0-9]+/
+  validates :cookTime, format: {with: VALID_NUMBER_REGEX, message: "Cook time can only be a number or a decimal"}
+  validates :costOfIngredients, format: {with: VALID_NUMBER_REGEX, message: "Cost of ingredients can only be in the form '39.00'"}
 end
 
 # validate that ingredients are entered

@@ -17,7 +17,7 @@
     <%= f.text_field :title %>
   </p>
 
-<%-#ingredients will go here. It will be displayed as a drop down list of foods in the database. JS will need to be used so that every time they pick something on a drop down, another one pops up underneath it until they get all of their ingredients. The RecipesIngredients table will need to be used for this-%>
+<%-#ingredients will go here. It will be displayed as a drop down list of foods in the database. JS will need to be used so that every time they pick something on a drop down, another one pops up underneath it until they get all of their ingredients. The RecipesIngredients table will need to be used for this.-%>
 
   <p>
     <%= f.label :directions, "Directions" %>
