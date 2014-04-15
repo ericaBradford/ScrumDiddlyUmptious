@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :food, through: :users_preference
   has_many :users_favorite
   has_many :recipe, through: :users_favorite
+  has_many :recipe
 
   validates :userName, :email, :password, :password_confirmation, presence: true
   validates :userName, length: {in: 5..15, message: "User name must be 5-15 characters long"} 

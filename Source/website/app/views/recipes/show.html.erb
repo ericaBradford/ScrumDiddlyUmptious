@@ -23,7 +23,7 @@
   <span>Estimated cook time in hours: <%=@recipe.cookTime%></span>
 </p>
 
-<% if recipe.canPrepareAhead == 1 %>
+<% if @recipe.canPrepareAhead == 1 %>
   <%= This recipe can be prepared ahead of time!%>
 <%end%>
 

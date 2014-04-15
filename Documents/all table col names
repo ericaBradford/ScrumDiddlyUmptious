@@ -1,33 +1,33 @@
 *****Users*****
 id_Users 		int			pk nn ai
-Username 		varchar45		nn
-Email 			varchar255		nn
-Password		string			nn
+username 		varchar45		nn
+email 			varchar255		nn
+password		string			nn
 
 *****Foods*****
 id_Foods 		int			pk nn ai
-FoodName 		varchar			nn
-Description 		mediumtext		nn
-IsDairyFree 		binary			nn
-IsEggFree 		binary			nn
-IsFishFree 		binary			nn
-IsMeatFree 		binary			nn
-IsShellfishFree 	binary			nn
-IsGlutenFree		binary			nn
-IsHighFiber 		binary			nn
-IsSugarFree 		binary			nn
-IsPeanutFree 		binary			nn
-IsTreeNutFree 		binary			nn
-IsWheatFree 		binary			nn
-IsSoyFree 		binary			nn
+foodName 		varchar			nn
+description 		mediumtext		nn
+isDairyFree 		binary			nn
+isEggFree 		binary			nn
+isFishFree 		binary			nn
+isMeatFree 		binary			nn
+isShellfishFree 	binary			nn
+isGlutenFree		binary			nn
+isHighFiber 		binary			nn
+isSugarFree 		binary			nn
+isPeanutFree 		binary			nn
+isTreeNutFree 		binary			nn
+isWheatFree 		binary			nn
+isSoyFree 		binary			nn
 
 *****Recipes*****
 id_Recipes 		int			pk nn ai
-Title 			varchar(45)		nn
-Directions 		longtext		nn
-CookTime 		decimal(3, 2)		nn
-CostOfIngredients 	decimal(5,2)		nn
-CanPrepareAhead 	binary			nn
+title 			varchar(45)		nn
+directions 		longtext		nn
+cookTime 		decimal(3, 2)		nn
+costOfIngredients 	decimal(5,2)		nn
+canPrepareAhead 	binary			nn
 id_Users		int			nn
 
 
@@ -47,7 +47,7 @@ id_Foods 		int			nn
 id_Users_Ratings 	int			pk nn ai
 id_Users		int			nn
 id_Recipes 		int			nn
-Rating 			int			nn
+rating 			int			nn
 
 *****Users_Preferences*****
 id_Users_Preferences	int			pk nn ai

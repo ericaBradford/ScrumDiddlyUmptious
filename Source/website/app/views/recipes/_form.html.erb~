@@ -30,12 +30,12 @@
   </p>
 
   <p>
-    <%= f.label :costOfIngredients, "Estimated cost of ingredients(decimal please)" %>
+    <%= f.label :costOfIngredients, "Estimated cost of ingredients(decimal please) $" %>
     <%= f.text_field :costOfIngredients %>
   </p>
 
   <p>
-    <%= f.label :canPrepareAhead, "Can this be prepared ahead of time and thrown into the oven right before dinner?" %>
+    <%= f.label :canPrepareAhead, "Can this be prepared ahead of time?" %>
     <%= f.check_box :canPrepareAhead %>
   </p>
 

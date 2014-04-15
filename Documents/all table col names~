@@ -2,6 +2,7 @@
 id_Users 		int			pk nn ai
 Username 		varchar45		nn
 Email 			varchar255		nn
+Password		string			nn
 
 *****Foods*****
 id_Foods 		int			pk nn ai

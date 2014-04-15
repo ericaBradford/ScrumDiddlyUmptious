@@ -12,7 +12,12 @@ Rails.application.routes.draw do
 
   get 'foods/delete'
 
-  resources :recipes
+  resources :recipes do
+    ingredient do
+      get 'recipes_ingredient'
+    end
+  end
+
   resources :foods
   resources :users
 
