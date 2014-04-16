@@ -10,7 +10,7 @@
 
 <div id="user_nav">
   <% if current_user %>
-    Logged in as <%= current_user.userName %> | 
+    Logged in in as <%= current_user.userName %> | 
     <%= link_to "Log out", log_out_path %>
   <% else %>
     <%= link_to "Sign up", sign_up_path %> | 
@@ -19,7 +19,7 @@
 </div>
 
 <% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id=> "flash_#{name}" %>
+  <%= conent_tag :div, msg, :id=> "flash_#{name}" %>
 <% end %>
 
 <%= yield %>
