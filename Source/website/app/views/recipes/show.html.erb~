@@ -8,7 +8,11 @@
 
 <p>
   <h5>Ingredients: <h5><br>
-  
+    <ul>
+      <% @foods.each do |food| %>
+        <li><%= food.foodName %> </li>
+      <% end %>
+    <ul>
 </p>
 
 <p>

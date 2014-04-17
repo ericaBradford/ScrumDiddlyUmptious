@@ -11,33 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416222551) do
+ActiveRecord::Schema.define(version: 20140417204012) do
 
-  create_table "foods", force: true do |t|
-    t.string   "foodName"
-    t.text     "description"
-    t.boolean  "isDairyFree"
-    t.boolean  "isEggFree"
-    t.boolean  "isFishFree"
-    t.boolean  "isMeatFree"
-    t.boolean  "isShellfishFree"
-    t.boolean  "isGlutenFree"
-    t.boolean  "isHighFiber"
-    t.boolean  "isSugarFree"
-    t.boolean  "isPeanutFree"
-    t.boolean  "isTreeNutFree"
-    t.boolean  "isWheatFree"
-    t.boolean  "isSoyFree"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "foods" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "recipes", force: true do |t|
     t.string   "title"
     t.text     "directions"
     t.decimal  "cookTime",          precision: 4, scale: 2
     t.decimal  "costOfIngredients", precision: 6, scale: 2
-    t.boolean  "canPrepareAhead"
+    t.binary   "canPrepareAhead"
     t.integer  "id_Users"
     t.datetime "created_at"
     t.datetime "updated_at"

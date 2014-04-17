@@ -64,6 +64,8 @@
     <%= f.check_box :isSoyFree %>
   </p>
 
+  <%= f.hidden_field :id_Users, :value => current_user.id %>
+
   <p>
     <%= f.submit %>
   </p>

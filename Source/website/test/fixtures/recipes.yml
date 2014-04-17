@@ -5,13 +5,13 @@ one:
   directions: MyText
   cookTime: 9.99
   costOfIngredients: 9.99
-  canPrepareAhead: false
-  id_Users: 1
+  canPrepareAhead: 
+  id_Users: 
 
 two:
   title: MyString
   directions: MyText
   cookTime: 9.99
   costOfIngredients: 9.99
-  canPrepareAhead: false
-  id_Users: 1
+  canPrepareAhead: 
+  id_Users: 

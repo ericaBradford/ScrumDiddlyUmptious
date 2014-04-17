@@ -17,8 +17,25 @@
     <%= f.text_field :title %>
   </p>
 
+
+
+
   <p>
+    <%= f.fields_for :recipesingredients do |ff| %>
+      <ol>
+        <table id = "table">
+          <tr>
+            <td style = "padding-left: 8px"><%= render 'recipes_ingredient_fields', :f => ff %></td>
+          </tr>
+        </table>
+      </ol>
+    <% end %>
+    <div id = "ingredientsadd"></div>
+    <%= link_to_add_ingredient 'Add', f, :recipesingredients, 'data-association-insertion-node' => "#ingredientsadd", 'data-association-insertion-method' => "append" %>
   </p>
+
+
+
 
   <p>
     <%= f.label :directions, "Directions" %>

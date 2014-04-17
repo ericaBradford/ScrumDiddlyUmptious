@@ -18,16 +18,25 @@ Rails.application.routes.draw do
 
   get 'foods/delete'
 
+  get 'recipes/show'
 
-  resources :recipes do
-    member do
-      get 'recipes_ingredient'
-    end
-  end
+  get 'recipes/new'
 
+  get 'recipes/create'
+
+  get 'recipes/edit'
+
+  get 'recipes/update'
+
+  get 'recipes/delete'
+
+  get 'add_ingredient' => "recipes_ingredient#new", :as => 'add_ingredient'
+
+  resources :recipes 
   resources :foods
   resources :users
   resources :sessions
+  resources :recipes_ingredient
 
   root 'home#index'
 end

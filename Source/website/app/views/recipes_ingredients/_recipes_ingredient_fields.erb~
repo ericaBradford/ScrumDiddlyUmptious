@@ -1,0 +1,2 @@
+<%= f.select :id_Foods , options_from_collection_for_select(@foods, :id, :name)%>
+<%= f.hidden_field :id_Recipes, value=>

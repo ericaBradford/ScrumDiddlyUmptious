@@ -1,9 +1,11 @@
 <% flash.each do |name, msg| -%>
   <%= content_tag :div, msg, class: name %>
-<% end =%>
+<% end %>
 <h1>Recipes</h1>
 
-<%= link_to 'New Recipe', new_recipe_path %>
+<% if current_user %>
+  <%= link_to 'New Recipe', new_recipe_path %>
+<% end %>
 
 <table>
   <tr>
@@ -14,8 +16,12 @@
   <% @recipes.each do |recipe| %>
     <tr>
       <td><%= link_to recipe.title, recipe_path(recipe) %></td>
-      <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-      <td><%= link_to 'Delete', recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+      <% if current_user %>
+        <% if current_user.id == recipe.id_Users %>
+          <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+          <td><%= link_to 'Delete', recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+        <% end %>
+      <% end %>
     </tr>
   <% end %>
 </table>

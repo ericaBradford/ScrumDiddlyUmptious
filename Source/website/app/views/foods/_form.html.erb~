@@ -8,7 +8,7 @@
     <% @food.errors.full_messages.each do |m| %>
       <li><%= m %></li>
     <%end%>
-   <ul>
+   </ul>
   </div>
 <% end %>
 
@@ -63,6 +63,8 @@
     <%= f.label :isSoyFree, "Is it Soy-free?" %>
     <%= f.check_box :isSoyFree %>
   </p>
+
+  <% f.hidden_field :id_Users, current_user.id %>
 
   <p>
     <%= f.submit %>
