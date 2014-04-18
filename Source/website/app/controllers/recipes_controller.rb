@@ -6,7 +6,11 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all
+    if session[:user_id]
+      @recipes = Recipe.all
+    else
+      @recipes = nil
+    end
   end
 
   def new

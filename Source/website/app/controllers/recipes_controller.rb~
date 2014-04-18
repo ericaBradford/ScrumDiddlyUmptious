@@ -6,7 +6,11 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all
+    if session[:user_id]
+      @recipes = Recipe.all
+    else
+      @recipes = nil;
+    end
   end
 
   def new
@@ -17,7 +21,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     
       if @recipe.save
-        redirect_to @recipe, notice: "Recipe successfully saved!"
+        redirect_to @recipe, notice: "Recipe successfully saved"
       else
         render 'new'
       end

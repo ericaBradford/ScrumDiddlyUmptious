@@ -4,6 +4,9 @@ class Food < ActiveRecord::Base
   has_many :users_preferences
   has_many :users, through: :users_preferences
 
+  attr_accessor :id_Users
+  before_save :fix_id
+
   accepts_nested_attributes_for :recipes
 
   validates :foodName, :description, presence: true 
@@ -12,9 +15,7 @@ class Food < ActiveRecord::Base
   validates :foodName, uniqueness: {case_sensitive: false, message: "There is already a food with that name"}
   validates :description, length: {in: 11..3000, message: "Description should be 30-3000 characters long"}
 
-  before_create :check_params
-  
-  def check_params
+  def fix_id
     self.id_Users.to_i
   end
 end

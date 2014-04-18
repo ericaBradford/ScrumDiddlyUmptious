@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   
-  attr_accessor :password
   before_save :encrypt_password
 
   has_many :foods
@@ -8,19 +7,17 @@ class User < ActiveRecord::Base
   has_many :users_favorites
   has_many :recipes, through: :users_favorites
   has_many :users_preferences
-  has_many :foods, through :users_preferences
+#  has_many :foods, through :users_preferences
   has_many :users_ratings
   has_many :recipes, through: :users_ratings
   
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates :password, length {in: 4...15, too_short: "Must have at least 4 characters", too_long: "Password cannot be more than 15 characters"}
-  validates_presence_of :email
-  validates_uniqueness_of :email
-  validates :email, format: :{with:/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/ , message: "Not correct email format"}
-  validates_presence_of :userName
-  validates_uniqueness_of :userName
-  validates :username, length {in: 4...20, too_short: "Must have at least 4 characters", too_long: "User name cannot be more than 20 characters"}
+#  validates :password, confirmation: true
+#  validates :password, :email, :userName, presence: true
+#  validates :password, length {in: 4...15, message: "Your password should be 4-15 characters long"}
+#  validates :email, uniqueness: {case_sensitive: false, message: "There is already a user with that email"}
+#  validates :email, format: {with: /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/ , message: "Not correct email format"}
+#  validates :userName, uniqueness {case_sensitive: false, message: "That user name is taken"}
+#  validates :username, length {in: 4...20, message: "Your user name needs to be 4-20 characters long"}
   
   def self.authenticate(userName, password)
     user = find_by_userName(userName)
@@ -38,5 +35,3 @@ class User < ActiveRecord::Base
     end
   end
 end
-
-#redo validations for this
