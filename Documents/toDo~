@@ -1,0 +1,9 @@
+THINGS TO DO
+validation on Ingredients
+When user deletes account, delete all things that user created as well
+Fix bug (saving id_Users as string...)
+Add ingredients
+Interviews (15 to go)
+filtering
+
+When user signs up, send them to auto-log in

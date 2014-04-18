@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get "log_in" => "sessions#new", :as =>"log_in"
 
+  get 'first_log_in' => "sessions#create", :as => 'first_log_in'
+
   get "sign_up" => "users#new", :as => "sign_up"
 
   get 'foods/show'
@@ -17,6 +19,18 @@ Rails.application.routes.draw do
   get 'foods/update'
 
   get 'foods/delete'
+
+  get 'recipes/show'
+
+  get 'recipes/new'
+
+  get 'recipes/create'
+
+  get 'recipes/edit'
+
+  get 'recipes/update'
+
+  get 'recipes/delete'
 
   get 'add_ingredient' => "recipes_ingredient#new", :as => 'add_ingredient'
 

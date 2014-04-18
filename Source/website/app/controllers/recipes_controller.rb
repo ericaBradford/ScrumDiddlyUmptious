@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     
       if @recipe.save
-        redirect_to @recipe, notice: "Recipe successfully saved!"
+        redirect_to @recipe, notice: "Recipe successfully saved"
       else
         render 'new'
       end

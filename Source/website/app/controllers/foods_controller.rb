@@ -1,5 +1,4 @@
 class FoodsController < ApplicationController
-  helper_method :current_user
 
   def index
     @foods = Food.all
@@ -17,7 +16,6 @@ class FoodsController < ApplicationController
       render 'new'
     end
   end
-
 
   def show
     @food = Food.find(params[:id])
@@ -44,11 +42,6 @@ class FoodsController < ApplicationController
   end
 
  private
-
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
-
   def food_params
     params.require(:food).permit(:foodName, :description, :isDairyFree, 
 :isEggFree, :isShellfishFree, :isFishFree, :isMeatFree, :isGlutenFree, 

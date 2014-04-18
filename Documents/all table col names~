@@ -1,11 +1,11 @@
 *****Users*****
-id_Users 		int			pk nn ai
+id_Users 		integer			pk nn ai
 username 		string			nn
 email 			string			nn
 password		string			nn
 
 *****Foods*****
-id_Foods 		int			pk nn ai
+id_Foods 		integer			pk nn ai
 foodName 		string			nn
 description 		text			nn
 isDairyFree 		binary			nn
@@ -22,34 +22,34 @@ isWheatFree 		binary			nn
 isSoyFree 		binary			nn
 
 *****Recipes*****
-id_Recipes 		int			pk nn ai
+id_Recipes 		integer			pk nn ai
 title 			string			nn
 directions 		text			nn
 cookTime 		decimal(3, 2)		nn
 costOfIngredients 	decimal(5,2)		nn
 canPrepareAhead 	binary			nn
-id_Users		int			nn
+id_Users		integer			nn
 
 
 ~~going to use has_many :through for all below to avoid naming issues~~
 
 *****Users_Favorites*****
-id_Users_Favorites 	int			pk nn ai
-id_Users		int			nn
-id_Recipes		int			nn
+id_Users_Favorites 	integer			pk nn ai
+id_Users		integer			nn
+id_Recipes		integer			nn
 
 *****Recipes_Ingredients*****
-id*Recipes_Ingredients 	int			pk nn ai
-id_Recipes 		int			nn
-id_Foods 		int			nn
+id*Recipes_Ingredients 	integer			pk nn ai
+id_Recipes 		integer			nn
+id_Foods 		integer			nn
 
 *****Users_Ratings*****
-id_Users_Ratings 	int			pk nn ai
-id_Users		int			nn
-id_Recipes 		int			nn
-rating 			int			nn
+id_Users_Ratings 	integer			pk nn ai
+id_Users		integer			nn
+id_Recipes 		integer			nn
+rating 			integer			nn
 
 *****Users_Preferences*****
-id_Users_Preferences	int			pk nn ai
-id_Foods		int			
-id_Users 		int			
+id_Users_Preferences	integer			pk nn ai
+id_Foods		integer			
+id_Users 		integer			
