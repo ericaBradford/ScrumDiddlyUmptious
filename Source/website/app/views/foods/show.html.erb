@@ -10,11 +10,11 @@
   <span>Description: <%= @food.description %> </span>
 </p>
 
-<% if current_user %>
-  <% if current_user.id == @food.id_Users %> 
+<%#- if current_user -%>
+  <%#- if current_user.id == @food.id_Users -%> 
     <%= link_to 'Edit', edit_food_path(@food) %>
-  <% end %>
-<% end %>
+  <%#- end -%>
+<%#- end -%>
 <%= link_to 'Back', foods_path %>
 
 

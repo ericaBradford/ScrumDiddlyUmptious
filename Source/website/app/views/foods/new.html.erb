@@ -1,9 +1,5 @@
-<% if current_user %>
-  <h1>New food</h1>
-  <%= render 'form' %>
-<% else %>
-  <span>You must be logged in to create a food</span><br />
-<% end %>
+<h1>New food</h1>
+<%= render 'form' %>
 
 <%= link_to 'Back', foods_path %>
 

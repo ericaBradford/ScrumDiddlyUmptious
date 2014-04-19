@@ -3,9 +3,8 @@
 <% end %>
 <h1>Recipes</h1>
 
-<% if current_user %>
-  <%= link_to 'New Recipe', new_recipe_path %>
-<% end %>
+<%= link_to 'New Recipe', new_recipe_path %>
+
 
 
 <% if @recipes %>

@@ -21,4 +21,3 @@
 
 <%= debug current_user.id %>
 <%= debug @food.id_Users %>
-<%= debug @food.id_Users.to_i %>

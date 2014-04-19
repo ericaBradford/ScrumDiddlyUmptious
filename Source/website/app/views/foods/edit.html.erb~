@@ -4,6 +4,7 @@
     <%= render 'form' %>
   <% else %>
     <span>You do not have permission to edit this food</span><br />
+  <% end %>
 <% else %>
   <span> You must be logged in to edit a food </span><br />
 <% end %>

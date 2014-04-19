@@ -1,12 +1,10 @@
 <% flash.each do |name, msg| -%>
   <%= content_tag :div, msg, class: name %>
-<% end =%>
+<% end %>
 
 <h1>Foods</h1>
 
-<% if current_user %>
-  <%= link_to 'New food', new_food_path %>
-<% end %>
+<%= link_to 'New food', new_food_path %>
 
 <table>
   <tr>
