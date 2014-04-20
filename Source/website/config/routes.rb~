@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
-  end
-
   resources :recipes 
   resources :foods
   resources :recipes_ingredient

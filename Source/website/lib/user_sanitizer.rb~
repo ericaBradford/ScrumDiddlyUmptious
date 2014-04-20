@@ -1,10 +1,6 @@
 class User::ParameterSanitizer < Devise::ParameterSanitizer
     private
 
-      def sign_in
-        default_params.permit(:userName, :encrypted_password, :remember_me)
-      end
-
       def sign_up
         default_params.permit(:userName, :email, :password, :password_confirmation)
       end

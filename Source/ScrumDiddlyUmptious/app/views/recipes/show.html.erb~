@@ -1,0 +1,41 @@
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end =%>
+
+<p>
+  <b>Title: <%=@recipe.title %> </b>
+</p>
+
+//still might be wrong
+<p>
+  <h5>Ingredients: <h5><br>
+    <ul>
+      <% @foods.each do |food| %>
+        <li><%= food.foodName %> </li>
+      <% end %>
+    <ul>
+</p>
+
+<p>
+  <span>Directions: <%= @recipe.directions %> </span>
+</p>
+
+<p>
+  <span>Estimated cost of ingredients: $<%=@recipe.costOfIngredients%></span>
+</p>
+
+<p>
+  <span>Estimated cook time in hours: <%=@recipe.cookTime%></span>
+</p>
+
+<% if @recipe.canPrepareAhead == 1 %>
+  <%= This recipe can be prepared ahead of time!%>
+<%end%>
+
+<% if current_user %>
+  <% if current_user.id == @recipe.id_Users %>
+    <%= link_to 'Edit', edit_recipe_path(@recipe) %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', recipes_path %>

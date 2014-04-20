@@ -20,6 +20,7 @@ isPeanutFree 		binary			nn
 isTreeNutFree 		binary			nn
 isWheatFree 		binary			nn
 isSoyFree 		binary			nn
+id_Users		integer			nn
 
 *****Recipes*****
 id_Recipes 		integer			pk nn ai

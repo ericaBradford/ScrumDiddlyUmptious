@@ -17,7 +17,7 @@ isGlutenFree		binary			nn
 isHighFiber 		binary			nn
 isSugarFree 		binary			nn
 isPeanutFree 		binary			nn
-isTreeNutFree 		binary			nn
+isTreenutFree 		binary			nn
 isWheatFree 		binary			nn
 isSoyFree 		binary			nn
 id_Users		integer			nn

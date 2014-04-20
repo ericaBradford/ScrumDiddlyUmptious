@@ -3,7 +3,7 @@
 <% end %>
 <h1>Recipes</h1>
 
-<% if current_user %>
+<% if user_signed_in? %>
   <%= link_to 'New Recipe', new_recipe_path %>
 <% end %>
 
@@ -19,11 +19,9 @@
     <% @recipes.each do |recipe| %>
       <tr>
         <td><%= link_to recipe.title, recipe_path(recipe) %></td>
-        <% if current_user %>
-          <% if current_user.id == recipe.id_Users %>
-            <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-            <td><%= link_to 'Delete', recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure?' } %></td>
-          <% end %>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+          <td><%= link_to 'Delete', recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

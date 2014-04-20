@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  foodName: MyString
+  description: MyText
+  id_Users: 1
+  isDairyFree: 
+  isEggFree: 
+  isFishFree: 
+  isMeatFree: 
+  isShellfishFree: 
+  isGlutenFree: 
+  isHighFiber: 
+  isSugarFree: 
+  isPeanutFree: 
+  isTreenutFree: 
+  isWheatFree: 
+  isSoyFree: 
+
+two:
+  foodName: MyString
+  description: MyText
+  id_Users: 1
+  isDairyFree: 
+  isEggFree: 
+  isFishFree: 
+  isMeatFree: 
+  isShellfishFree: 
+  isGlutenFree: 
+  isHighFiber: 
+  isSugarFree: 
+  isPeanutFree: 
+  isTreenutFree: 
+  isWheatFree: 
+  isSoyFree: 
