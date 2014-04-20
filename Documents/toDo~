@@ -3,7 +3,10 @@ validation on Ingredients
 When user deletes account, delete all things that user created as well
 Fix bug (saving id_Users as string...)
 Add ingredients
-Interviews (14 to go)
+Interviews (4 to go)
 filtering
+Authentication
+Authorization
+Get rid of authorization and authentication crap that I did myself.
 
 When user signs up, send them to auto-log in

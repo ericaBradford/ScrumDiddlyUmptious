@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
     if session[:user_id]
       @recipes = Recipe.all
     else
-      @recipes = nil;
+      @recipes = nil
     end
   end
 

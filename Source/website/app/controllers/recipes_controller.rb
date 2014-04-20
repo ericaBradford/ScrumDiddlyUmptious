@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
 #  before_action :recipes_ingredients, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :exept => [:show, :index]
 
   def recipes_ingredient
     @foods = @recipes.foods
