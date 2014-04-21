@@ -1,6 +1,5 @@
 class Food < ActiveRecord::Base
-
-  has_many :recipes
+  belongs_to :recipes
 
 #  accepts_nested_attributes_for :recipes
 

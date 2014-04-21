@@ -1,5 +1,5 @@
 class Recipe < ActiveRecord::Base
-
+  belongs_to :users
   has_many :foods
 
   validates_associated :foods
@@ -12,3 +12,5 @@ class Recipe < ActiveRecord::Base
   validates :costOfIngredients, format: {with: /[0-9]+\.[0-9][0-9](?:[^0-9]|$)/, message: "Cost of ingredients can only be in the form '39.00'"}
 
 end
+
+# validate that ingredients are entered

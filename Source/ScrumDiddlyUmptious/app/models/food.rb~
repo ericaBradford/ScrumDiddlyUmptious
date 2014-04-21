@@ -1,4 +1,7 @@
 class Food < ActiveRecord::Base
+  has_many :recipes_ingredients
+  has_many :recipes, through: :recipes_ingredients
+
 #  accepts_nested_attributes_for :recipes
 
   validates :foodName, :description, presence: true 
