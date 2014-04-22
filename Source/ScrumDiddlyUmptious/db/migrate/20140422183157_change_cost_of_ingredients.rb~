@@ -1,0 +1,8 @@
+class ChangeCostOfIngredients < ActiveRecord::Migration
+  def up
+    change_column :recipes, :cookTime, :string
+  end
+
+  def down
+  end
+end

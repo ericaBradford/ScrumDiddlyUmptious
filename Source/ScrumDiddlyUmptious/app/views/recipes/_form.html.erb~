@@ -1,4 +1,4 @@
-<%= form_for @recipe do |f| %>
+<%= form_for @recipe, class: "center" do |f|%>
   <% if @recipe.errors.any? %>
 
   <div class="error_explanations">
@@ -12,52 +12,38 @@
   </div>
   <% end %>
 
-  <p>
+  <div class="form_item center">
     <%= f.label :title, "Title" %>
     <%= f.text_field :title %>
-  </p>
+  </div>
+
+  <div class="form_item center">
+    <%= f.label :ingredients %>
+    <%= f.text_area :ingredients %>
+  </div>
 
 
-//this might be wrong
-
-  <p>
-    <%= f.fields_for :recipesingredients do |ff| %>
-      <ol>
-        <table id = "table">
-          <tr>
-            <td style = "padding-left: 8px"><%= render 'recipes_ingredient_fields', :f => ff %></td>
-          </tr>
-        </table>
-      </ol>
-    <% end %>
-    <div id = "ingredientsadd"></div>
-    <%= link_to_add_ingredient 'Add', f, :recipesingredient, 'data-association-insertion-node' => "#ingredientsadd", 'data-association-insertion-method' => "append" %>
-  </p>
-
-
-
-
-  <p>
+  <div class="form_item center">
     <%= f.label :directions, "Directions" %>
     <%= f.text_area  :directions %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.label :cookTime, "Cook time(in hours please)" %>
+  <div class="form_item center">
+    <%= f.label :cookTime, "Cook time" %>
     <%= f.text_field :cookTime %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.label :costOfIngredients, "Estimated cost of ingredients(decimal please) $" %>
-    <%= f.text_field :costOfIngredients %>
-  </p>
+  <div class="form_item center">
+    <%= f.label :costOfIngredients, "Estimated cost of ingredients $" %>
+    <%= f.text_field :costOfIngredients, :value => (number_with_precision(f.object.costOfIngredients, :precision => 2) || 0) %>
+  </div>
 
-  <p>
+  <div class="form_item center">
     <%= f.label :canPrepareAhead, "Can this be prepared ahead of time?" %>
     <%= f.check_box :canPrepareAhead %>
-  </p>
+  </div>
 
-  <p>
+  <div class="form_item center">
     <%= f.submit %>
-  </p>
+  </div>
 <%end%>

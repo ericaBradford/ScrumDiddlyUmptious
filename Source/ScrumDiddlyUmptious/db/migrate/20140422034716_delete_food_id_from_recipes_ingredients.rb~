@@ -1,0 +1,4 @@
+class DeleteFoodIdFromRecipesIngredients < ActiveRecord::Migration
+  def change
+  end
+end

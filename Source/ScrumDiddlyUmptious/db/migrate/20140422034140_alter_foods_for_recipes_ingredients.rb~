@@ -1,0 +1,6 @@
+class AlterFoodsForRecipesIngredients < ActiveRecord::Migration
+  def change
+    add_column :food, :string
+    remove_column :id_Foods
+  end
+end

@@ -13,13 +13,15 @@
     <th colspan="3"></th>
   </tr>
 
-  <if @recipes>
+  <% if @recipes %>
     <% @recipes.each do |recipe| %>
       <tr>
-        <td><%= link_to recipe.title, recipe_path(recipe) %></td>
+        <td><%= link_to recipe.username, recipe_path(recipe) %></td>
         <% if user_signed_in? %>
-          <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-          <td><%= link_to 'Delete', recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+          <% if recipe.id_Users == current_user.id %>
+            <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+            <td><%= link_to 'Delete', recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

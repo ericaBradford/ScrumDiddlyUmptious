@@ -1,0 +1,4 @@
+class DeleteDecimalColFromRecipes < ActiveRecord::Migration
+  def change
+  end
+end

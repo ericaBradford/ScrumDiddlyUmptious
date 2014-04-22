@@ -1,0 +1,5 @@
+class RemoveRecipesIngredientsTable < ActiveRecord::Migration
+  def change
+    DROP TABLE :recipes_ingredients
+  end
+end

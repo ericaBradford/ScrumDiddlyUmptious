@@ -1,0 +1,4 @@
+class AddFoodToRecipes < ActiveRecord::Migration
+  def change
+  end
+end

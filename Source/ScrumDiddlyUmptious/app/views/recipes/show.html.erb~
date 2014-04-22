@@ -3,17 +3,15 @@
 <% end =%>
 
 <p>
-  <b>Title: <%=@recipe.title %> </b>
+  <b><%=@recipe.title %> </b>
 </p>
 
-//still might be wrong
 <p>
-  <h5>Ingredients: <h5><br>
-    <ul>
-      <% @foods.each do |food| %>
-        <li><%= food.foodName %> </li>
-      <% end %>
-    <ul>
+  <h5>
+    Ingredients: <br />
+    
+    <%= @recipe.ingredients %>
+  <h5>
 </p>
 
 <p>
@@ -21,20 +19,25 @@
 </p>
 
 <p>
-  <span>Estimated cost of ingredients: $<%=@recipe.costOfIngredients%></span>
+  <span>Estimated cost of ingredients: $<%=number_with_precision(@recipe.costOfIngredients, :precision => 2)%></span>
 </p>
 
 <p>
   <span>Estimated cook time in hours: <%=@recipe.cookTime%></span>
 </p>
 
-<% if @recipe.canPrepareAhead == 1 %>
-  <%= This recipe can be prepared ahead of time!%>
+<% if @recipe.canPrepareAhead == '1' %>
+  <span>This recipe can be prepared ahead of time!</span><br/>
 <%end%>
 
-<% if current_user %>
-  <% if current_user.id == @recipe.id_Users %>
+<p>
+  <h4>Chef: <%= link_to <%=@chef.username%>, user_path(@chef) %></h4>
+</p>
+
+<% if user_signed_in? %>
+  <% if @recipe.id_Users == current_user.id %>
     <%= link_to 'Edit', edit_recipe_path(@recipe) %>
+    <%= link_to 'Delete', recipe_path(@recipe), method: :delete, data: {confirm: 'Are you sure?' } %>
   <% end %>
 <% end %>
 

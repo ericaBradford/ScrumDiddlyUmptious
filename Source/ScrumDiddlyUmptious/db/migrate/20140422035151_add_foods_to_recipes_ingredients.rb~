@@ -1,0 +1,5 @@
+class AddFoodsToRecipesIngredients < ActiveRecord::Migration
+  def change
+    add_columns :recipes_ingredients, :foods, :string
+  end
+end
