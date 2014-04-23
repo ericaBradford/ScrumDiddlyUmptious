@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
-      redirect_to @recipe
+      redirect_to @recipe, notice: "Recipe successfully created!"
     else
       render 'new'
     end
@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
-      redirect_to @recipe, notice: "Recipe successfully updated!"
+      redirect_to @recipe, notice: "Recipe successfully updated."
     else
       render 'edit'
     end

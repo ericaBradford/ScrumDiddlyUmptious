@@ -1,0 +1,78 @@
+https://www.youtube.com/watch?v=Y0PNXMM2bXs
+
+User model should already have roles
+
+In abilities.rb - state each user type and what they are allowed to do
+  def initialize(user)
+    can :read, :all
+  end
+
+make sure to restrict in views
+  <% if can? :update, @article %>
+  <% end %>
+
+AND controllers
+  def edit
+    @article = Article.find(params[:id])
+    unauthorized! if cannot?
+  end
+
+OR if RESTful
+  class ArticlesController < ApplicationController
+    load_and_authorize_resource
+    def edit
+    end
+  end
+^ this means don't have to load resources in actions anymore
+
+If nested resource
+  class CommentsController < ApplicationController
+    load_and_authorize_resource :nested => :article
+    ...
+  end
+
+Back to Abilities.rb
+  def initialize(user)
+    if user.admin?
+      can :manage, :all
+    else
+      can :read, :recipes
+    end
+  end
+^ manage is special keyword meaning "every action"
+
+but what if user isn't logged in?
+
+  def initialize(user)
+    guess ||= User.new		<----probably a good idea to have a bool to test if a user is signed up at all...
+
+    if user.admin?
+      can :manage, :all
+    else
+      can :read, :recipes
+    end
+  end
+
+updating only their own stuff
+  def initialize(user)
+    can :read, :recipes
+    can :update, Comment do |comment|
+      comment.user == user
+    end
+  end
+
+in case comment object is nil...
+  comment && comment.user == user
+  OR
+  comment.try(:user) == user
+
+for admins as well...
+  comment.try(:user) == user || user.moderator
+
+fix exception page if they don't have access
+  class ApplicationController < ActionController::Base
+    rescue_from CanCan::AccessDenied do |exception| 	<--can either do block or pass to method
+      flash[:error] = "Access denied."
+      redirect_to root_url
+    end
+  end

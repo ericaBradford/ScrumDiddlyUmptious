@@ -1,12 +1,21 @@
 THINGS TO DO
-validation on Ingredients
 When user deletes account, delete all things that user created as well
-Fix bug (saving id_Users as string...)
-Add ingredients
-Interviews (3 to go)
 filtering
-Authentication
-Authorization
-Get rid of authorization and authentication crap that I did myself.
 
-When user signs up, send them to auto-log in
+abilities.rb file
+permissions for controllers
+permissions for views
+parameters users allow set member variable
+
+
+
+FIXES
+fix reset password
+clean up validations "cookTime Cook Time must be blah blah blah"
+
+
+
+
+
+Monday:
+Fill out project summary thingy (it should cover what I did during the week and what I plan to do next week)

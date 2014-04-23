@@ -2,12 +2,6 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-
-    respond_to do |format|
-      format.html
-      format.json {render json: @recipes}
-      format.xml {render :xml => @recipes}
-    end
   end
 
   def new
@@ -37,7 +31,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
-      redirect_to @recipe, notice: "Recipe successfully updated!"
+      redirect_to @recipe, notice: "Recipe successfully updated."
     else
       render 'edit'
     end

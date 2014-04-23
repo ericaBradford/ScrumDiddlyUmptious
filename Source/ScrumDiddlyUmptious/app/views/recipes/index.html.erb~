@@ -1,6 +1,3 @@
-<% flash.each do |name, msg| -%>
-  <%= content_tag :div, msg, class: name %>
-<% end %>
 <h1>Recipes</h1>
 
 <% if user_signed_in? %>
@@ -16,7 +13,7 @@
   <% if @recipes %>
     <% @recipes.each do |recipe| %>
       <tr>
-        <td><%= link_to recipe.username, recipe_path(recipe) %></td>
+        <td><%= link_to recipe.title, recipe_path(recipe) %></td>
         <% if user_signed_in? %>
           <% if recipe.id_Users == current_user.id %>
             <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
@@ -28,3 +25,5 @@
   <% end %>
 
 </table>
+
+<%= debug flash %>
