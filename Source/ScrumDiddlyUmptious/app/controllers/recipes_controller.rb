@@ -1,11 +1,30 @@
 class RecipesController < ApplicationController
-
+  
   def index
-    @recipes = Recipe.all
+    @recipes = []
+    @allRecipes = Recipe.all
+    @foodsToFilter = current_user.foodsToFilter.split(",")
+    @foodsToFilter = @foodsToFilter.collect{|x| x.strip}
+    
+    @allRecipes.each do |recipe|
+      @foodsToFilter.each do |food|
+        if recipe.ingredients.downcase.include? food
+          @dontInclude = true
+        end
+      end
+
+      if @dontInclude
+      else
+        @recipes.push(recipe)
+      end
+
+      @dontInclude = false
+    end
   end
 
   def new
     @recipe = Recipe.new
+    authorize! :create, @recipe
   end
 
   def create
@@ -25,6 +44,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    authorize! :update, @recipe
   end
 
   def update
@@ -40,7 +60,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-
+    authorize! :destroy, @recipe
     redirect_to recipes_path, notice: "Recipe successfully deleted!"
   end
 

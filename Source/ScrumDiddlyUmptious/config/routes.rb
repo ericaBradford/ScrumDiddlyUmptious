@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,
+    :controllers => {:registrations => "my_devise/registrations"}
   get 'recipes/index'
 
   resources :foods

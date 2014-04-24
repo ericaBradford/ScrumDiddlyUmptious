@@ -14,7 +14,7 @@ class Ability
       #users can update their own recipes
       can :crud, Recipe, :id_Users => user.id
       #users can update their own profile
-      can :crud, User, :id => user.id
+      can :crud, User, :id => user.id, :category => {:visible => true}
     elsif user.role == "admin"
       can :manage, :all
     else

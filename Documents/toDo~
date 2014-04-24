@@ -1,17 +1,31 @@
 THINGS TO DO
-When user deletes account, delete all things that user created as well
 filtering
-admin role
-
-
-
-FIXES
-fix reset password
-clean up validations "cookTime Cook Time must be blah blah blah"
-
-
-
 
 
 Monday:
 Fill out project summary thingy (it should cover what I did during the week and what I plan to do next week)
+
+
+
+
+
+back-burner:
+promote user to admin
+admin can edit users
+admin should be able to edit all recipes...(bug)
+FIXES
+fix reset password
+clean up validations "cookTime Cook Time must be blah blah blah"
+
+Low-fi mockups
+user test mockups
+
+
+
+
+
+FILTERING
+go through each recipe
+see if any ingredients matches foodsToFilter column for current_user
+if it does have a match, don't add
+if there is no match, add to recipes to display
