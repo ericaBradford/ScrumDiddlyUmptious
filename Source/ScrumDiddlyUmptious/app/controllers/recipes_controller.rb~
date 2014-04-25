@@ -1,24 +1,27 @@
 class RecipesController < ApplicationController
   
   def index
-    @recipes = []
-    @allRecipes = Recipe.all
-    @foodsToFilter = current_user.foodsToFilter.split(",")
-    @foodsToFilter = @foodsToFilter.collect{|x| x.strip}
+    if user_signed_in?
+      @recipes = []
+      @allRecipes = Recipe.all
+      @foodsToFilter = current_user.foodsToFilter.split(",")
+      @foodsToFilter = @foodsToFilter.collect{|x| x.strip}
     
-    @allRecipes.each do |recipe|
-      @foodsToFilter.each do |food|
-        if recipe.ingredients.include? food
-          @dontInclude = true
+      @allRecipes.each do |recipe|
+        @foodsToFilter.each do |food|
+          if recipe.ingredients.downcase.include? food
+            @dontInclude = true
+          end
         end
-      end
 
-      if @dontInclude
-      else
-        @recipes.push(recipe)
+        if @dontInclude
+        else
+          @recipes.push(recipe)
+        end
+ 
+        @dontInclude = false
       end
-
-      @dontInclude = false
+    else
     end
   end
 
