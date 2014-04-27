@@ -1,5 +1,4 @@
 class MyDevise::RegistrationsController < Devise::RegistrationsController
-  before_action :addVeganToFilters, only: :update
 
   def new
     super
@@ -7,6 +6,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
+    redirect_to user_users_preferences_path(current_user.id)
   end
 
   def edit
@@ -14,11 +14,6 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    if params[:isVegan] == '1'
-      params[:foodsToFilter] ||= "beef, chicken, ham, fish, steak, milk, butter, cheese, eggs, jello, marshmallows, marshmellows, marshmallow, marshmello, honey, whey, salmon, #{params[:foodToFilter]}"
-    end
-    params[:foodsToFilter] = "here"
-    params.delete :isVegan
     super
   end
 
@@ -37,13 +32,6 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 
   def cancel
     super
-  end
-
- private
-
-  def addVeganToFilters
-    user.foodsToFilter = "yes"
-    params.delete :isVegan
   end
 
 end

@@ -16,6 +16,7 @@ admin should be able to edit all recipes...(bug)
 FIXES
 fix reset password
 clean up validations "cookTime Cook Time must be blah blah blah"
+user-error user does new line instead of seperating filtered foods by comma
 
 Low-fi mockups
 user test mockups

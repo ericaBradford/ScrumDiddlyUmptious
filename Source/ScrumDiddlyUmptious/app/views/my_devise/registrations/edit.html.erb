@@ -9,13 +9,6 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= label_tag :isVegan, "Vegan" %><br />
-  <%= check_box_tag :isVegan %></div>
-
-  <div><%= f.label :foodsToFilter, "Blacklist Foods" %>
-    <span>(seperate with commas)</span><br />
-  <%= f.text_area :foodsToFilter, autofocus: true %></div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

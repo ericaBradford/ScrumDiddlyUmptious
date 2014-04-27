@@ -9,9 +9,6 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :isVegan, "Vegan" %><br />
-  <%= f.check_box :isVegan %></div>
-
   <div><%= f.label :foodsToFilter, "Blacklist Foods" %>
     <span>(seperate with commas)</span><br />
   <%= f.text_area :foodsToFilter, autofocus: true %></div>

@@ -26,5 +26,5 @@
 
 </table>
 
-<%= debug @gotHere %>
 <%= debug @foodsToFilter %>
+<%= debug @isVegan %>

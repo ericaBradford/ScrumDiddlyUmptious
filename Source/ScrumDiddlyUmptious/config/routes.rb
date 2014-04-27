@@ -3,9 +3,10 @@ Rails.application.routes.draw do
     :controllers => {:registrations => "my_devise/registrations"}
   get 'recipes/index'
 
-  resources :foods
   resources :recipes
-  resources :users
+  resources :users do
+    resource :users_preferences
+  end
 
   root 'recipes#index'
 

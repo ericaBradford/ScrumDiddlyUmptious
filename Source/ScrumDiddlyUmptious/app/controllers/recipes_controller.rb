@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   
   def index
-    if user_signed_in?
+    if user_signed_in? && @foodsToFilter
       @recipes = []
       @allRecipes = Recipe.all
       @foodsToFilter = current_user.foodsToFilter.split(",")

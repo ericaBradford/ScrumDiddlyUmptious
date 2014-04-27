@@ -1,0 +1,73 @@
+<h1>Check each box that follows your food preferences</h1>
+<h4>Click on a word if you want the specific of what it will blacklist</h4>
+<%= form_for @users_preferences, class: "center" do |f| %>
+
+  <div><%= f.label :foodsToFilter, "Blacklist Foods" %>
+    <span>(seperate with commas)</span><br />
+  <%= f.text_area :foodsToFilter, autofocus: true %></div>
+
+  <h3>Food Preferences</h3>
+
+    <div><%= f.label :isPescatarian, "Pescatarian" %>
+    <%= f.check_box :isPescatarian %> </div>
+
+    <div><%= f.label :isVegetarian, "Vegetarian" %>
+    <%= f.check_box :isVegetarian %> </div>
+
+    <div><%= f.label :isVegan, "Vegan" %>
+    <%= f.check_box :isVegan %> </div>
+
+
+  <h3>Religious Food Restrictions</h3>
+
+    <div><%= f.label :isHindu, "Hindu" %>
+    <%= f.check_box :isHindu %> </div>
+
+    <div><%= f.label :isMuslim, "Muslim" %>
+    <%= f.check_box :isMuslim %> </div>
+
+    <div><%= f.label :isJain, "Jain" %>
+    <%= f.check_box :isJain %> </div>
+
+    <div><%= f.label :isKosher, "Kosher" %>
+    <%= f.check_box :isKosher %> </div>
+
+    <div><%= f.label :isAsianVegetarian, "Asian Vegetarian" %>
+    <%= f.check_box :isAsianVegetarian %> </div>
+
+  <h3>Allergies and Health</h3>
+
+    <div><%= f.label :isDiabetic, "Diabetic" %>
+    <%= f.check_box :isDiabetic %> </div>
+
+    <div><%= f.label :isAllergicGluten, "Gluten-Free" %>
+    <%= f.check_box :isAllergicGluten %> </div>
+
+    <div><%= f.label :isAllergicPeanuts, "Peanut-Free" %>
+    <%= f.check_box :isAllergicPeanuts %> </div>
+
+    <div><%= f.label :isAllergicTreenuts, "Treenut-Free" %>
+    <%= f.check_box :isAllergicTreenuts %> </div>
+
+    <div><%= f.label :isAllergicDairy, "Dairy-Free" %>
+    <%= f.check_box :isAllergicDairy %> </div>
+
+    <div><%= f.label :isAllergicEggs, "Egg-Free" %>
+    <%= f.check_box :isAllergicEggs %> </div>
+
+    <div><%= f.label :isAllergicWheat, "Wheat-Free" %>
+    <%= f.check_box :isAllergicWheat %> </div>
+
+    <div><%= f.label :isAllergicSoy, "Soy-Free" %>
+    <%= f.check_box :isAllergicSoy %> </div>
+
+    <div><%= f.label :isAllergicFish, "Fish-Free" %>
+    <%= f.check_box :isAllergicFish %> </div>
+
+    <div><%= f.label :isAllergicShellfish, "Shell fish-Free" %>
+    <%= f.check_box :isAllergicShellfish %> </div>
+
+  <div class="form_item center">
+    <%= f.submit %>
+  </div>
+<% end %>
