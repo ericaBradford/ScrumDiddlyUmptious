@@ -11,7 +11,7 @@
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.username %></strong>.
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to 'Your Preferences', edit_user_users_preferences_path(current_user), :class => 'navbar-link' %> |
+  <%= link_to 'Your Preferences', edit_user_preference_path, :class => 'navbar-link' %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 <% else %>
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
@@ -28,4 +28,4 @@
 <%= yield %>
 
 </body>
-</html>
+</html>d

@@ -1,0 +1,97 @@
+<%= form_for(@preference) do |f| %>
+  <% if @preference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@preference.errors.count, "error") %> prohibited this preference from being saved:</h2>
+
+      <ul>
+      <% @preference.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :isPescatarian %><br>
+    <%= f.text_field :isPescatarian %>
+  </div>
+  <div class="field">
+    <%= f.label :isVegetarian %><br>
+    <%= f.text_field :isVegetarian %>
+  </div>
+  <div class="field">
+    <%= f.label :isVegan %><br>
+    <%= f.text_field :isVegan %>
+  </div>
+  <div class="field">
+    <%= f.label :isDiabetic %><br>
+    <%= f.text_field :isDiabetic %>
+  </div>
+  <div class="field">
+    <%= f.label :isAllergicGluten %><br>
+    <%= f.text_field :isAllergicGluten %>
+  </div>
+  <div class="field">
+    <%= f.label :isAllergicPeanuts %><br>
+    <%= f.text_field :isAllergicPeanuts %>
+  </div>
+  <div class="field">
+    <%= f.label :isAllergicTreenuts %><br>
+    <%= f.text_field :isAllergicTreenuts %>
+  </div>
+  <div class="field">
+    <%= f.label :isAllergicDairy %><br>
+    <%= f.text_field :isAllergicDairy %>
+  </div>
+  <div class="field">
+    <%= f.label :isAllergicEggs %><br>
+    <%= f.text_field :isAllergicEggs %>
+  </div>
+  <div class="field">
+    <%= f.label :isAllergicWheat %><br>
+    <%= f.text_field :isAllergicWheat %>
+  </div>
+  <div class="field">
+    <%= f.label :isAllergicSoy %><br>
+    <%= f.text_field :isAllergicSoy %>
+  </div>
+  <div class="field">
+    <%= f.label :isAllergicFish %><br>
+    <%= f.text_field :isAllergicFish %>
+  </div>
+  <div class="field">
+    <%= f.label :isAllergicShellfish %><br>
+    <%= f.text_field :isAllergicShellfish %>
+  </div>
+  <div class="field">
+    <%= f.label :isAsianVegetarian %><br>
+    <%= f.text_field :isAsianVegetarian %>
+  </div>
+  <div class="field">
+    <%= f.label :isHindu %><br>
+    <%= f.text_field :isHindu %>
+  </div>
+  <div class="field">
+    <%= f.label :isMuslim %><br>
+    <%= f.text_field :isMuslim %>
+  </div>
+  <div class="field">
+    <%= f.label :isJain %><br>
+    <%= f.text_field :isJain %>
+  </div>
+  <div class="field">
+    <%= f.label :isKosher %><br>
+    <%= f.text_field :isKosher %>
+  </div>
+  <div class="field">
+    <%= f.label :foodsToFilter %><br>
+    <%= f.text_field :foodsToFilter %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

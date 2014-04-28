@@ -1,0 +1,63 @@
+<h1>Listing preferences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ispescatarian</th>
+      <th>Isvegetarian</th>
+      <th>Isvegan</th>
+      <th>Isdiabetic</th>
+      <th>Isallergicgluten</th>
+      <th>Isallergicpeanuts</th>
+      <th>Isallergictreenuts</th>
+      <th>Isallergicdairy</th>
+      <th>Isallergiceggs</th>
+      <th>Isallergicwheat</th>
+      <th>Isallergicsoy</th>
+      <th>Isallergicfish</th>
+      <th>Isallergicshellfish</th>
+      <th>Isasianvegetarian</th>
+      <th>Ishindu</th>
+      <th>Ismuslim</th>
+      <th>Isjain</th>
+      <th>Iskosher</th>
+      <th>Foodstofilter</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @preferences.each do |preference| %>
+      <tr>
+        <td><%= preference.isPescatarian %></td>
+        <td><%= preference.isVegetarian %></td>
+        <td><%= preference.isVegan %></td>
+        <td><%= preference.isDiabetic %></td>
+        <td><%= preference.isAllergicGluten %></td>
+        <td><%= preference.isAllergicPeanuts %></td>
+        <td><%= preference.isAllergicTreenuts %></td>
+        <td><%= preference.isAllergicDairy %></td>
+        <td><%= preference.isAllergicEggs %></td>
+        <td><%= preference.isAllergicWheat %></td>
+        <td><%= preference.isAllergicSoy %></td>
+        <td><%= preference.isAllergicFish %></td>
+        <td><%= preference.isAllergicShellfish %></td>
+        <td><%= preference.isAsianVegetarian %></td>
+        <td><%= preference.isHindu %></td>
+        <td><%= preference.isMuslim %></td>
+        <td><%= preference.isJain %></td>
+        <td><%= preference.isKosher %></td>
+        <td><%= preference.foodsToFilter %></td>
+        <td><%= preference.user %></td>
+        <td><%= link_to 'Show', preference %></td>
+        <td><%= link_to 'Edit', edit_preference_path(preference) %></td>
+        <td><%= link_to 'Destroy', preference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Preference', new_preference_path %>
