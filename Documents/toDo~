@@ -1,32 +1,23 @@
 THINGS TO DO
 
-back-burner:
-promote user to admin
-admin can edit users
+week 4
+bug fixes
+prioritized feature list
+filtering
+front-end
+
+
+
+
+
+
+BUGS
 admin should be able to edit all recipes...(bug)
-FIXES
 fix reset password
 clean up validations "cookTime Cook Time must be blah blah blah"
 user-error user does new line instead of seperating filtered foods by comma
 
 
-
-
-
-FILTERING
-go through each recipe
-see if any ingredients matches foodsToFilter column for current_user
-if it does have a match, don't add
-if there is no match, add to recipes to display
-
-
-
-
-week 4
-research filtering
-bug fixes
-prioritized feature list
-filtering
-crud
-front-end
-mobile?
+FEATURES
+promote user to admin
+add pictures to recipes

@@ -20,7 +20,7 @@
 </dl>
 
 <div class="form-actions">
-  <%= link_to t("back to ", :default => t("helpers.links.back")),
+  <%= link_to t('.back', :default => t("helpers.links.back")),
               recipes_path, :class => 'btn'  %>
 
   <% if user_signed_in? %>

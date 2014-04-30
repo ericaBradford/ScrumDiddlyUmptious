@@ -1,49 +1,50 @@
-<%= form_for @recipe, class: "center" do |f|%>
-  <% if @recipe.errors.any? %>
-
-  <div class="error_explanations">
-   <h2>The following errors are keeping this recipe from being saved <h2>
-   <h3><%= pluralize(@recipe.errors.count, "error") %> </h3>
-   <ul>
-    <% @recipe.errors.full_messages.each do |m| %>
-      <li><%= m %></li>
-    <%end%>
-   </ul>
+<%= form_for @recipe, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
   </div>
-  <% end %>
-
-  <div class="form_item center">
-    <%= f.label :title, "Title" %>
-    <%= f.text_field :title %>
+  <div class="control-group">
+    <%= f.label :directions, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :directions, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :cookTime, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cookTime, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :canPrepareAhead, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :canPrepareAhead, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :id_Users, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :id_Users, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :costOfIngredients, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :costOfIngredients, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :ingredients, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ingredients, :class => 'text_field' %>
+    </div>
   </div>
 
-  <div class="form_item center">
-    <%= f.label :ingredients %>
-    <%= f.text_area :ingredients %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                recipes_path, :class => 'btn' %>
   </div>
-
-
-  <div class="form_item center">
-    <%= f.label :directions, "Directions" %>
-    <%= f.text_area  :directions %>
-  </div>
-
-  <div class="form_item center">
-    <%= f.label :cookTime, "Cook time" %>
-    <%= f.text_field :cookTime %>
-  </div>
-
-  <div class="form_item center">
-    <%= f.label :costOfIngredients, "Estimated cost of ingredients $" %>
-    <%= f.text_field :costOfIngredients, :value => (number_with_precision(f.object.costOfIngredients, :precision => 2) || 0) %>
-  </div>
-
-  <div class="form_item center">
-    <%= f.label :canPrepareAhead, "Can this be prepared ahead of time?" %>
-    <%= f.check_box :canPrepareAhead %>
-  </div>
-
-  <div class="form_item center">
-    <%= f.submit %>
-  </div>
-<%end%>
+<% end %>

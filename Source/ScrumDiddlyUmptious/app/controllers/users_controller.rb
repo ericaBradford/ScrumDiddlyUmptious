@@ -18,4 +18,13 @@ class UsersController < ApplicationController
       format.xml {render :xml => @user}
     end
   end
+
+  def editRole
+    @admin = current_user.id
+  end
+
+  def promote
+    @user = User.find(params[userId])
+    @admin = current_user.id
+  end
 end
