@@ -1,41 +1,39 @@
+<%- model_class = Recipe -%>
+<div class="page-header">
+  <h1> <%= @recipe.title %>
+</div>
 
-<p>
-  <b><%=@recipe.title %> </b>
-</p>
-
-<p>
-  <h5>
-    Ingredients: <br />
-    
-    <%= @recipe.ingredients %>
-  <h5>
-</p>
-
-<p>
-  <span>Directions: <%= @recipe.directions %> </span>
-</p>
-
-<p>
-  <span>Estimated cost of ingredients: $<%=number_with_precision(@recipe.costOfIngredients, :precision => 2)%></span>
-</p>
-
-<p>
-  <span>Estimated cook time in hours: <%=@recipe.cookTime%></span>
-</p>
-
-<% if @recipe.canPrepareAhead == '1' %>
-  <span>This recipe can be prepared ahead of time!</span><br/>
-<%end%>
-
-<p>
-  <h4>Chef: <%= link_to @chef.username, user_path(@chef) %></h4>
-</p>
-
-<% if user_signed_in? %>
-  <% if @recipe.id_Users == current_user.id %>
-    <%= link_to 'Edit', edit_recipe_path(@recipe) %>
-    <%= link_to 'Delete', recipe_path(@recipe), method: :delete, data: {confirm: 'Are you sure?' } %>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:ingredients) %>:</strong></dt>
+  <dd><%= @recipe.ingredients %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:directions) %>:</strong></dt>
+  <dd><%= @recipe.directions %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cookTime) %>:</strong></dt>
+  <dd><%= @recipe.cookTime %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:costOfIngredients) %>:</strong></dt>
+  <dd>$<%= number_with_precision(@recipe.costOfIngredients, :precision => 2) %></dd>
+  <dt><strong>Chef:</strong></dt>
+  <dd><%= link_to @chef.username, user_path(@chef) %></dd>
+  <% if @recipe.canPrepareAhead == '1' %>
+    <dd><strong>This recipe can be prepared ahead of time!</strong></dd>
   <% end %>
-<% end %>
+</dl>
 
-<%= link_to 'Back', recipes_path %>
+<div class="form-actions">
+  <%= link_to t("back to ", :default => t("helpers.links.back")),
+              recipes_path, :class => 'btn'  %>
+
+  <% if user_signed_in? %>
+    <% if @recipe.id_Users == current_user.id %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                  edit_recipe_path(@recipe), :class => 'btn' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                  recipe_path(@recipe),
+                  :method => 'delete',
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                  :class => 'btn btn-danger' %>
+    <% end %>
+  <% end %>
+
+
+</div>

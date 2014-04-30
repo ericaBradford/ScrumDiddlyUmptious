@@ -38,4 +38,10 @@ en:
  activerecord:
   attributes:
    recipe:
+    CookTime: Cook Time
+
+en:
+ activerecord:
+  attributes:
+   recipe:
     canPrepareAhead: Can Prepare Ahead

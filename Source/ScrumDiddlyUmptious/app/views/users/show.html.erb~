@@ -1,19 +1,19 @@
-<h1>
-  <%= @user.username %>'s Profile
-</h1>
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%= @user.username %></h1>
+</div>
 
-<% if @recipes %>
+<dl class="dl-horizontal">
 
-  <h3> Recipes </h3>
-
-  <ul>
+  <% if @recipes %>
+    <dt><h3>Recipes</h3></dt>
     <% @recipes.each do |recipe| %>
-      <li>
+      <dd>
         <%= link_to recipe.title, recipe_path(recipe) %>
-      </li>
+      </dd>
     <% end %>
-  </ul>
 
-<% end %>
-
-<%= debug @recipes %>
+  <% else %>
+    <dd> This user has not posted any recipes</dd>
+  <% end %>
+</dl>
