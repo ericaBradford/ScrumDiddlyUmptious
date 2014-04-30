@@ -1,13 +1,4 @@
 THINGS TO DO
-filtering for food preferences, not just specific foods
-
-
-Monday:
-Fill out project summary thingy (it should cover what I did during the week and what I plan to do next week)
-
-
-
-
 
 back-burner:
 promote user to admin
@@ -17,9 +8,7 @@ FIXES
 fix reset password
 clean up validations "cookTime Cook Time must be blah blah blah"
 user-error user does new line instead of seperating filtered foods by comma
-
-Low-fi mockups
-user test mockups
+add pictures to recipes
 
 
 
@@ -30,3 +19,15 @@ go through each recipe
 see if any ingredients matches foodsToFilter column for current_user
 if it does have a match, don't add
 if there is no match, add to recipes to display
+
+
+
+
+week 4
+research filtering
+bug fixes
+prioritized feature list
+filtering
+crud
+front-end
+mobile?

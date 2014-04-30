@@ -10,15 +10,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  Devise.setup do |config| 
-  config.mailer_sender = "ScrumDiddlyUmptious4u@gmail.com"  
-  config.mailer = "Devise::Mailer" 
-  require 'devise/orm/active_record' 
-  config.case_insensitive_keys = [ :email ] 
-  config.stretches = 10 
-  config.use_salt_as_remember_token = true 
-  config.reset_password_keys = [ :email ] 
-  end
+  #a lot of fixing to do here.
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

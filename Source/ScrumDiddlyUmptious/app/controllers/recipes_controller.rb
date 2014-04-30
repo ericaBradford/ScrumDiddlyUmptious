@@ -1,9 +1,14 @@
 class RecipesController < ApplicationController
-  
+#what if they check multiple food preferences? Check against multiple scopes???
+  #also remember to do if statements to make sure that the user has clicked "yes I'm vegan" in preferences
+#has_scope :by_manufacturer, if: vehicle_manufacturer_id.present?
+#if, find user preferences by looking for current_user.id in preferences table. If true, add scope
+  #has_scope :vegan, if: current_user
+
   def index
     if user_signed_in? && @foodsToFilter
       @recipes = []
-      @allRecipes = Recipe.all
+      @allRecipes = Recipe.order("title").page(params[:page]).per(10)
       @foodsToFilter = current_user.foodsToFilter.split(",")
       @foodsToFilter = @foodsToFilter.collect{|x| x.strip}
     
@@ -22,7 +27,7 @@ class RecipesController < ApplicationController
         @dontInclude = false
       end
     else
-      @recipes = Recipe.all
+      @recipes = Recipe.order("title").page(params[:page]).per(10)
     end
   end
 
@@ -67,7 +72,6 @@ class RecipesController < ApplicationController
     authorize! :destroy, @recipe
     redirect_to recipes_path, notice: "Recipe successfully deleted!"
   end
-
 
   private
     def recipe_params

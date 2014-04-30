@@ -1,22 +1,5 @@
 class MyDevise::RegistrationsController < Devise::RegistrationsController
 
-  def new
-    super
-  end  
-
-  def create
-    super
-    redirect_to user_users_preferences_path(current_user.id)
-  end
-
-  def edit
-    super
-  end
-
-  def update
-    super
-  end
-
   def destroy
     super
     #this will have to be more and more edited as functions are inputted
@@ -28,10 +11,6 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
         end
       end
     end
-  end
-
-  def cancel
-    super
   end
 
 end

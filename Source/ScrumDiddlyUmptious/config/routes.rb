@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  resources :preferences
-
-  resources :users_preferences
 
   devise_for :users,
     :controllers => {:registrations => "my_devise/registrations"}
-  get 'recipes/index'
 
   resources :recipes
   resources :users do
