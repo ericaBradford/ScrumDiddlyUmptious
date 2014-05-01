@@ -1,0 +1,52 @@
+SEARCH
+  cost
+  ingredients
+  num ingredients
+  cook time
+  classification of cooking (stove-top, crock-pot)
+  prepare in advance
+  rating
+  multiple ingredients
+  quick search w/ obvious button
+  cookware
+
+BROWSE 
+  categories
+  num ingredients
+  cook time
+  cost
+  rating
+  prepare in advance
+  classification of cooking (stove-top, crock-pot, ect.)
+  rating
+  cookware
+
+PRINT
+  user print recipes
+  choose size of printout (full sheet, 6 cards, half sheet)
+
+SHOPPING LIST
+  click to put ingredients into shopping list
+  must-haves for specific diets
+  check off ingredients as shopping
+
+ADD TO PREFERENCES
+  blacklist foods
+  alcohol-free
+
+save favorite recipes
+rate recipes
+follow other users
+user comments
+user can create own version of recipes
+choose what serving size you want recipe to be and auto changes sizings
+ingredient substitutions
+specify toward top if it's vegetarian, vegan, diabetic-friendly, ect.
+suggests link to similar vegetarian recipe
+pictures
+blacklist ingredients
+whitelisting ingredients
+tutorials
+for each ingredient, click on it and see subs
+ingredients/directions first
+save recipes and quickly pull up ingredients list

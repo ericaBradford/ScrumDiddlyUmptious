@@ -5,7 +5,7 @@ class Recipe < ActiveRecord::Base
   #VEGANFOODS = ['chicken']
 
   #scope :vegan, -> { where(' ? not in ?', VEGANFOODS, :ingredients.downcase) }
-  scope :tatoes, -> { where(:ingredients => '1 cup Guacamole4 Potatoes') }
+  scope :by_prep_time, -> canPrepareAhead { where(:canPrepareAhead => canPrepareAhead) }
 
   belongs_to :users
 
