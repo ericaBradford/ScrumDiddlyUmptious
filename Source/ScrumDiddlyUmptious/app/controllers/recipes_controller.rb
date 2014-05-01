@@ -7,27 +7,8 @@ class RecipesController < ApplicationController
   has_scope :canPrepareAhead, :type => :boolean
 
   def index
-    if user_signed_in? && @foodsToFilter
-      @recipes = []
-      @allRecipes = apply_scopes(Recipe).all
-#order("title").page(params[:page]).per(10)
-      @foodsToFilter = current_user.foodsToFilter.split(",")
-      @foodsToFilter = @foodsToFilter.collect{|x| x.strip}
-    
-      @allRecipes.each do |recipe|
-        @foodsToFilter.each do |food|
-          if recipe.ingredients.downcase.include? food
-            @dontInclude = true
-          end
-        end
-
-        if @dontInclude
-        else
-          @recipes.push(recipe)
-        end
- 
-        @dontInclude = false
-      end
+    if user_signed_in?
+      @recipes = apply_scopes(Recipe).order("title").page(params[:page]).per(10)
     else
       @recipes = apply_scopes(Recipe).order("title").page(params[:page]).per(10)
     end

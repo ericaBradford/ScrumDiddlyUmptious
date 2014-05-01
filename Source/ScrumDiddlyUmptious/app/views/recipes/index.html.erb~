@@ -18,7 +18,7 @@
         <td>$<%= number_with_precision(recipe.costOfIngredients, :precision=>2) %></td>
         <td>
           <% if user_signed_in? %>
-            <% if recipe.id_Users == current_user.id %>
+            <% if recipe.id_Users == current_user.id  || current_user.role == 'admin'%>
               <%= link_to t('.edit', :default => t("helpers.links.edit")),
                           edit_recipe_path(recipe), :class => 'btn btn-mini' %>
               <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -33,6 +33,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @users %>
 
 <% if user_signed_in? %>
   <%= link_to t('.new', :default => t("helpers.links.new")),
