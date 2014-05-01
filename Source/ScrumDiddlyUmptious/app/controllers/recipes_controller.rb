@@ -4,11 +4,13 @@ class RecipesController < ApplicationController
 #has_scope :by_manufacturer, if: vehicle_manufacturer_id.present?
 #if, find user preferences by looking for current_user.id in preferences table. If true, add scope
   #has_scope :vegan
+  has_scope :canPrepareAhead, :type => :boolean
 
   def index
     if user_signed_in? && @foodsToFilter
       @recipes = []
-      @allRecipes = apply_scopes(Recipe).order("title").page(params[:page]).per(10)
+      @allRecipes = apply_scopes(Recipe).all
+#order("title").page(params[:page]).per(10)
       @foodsToFilter = current_user.foodsToFilter.split(",")
       @foodsToFilter = @foodsToFilter.collect{|x| x.strip}
     
@@ -27,7 +29,7 @@ class RecipesController < ApplicationController
         @dontInclude = false
       end
     else
-      @recipes = Recipe.order("title").page(params[:page]).per(10)
+      @recipes = apply_scopes(Recipe).order("title").page(params[:page]).per(10)
     end
   end
 

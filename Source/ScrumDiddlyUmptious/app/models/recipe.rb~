@@ -2,9 +2,10 @@ class Recipe < ActiveRecord::Base
 #need to find a way to query "where ingredients doesn't include these strings"...
 #if this contains any of these words
 
-  VEGANFOODS = ['chicken']
+  #VEGANFOODS = ['chicken']
 
-  scope :vegan, -> { where(' ? not in ?', VEGANFOODS, :ingredients.downcase) }
+  #scope :vegan, -> { where(' ? not in ?', VEGANFOODS, :ingredients.downcase) }
+  scope :canPrepareAhead, -> { where(:canPrepareAhead => true) }
 
   belongs_to :users
 
