@@ -1,22 +1,16 @@
 class PreferencesController < ApplicationController
-  before_filter :get_user
+  before_action :get_user
+  before_action :fixed_params, only: [:update, :create]
 
   # GET /preferences
   # GET /preferences.json
   def index
-    @preferences = user.preferences
-
-    respond_to do |format|
-      format.html
-      format.xml {render :xml => @preferences}
-      format.json {render :json => @preferences}
-    end
   end
 
   # GET /preferences/1
   # GET /preferences/1.json
   def show
-    @preferences = user.preferences.find(params[:id])
+    @preference = Preference.find_by_id_Users(@user.id)
 
     respond_to do |format|
       format.html
@@ -27,7 +21,7 @@ class PreferencesController < ApplicationController
 
   # GET /preferences/new
   def new
-    @preference = user.preferences.build
+    @preference = @user.preferences.build
 
     respond_to do |format|
       format.html
@@ -38,13 +32,13 @@ class PreferencesController < ApplicationController
 
   # GET /preferences/1/edit
   def edit
-    @preference = user.preferences.find(params[:id])
+    @preferences = Preference.find_by_id_Users(@user.id)
   end
 
   # POST /preferences
   # POST /preferences.json
   def create
-    @preference = user.preferences.create(preference_params)
+    @preference = @user.preferences.create(preference_params)
 
     respond_to do |format|
       if @preference.save
@@ -61,11 +55,11 @@ class PreferencesController < ApplicationController
   # PATCH/PUT /preferences/1
   # PATCH/PUT /preferences/1.json
   def update
-    @preferences = user.preferences.find(params[:id])
+    @preferences = Preference.find_by_id_Users(@user.id)
 
     respond_to do |format|
-      if @preference.update(preference_params)
-        format.html { redirect_to @preference, notice: 'Preference was successfully updated.' }
+      if @preferences.update(fixed_params)
+        format.html { redirect_to user_preference_path(current_user.id, :id), notice: 'Preference was successfully updated.' }
         format.json { render :show, status: :ok, location: @preference }
       else
         format.html { render :edit }
@@ -77,7 +71,8 @@ class PreferencesController < ApplicationController
   # DELETE /preferences/1
   # DELETE /preferences/1.json
   def destroy
-    @preference.destroy
+    @preferences = @user.preferences.find(params[:id])
+    @preferences.destroy
     respond_to do |format|
       format.html { redirect_to preferences_url }
       format.json { head :no_content }
@@ -87,7 +82,12 @@ class PreferencesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def get_user
-      user = User.find(params[:user_id])
+      @user = User.find(params[:user_id])
+    end
+
+    def fixed_params
+      id_Users = params[:user_id]
+       params.require(:preference).permit(:isPescatarian, :isVegetarian, :isVegan, :isDiabetic, :isAllergicGluten, :isAllergicPeanuts, :isAllergicTreenuts, :isAllergicDairy, :isAllergicEggs, :isAllergicWheat, :isAllergicSoy, :isAllergicFish, :isAllergicShellfish, :isAsianVegetarian, :isHindu, :isMuslim, :isJain, :isKosher, :foodsToFilter, :id_Users)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

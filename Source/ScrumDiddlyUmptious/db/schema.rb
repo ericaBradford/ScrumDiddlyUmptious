@@ -11,34 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428000435) do
+ActiveRecord::Schema.define(version: 20140502001138) do
 
   create_table "preferences", force: true do |t|
-    t.binary   "isPescatarian"
-    t.binary   "isVegetarian"
-    t.binary   "isVegan"
-    t.binary   "isDiabetic"
-    t.binary   "isAllergicGluten"
-    t.binary   "isAllergicPeanuts"
-    t.binary   "isAllergicTreenuts"
-    t.binary   "isAllergicDairy"
-    t.binary   "isAllergicEggs"
-    t.binary   "isAllergicWheat"
-    t.binary   "isAllergicSoy"
-    t.binary   "isAllergicFish"
-    t.binary   "isAllergicShellfish"
-    t.binary   "isAsianVegetarian"
-    t.binary   "isHindu"
-    t.binary   "isMuslim"
-    t.binary   "isJain"
-    t.binary   "isKosher"
-    t.string   "foodsToFilter"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "id_Users"
+    t.string  "foodsToFilter"
+    t.boolean "isPescatarian"
+    t.boolean "isVegetarian"
+    t.boolean "isVegan"
+    t.boolean "isDiabetic"
+    t.boolean "noAlcohol"
+    t.boolean "isAllergicGluten"
+    t.boolean "isAllergicPeanuts"
+    t.boolean "isAllergicTreenuts"
+    t.boolean "isAllergicDairy"
+    t.boolean "isAllergicEggs"
+    t.boolean "isAllergicWheat"
+    t.boolean "isAllergicSoy"
+    t.boolean "isAllergicFish"
+    t.boolean "isAllergicShellfish"
+    t.boolean "isAsianVegetarian"
+    t.boolean "isHindu"
+    t.boolean "isMuslim"
+    t.boolean "isJain"
+    t.boolean "isKosher"
   end
-
-  add_index "preferences", ["user_id"], name: "index_preferences_on_user_id"
 
   create_table "recipes", force: true do |t|
     t.string   "title"
@@ -67,38 +64,10 @@ ActiveRecord::Schema.define(version: 20140428000435) do
     t.datetime "updated_at"
     t.string   "username"
     t.string   "role"
-    t.string   "foodsToFilter"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
-
-  create_table "users_preferences", force: true do |t|
-    t.binary   "isPescatarian"
-    t.binary   "isVegetarian"
-    t.binary   "isVegan"
-    t.binary   "isDiabetic"
-    t.binary   "isAllergicGluten"
-    t.binary   "isAllergicPeanuts"
-    t.binary   "isAllergicTreenuts"
-    t.binary   "isAllergicDairy"
-    t.binary   "isAllergicEggs"
-    t.binary   "isAllergicWheat"
-    t.binary   "isAllergicSoy"
-    t.binary   "isAllergicFish"
-    t.binary   "isAllergicShellfish"
-    t.binary   "isAsianVegetarian"
-    t.binary   "isHindu"
-    t.binary   "isMuslim"
-    t.binary   "isJain"
-    t.binary   "isKosher"
-    t.string   "foodsToFilter"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "users_preferences", ["user_id"], name: "index_users_preferences_on_user_id"
 
 end

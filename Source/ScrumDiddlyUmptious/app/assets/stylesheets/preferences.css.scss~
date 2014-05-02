@@ -4,5 +4,5 @@
 
 
 .field{
- display: inline;
+ display: block;
 }

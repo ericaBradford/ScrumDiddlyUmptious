@@ -1,0 +1,27 @@
+class CreatePreferences < ActiveRecord::Migration
+  def change
+    create_table :preferences do |t|
+      t.integer :id_Users
+      t.string :foodsToFilter
+      t.tinyint :isPescatarian
+      t.tinyint :isVegetarian
+      t.tinyint :isVegan
+      t.tinyint :isDiabetic
+      t.tinyint :noAlcohol
+      t.tinyint :isAllergicGluten
+      t.tinyint :isAllergicPeanuts
+      t.tinyint :isAllergicTreenuts
+      t.tinyint :isAllergicDairy
+      t.tinyint :isAllergicEggs
+      t.tinyint :isAllergicWheat
+      t.tinyint :isAllergicSoy
+      t.tinyint :isAllergicFish
+      t.tinyint :isAllergicShellfish
+      t.tinyint :isAsianVegetarian
+      t.tinyint :isHindu
+      t.tinyint :isMuslim
+      t.tinyint :isJain
+      t.tinyint :isKosher
+    end
+  end
+end

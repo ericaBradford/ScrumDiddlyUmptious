@@ -107,4 +107,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_user_preference_path(current_user.id, :id) %>
+<%= link_to 'Edit', edit_user_preference_path(current_user.id, :id) %> |
+<%= link_to 'Back', user_preferences_path(current_user.id) %>

@@ -26,22 +26,21 @@ en:
  activerecord:
   attributes:
    recipe:
-    costOfIngredients: Cost Of Ingredients
-
-en:
- activerecord:
-  attributes:
-   recipe:
-    cookTime: Cook Time
-
-en:
- activerecord:
-  attributes:
-   recipe:
-    CookTime: Cook Time
-
-en:
- activerecord:
-  attributes:
-   recipe:
-    canPrepareAhead: Can Prepare Ahead
+    costOfIngredients: "Cost Of Ingredients"
+    cookTime: "Cook Time"
+    canPrepareAhead: "Can Prepare Ahead"
+   preference:
+    foodsToFilter: "Blacklist foods"
+    isPescatarian: "Pescatarian"    
+    isVegetarian: "Vegetarian"
+    isVegan: "Vegan"
+    isDiabetic: "Diabetic"
+    noAlcohol: "Non-Alcoholic"
+    isAllergicGluten: "Gluten-Free"
+    isAllergicPeanuts: "Peanut-Free"
+    isAllergicTreenuts: "Treenut-Free"
+    isAllergicDairy: "Dairy-Free"
+    isAllergicEggs: "Egg-Free"
+    isAllergicWheat: "Wheat-Free"
+    isAllergicSoy: "Soy-Free"
+    isAllergicFish: "Fish-Free"

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :recipes
   resources :users do
-    resource :preferences
+    resources :preferences
   end
 
   root 'recipes#index'

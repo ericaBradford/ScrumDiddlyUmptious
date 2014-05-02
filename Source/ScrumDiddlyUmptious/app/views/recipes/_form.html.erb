@@ -1,8 +1,27 @@
 <%= form_for @recipe, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> errors:</h2>
+
+      <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :ingredients, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ingredients, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
@@ -18,29 +37,20 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :canPrepareAhead, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :canPrepareAhead, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :id_Users, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :id_Users, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
     <%= f.label :costOfIngredients, :class => 'control-label' %>
     <div class="controls">
-      $<%= f.text_field :costOfIngredients, :class => 'text_field' %>
+      <%= f.text_field :costOfIngredients, :class => 'text_field' %>
     </div>
   </div>
+
   <div class="control-group">
-    <%= f.label :ingredients, :class => 'control-label' %>
+    <%= f.label :canPrepareAhead, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :ingredients, :class => 'text_field' %>
+      <%= f.check_box :canPrepareAhead, :class => 'text_field' %>
     </div>
   </div>
+
+  <%= f.hidden_field :id_Users, :value => current_user.id %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
