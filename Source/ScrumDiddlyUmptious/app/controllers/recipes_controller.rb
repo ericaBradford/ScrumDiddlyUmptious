@@ -7,27 +7,103 @@ class RecipesController < ApplicationController
   has_scope :by_title
 
   def index
-    if user_signed_in? && @foodsToFilter
-      @recipes = []
-      @allRecipes = apply_scopes(Recipe).all.order("title").page(params[:page]).per(10)
-      @foodsToFilter = current_user.foodsToFilter.split(",")
-      @foodsToFilter = @foodsToFilter.collect{|x| x.strip}
-    
-      @allRecipes.each do |recipe|
-        @foodsToFilter.each do |food|
-          if recipe.ingredients.downcase.include? food
-            @dontInclude = true
-          end
-        end
-        if @dontInclude
-        else
-          @recipes.push(recipe)
-        end
+    @meat = ["chicken", "pork", "beef", "steak", "meat", "jello", "marshmellows", "parmigiano-reggiano", "gummy"]
+    @alcohol = ["alcohol", "amaretto", "beer", "bourbon", "champagne", "grand marnier", "rum", "tequila", "whisky", "wine", "vodka", "liquer"]
+    @dairy = ["aart", "amasi", "Ayran", "baked milk", "basundi", "bhuna khoyo", "blaand", "black kashk", "booza", "buffalo curd", "bulgarian yogurt", "2% milk", "regular milk", "2 percent milk", "two percent milk", "whole milk", "1% milk", "land o lakes butter", "buttermilk", "yogurt", "cheese", "cream", "gelato", "ice cream", "whey", "2% milk", "regular milk", "2 percent milk", "two percent milk", "whole milk", "1% milk", "land o lakes butter", "country crock butter",]
+    @egg = ["egg", "eggs"]
 
-        @dontInclude = false
+    allRecipes = apply_scopes(Recipe).all.order("title").page(params[:page]).per(10)
+    @recipes = Array.new
+    #check if user is signed in to see if there is any filtering needed
+    if user_signed_in?
+      preference = Preference.find_by_id_Users(current_user.id)
+      @foodsToFilter = []
+       #populate foodsToFilter if there are foods in the foodsToFilter variable
+      if !preference.foodsToFilter.empty?
+        @foodsToFilter = preference.foodsToFilter.split(",").collect{|x| x.strip}
       end
+      if preference.isVegan?
+        @foodsToFilter.push(@meat, @dairy, "eggs", "egg", "fish", "honey")
+      end
+      if preference.isVegetarian?
+        @foodsToFilter.push(@meat, "fish")
+      end
+      if preference.isPescatarian?
+        @foodsToFilter.push(@meat)
+      end
+      if preference.isDiabetic?
+        @foodsToFilter.push("sugar", "candy", "raisins", "syrup", "bacon", "soda", "white bread", "cake", "whole milk")
+      end
+      if preference.noAlcohol?
+        @foodsToFilter.push(@alcohol)
+      end
+      if preference.isAllergicGluten?
+        @foodsToFilter.push("white flour", "whole wheat flour", "durum wheat", "wheat", "graham flour", "triticale", "kamut", "semolina", "spelt", "wheat germ", "wheat bran", "pasta", "noodles", "flour tortillas", "cookie", "cake", "muffin", "pastry", "cereal", "crackers", "beer", "oats", "gravy", "dressing")
+      end
+      if preference.isAllergicPeanuts?
+        @foodsToFilter.push("peanuts", "granola", "chex mix")
+      end
+      if preference.isAllergicTreenuts?
+        @foodsToFilter.push("nut", "almond", "cashew", "filbert", "pecan", "pistachio")
+      end
+      if preference.isAllergicDairy?
+        @foodsToFilter.push(@dairy)
+      end
+      if preference.isAllergicEggs?
+        @foodsToFilter.push("egg", "eggs")
+      end
+      if preference.isAllergicWheat?
+        @foodsToFilter.push("wheat", "flour", "bread", "pasta", "cake", "cookie", "noodle", "pizza", "cereal")
+      if preference.isAllergicSoy?
+        @foodsToFilter.push("soy", "edamame", "miso", "tempeh", "tofu")
+      end
+      if preference.isAllergicFish?
+        @foodsToFilter.push("fish", "salmon")
+      end
+      if preference.isAllergicShellfish?
+        @foodsToFilter.push("shellfish")
+      end
+      if preference.isAsianVegetarian?
+        @foodsToFilter.push(@meat, "fish", "parmigiano-reggiano", "onion", "garlic")
+      end
+      if preference.isHindu?
+        @foodsToFilter.push("beef", "garlic", "mushroom", "tea", "coffee", @alcohol)
+      end
+      if preference.isMuslim?
+        @foodsToFilter.push(@meat, @alcohol, @dairy, @egg)
+      end
+      if preference.isJain?
+        @foodsToFilter.push(@meat, "onion", "garlic")
+      end
+      if preference.isKosher?
+        @foodsToFilter.push()
+      end
+
+
+ #!!!!check for all other preferences here. If yes, add to foodsToFilter. 
+      @recipeArray = Array.new
+      #actual filter time!
+      if @foodsToFilter.empty?
+        @recipes = allRecipes
+      else
+        dontInclude = false
+        allRecipes.each do |recipe|
+          @foodsToFilter.each do |food|
+            if recipe.ingredients.downcase.include? food
+              dontInclude = true
+            end
+          end
+          #just finished checking all the foods for 1 recipe. Time to see if this recipe can be added
+          if !dontInclude
+            @recipeArray.push(recipe)
+          end
+          dontInclude=false
+        end
+        @recipes = Kaminari.paginate_array(@recipeArray).page(params[:page]).per(10)
+      end
+    #result if user isn't signed in
     else
-      @recipes = apply_scopes(Recipe).order("title").page(params[:page]).per(10)
+      @recipes = allRecipes
     end
   end
 

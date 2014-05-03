@@ -34,10 +34,12 @@
   </tbody>
 </table>
 
-<%= paginate @users %>
+<%= paginate @recipes %>
 
 <% if user_signed_in? %>
   <%= link_to t('.new', :default => t("helpers.links.new")),
             new_recipe_path,
             :class => 'btn btn-primary' %>
 <% end %>
+
+<%= debug @foodsToFilter %>

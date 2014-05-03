@@ -24,7 +24,7 @@
               recipes_path, :class => 'btn'  %>
 
   <% if user_signed_in? %>
-    <% if @recipe.id_Users == current_user.id %>
+    <% if @recipe.id_Users == current_user.id  || current_user.role == 'admin'%>
       <%= link_to t('.edit', :default => t("helpers.links.edit")),
                   edit_recipe_path(@recipe), :class => 'btn' %>
       <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -37,3 +37,5 @@
 
 
 </div>
+
+<%= debug @foodsToFilter %>

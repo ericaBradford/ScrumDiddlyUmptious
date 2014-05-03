@@ -1,0 +1,30 @@
+    allRecipes = apply_scopes(Recipe).all.order("title").page(params[:page]).per(10)
+    @recipes = [] 
+    if user_signed_in?
+      preference = Preference.find_by_id_Users(current_user.id)
+      @foodsToFilter = []
+
+      if !preference.foodsToFilter.empty?
+        @foodsToFilter = preference.foodsToFilter.split(",")
+        @foodsToFilter = @foodsToFilter.collect{|x| x.strip}
+      end
+ #check for all other preferences here. If yes, add to foodsToFilter. Always check to see if foodsToFilter if blank before adding to it. If it doesn't, be sure to include ', ' before adding to it.
+      if @foodsToFilter.empty?
+        @recipes = allRecipes
+      else
+        dontInclude = false
+        allRecipes.each do |recipe|
+          @foodsToFilter.each do |food|
+            if recipe.ingredients.downcase.include? food
+              dontInclude = true
+            end
+          end
+          if !dontInclude
+            @recipes.push(recipe)
+          end
+          dontInclude = false
+        end
+      end
+    else
+      @recipes = allRecipes
+    end

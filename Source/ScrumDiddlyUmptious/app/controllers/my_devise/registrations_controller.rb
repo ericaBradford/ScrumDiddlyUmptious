@@ -7,6 +7,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
+    user = current_user
     super
     #this will have to be more and more edited as functions are inputted
     if resource.destroy
@@ -16,6 +17,10 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
           recipe.destroy
         end
       end
+    
+    preference = Preference.find_by_id_Users(user.id)
+    preference.destroy
+
     end
   end
 
