@@ -17,6 +17,7 @@ class PreferencesController < ApplicationController
       format.xml {render :xml => @preferences}
       format.json {render :json => @preferences}
     end
+    add_breadcrumb @user.username, user_path(@user)
   end
 
   # GET /preferences/new
@@ -33,6 +34,9 @@ class PreferencesController < ApplicationController
   # GET /preferences/1/edit
   def edit
     @preferences = Preference.find_by_id_Users(@user.id)
+    @theUser = User.find(@user.id)
+    add_breadcrumb @theUser.username, user_path(@theUser)
+    add_breadcrumb :edit, edit_user_preference_path(@user, @preferences.id)
   end
 
   # POST /preferences

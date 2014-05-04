@@ -8,6 +8,7 @@
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:cookTime) %></th>
       <th><%= model_class.human_attribute_name(:costOfIngredients) %></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
         <td><%= link_to recipe.title, recipe_path(recipe) %></td>
         <td><%= recipe.cookTime.downcase %></td>
         <td>$<%= number_with_precision(recipe.costOfIngredients, :precision=>2) %></td>
+        <td><%= image_tag recipe.picture.url(:thumb) %>
         <td>
           <% if user_signed_in? %>
             <% if recipe.id_Users == current_user.id  || current_user.role == 'admin'%>
@@ -39,7 +41,5 @@
 <% if user_signed_in? %>
   <%= link_to t('.new', :default => t("helpers.links.new")),
             new_recipe_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-default' %>
 <% end %>
-
-<%= debug @vegan %>

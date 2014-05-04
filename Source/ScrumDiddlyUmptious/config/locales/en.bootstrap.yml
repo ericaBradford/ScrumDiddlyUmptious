@@ -16,3 +16,18 @@ en:
       save: "Save %{model}"
       new: "New %{model}"
       delete: "Delete %{model}"
+
+  breadcrumbs:
+    recipes:
+      index: "Recipes"
+      show: "Recipe"
+      edit: "Edit Recipe"
+      new: "New"
+    users:
+      index: "Users"
+      show: "Chef"
+      edit: "Edit Profile"
+      new: "New User"
+    preferences:
+      index: "Preferences"
+      edit: "Edit Preferences"

@@ -48,4 +48,4 @@ gem 'mailcatcher'
 
 gem 'kaminari'
 
-gem 'has_scope'
+gem "paperclip", "~> 4.1"

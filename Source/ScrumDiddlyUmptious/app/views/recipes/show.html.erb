@@ -19,6 +19,8 @@
   <% end %>
 </dl>
 
+<%= image_tag @recipe.picture.url %>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               recipes_path, :class => 'btn'  %>

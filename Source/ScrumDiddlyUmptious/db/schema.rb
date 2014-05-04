@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502001138) do
+ActiveRecord::Schema.define(version: 20140504022934) do
 
   create_table "preferences", force: true do |t|
     t.integer "id_Users"
@@ -40,13 +40,17 @@ ActiveRecord::Schema.define(version: 20140502001138) do
   create_table "recipes", force: true do |t|
     t.string   "title"
     t.text     "directions"
-    t.string   "cookTime",          limit: 32
+    t.string   "cookTime",             limit: 32
     t.binary   "canPrepareAhead"
     t.integer  "id_Users"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "costOfIngredients",            precision: 6, scale: 2
+    t.decimal  "costOfIngredients",               precision: 6, scale: 2
     t.text     "ingredients"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "users", force: true do |t|

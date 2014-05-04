@@ -17,6 +17,7 @@ class PreferencesController < ApplicationController
       format.xml {render :xml => @preferences}
       format.json {render :json => @preferences}
     end
+    add_breadcrumb @user.username, user_path(@user)
   end
 
   # GET /preferences/new
@@ -33,6 +34,9 @@ class PreferencesController < ApplicationController
   # GET /preferences/1/edit
   def edit
     @preferences = Preference.find_by_id_Users(@user.id)
+    @theUser = User.find(@user.id)
+    add_breadcrumb @theUser.username, user_path(@theUser)
+    add_breadcrumb :edit, edit_user_preferences_path(@user, @preferences.id)
   end
 
   # POST /preferences
@@ -59,7 +63,7 @@ class PreferencesController < ApplicationController
 
     respond_to do |format|
       if @preferences.update(fixed_params)
-        format.html { redirect_to user_preference_path(current_user.id, :id), notice: 'Preference was successfully updated.' }
+        format.html { redirect_to user_preference_path(current_user.id, :id), notice: 'Preferences were successfully updated.' }
         format.json { render :show, status: :ok, location: @preference }
       else
         format.html { render :edit }

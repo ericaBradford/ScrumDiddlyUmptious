@@ -1,0 +1,4 @@
+class AddPicToRecipes < ActiveRecord::Migration
+  def change
+  end
+end

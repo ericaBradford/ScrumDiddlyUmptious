@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  add_breadcrumb :index, :users_path
+
   def index
     @users = User.all
 
@@ -17,6 +19,7 @@ class UsersController < ApplicationController
       format.html
       format.xml {render :xml => @user}
     end
+    add_breadcrumb @user.username, user_path(@user)
   end
 
   def editRole

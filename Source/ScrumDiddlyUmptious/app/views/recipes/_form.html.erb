@@ -1,4 +1,4 @@
-<%= form_for @recipe, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @recipe, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
 
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
@@ -21,13 +21,13 @@
   <div class="control-group">
     <%= f.label :ingredients, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :ingredients, :class => 'text_field' %>
+      <%= f.text_area :ingredients, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :directions, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :directions, :class => 'text_field' %>
+      <%= f.text_area :directions, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
@@ -49,6 +49,8 @@
       <%= f.check_box :canPrepareAhead, :class => 'text_field' %>
     </div>
   </div>
+
+  <%= f.file_field :picture %>
 
   <%= f.hidden_field :id_Users, :value => current_user.id %>
 
