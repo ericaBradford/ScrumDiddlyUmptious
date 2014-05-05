@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs navbar-fixed-top">
 
   <li><%= link_to "Recipes", recipes_path %></li>
 

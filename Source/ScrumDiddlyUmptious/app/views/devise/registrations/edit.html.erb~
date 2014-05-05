@@ -10,7 +10,7 @@
   <%= f.email_field :email, autofocus: true %></div>
 
   <div><%= f.label :foodsToFilter "Foods to filter (seperate with commas)" %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <%= f.text_area :foodsToFilter, autofocus: true %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

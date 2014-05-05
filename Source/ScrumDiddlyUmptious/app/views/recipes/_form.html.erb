@@ -49,8 +49,11 @@
       <%= f.check_box :canPrepareAhead, :class => 'text_field' %>
     </div>
   </div>
-
-  <%= f.file_field :picture %>
+  <div class="control-group">
+    <div class="control">
+      <%= f.file_field :picture %>
+    </div>
+  </div>
 
   <%= f.hidden_field :id_Users, :value => current_user.id %>
 

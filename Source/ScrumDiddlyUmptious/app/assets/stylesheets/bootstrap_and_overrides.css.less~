@@ -18,7 +18,12 @@
 // Glyphicons
 //@import "twitter/bootstrap/sprites.less";
 
-@linkColor: #f9ecb6;
+@linkColor: #0096fd;
+
+body{
+  background-image: url('Paper_texture.jpg');
+  padding-bottom: 15px;
+}
 
 .nav-tabs li
 {
@@ -30,7 +35,17 @@
 }
 
 
-
 .loggedInUser{
   color: #000;
+}
+
+.table{
+  background: #FFFFDB;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-horizontal{
+  background-color: #99CCFF;
 }

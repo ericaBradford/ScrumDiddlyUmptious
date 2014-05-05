@@ -1,25 +1,30 @@
 <%- model_class = Recipe -%>
 <div class="page-header">
-  <h1> <%= @recipe.title %>
+  <h1> <%= @recipe.title %> </h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:ingredients) %>:</strong></dt>
-  <dd><%= @recipe.ingredients %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:directions) %>:</strong></dt>
-  <dd><%= @recipe.directions %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cookTime) %>:</strong></dt>
-  <dd><%= @recipe.cookTime %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:costOfIngredients) %>:</strong></dt>
-  <dd>$<%= number_with_precision(@recipe.costOfIngredients, :precision => 2) %></dd>
-  <dt><strong>Chef:</strong></dt>
-  <dd><%= link_to @chef.username, user_path(@chef) %></dd>
-  <% if @recipe.canPrepareAhead == '1' %>
-    <dd><strong>This recipe can be prepared ahead of time!</strong></dd>
-  <% end %>
-</dl>
+<div class="ingredient-Info">
+  <dl class="dl-horizontal">
+    <dd><%= image_tag @recipe.picture.url %></dd>
 
-<div class="form-actions">
+    <dt><strong><%= model_class.human_attribute_name(:ingredients) %>:</strong></dt>
+    <dd><%= @recipe.ingredients %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:directions) %>:</strong></dt>
+    <dd><%= @recipe.directions %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:cookTime) %>:</strong></dt>
+    <dd><%= @recipe.cookTime %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:costOfIngredients) %>:</strong></dt>
+    <dd>$<%= number_with_precision(@recipe.costOfIngredients, :precision => 2) %></dd>
+    <dt><strong>Chef:</strong></dt>
+    <dd><%= link_to @chef.username, user_path(@chef) %></dd>
+    <% if @recipe.canPrepareAhead == '1' %>
+      <dd><strong>This recipe can be prepared ahead of time!</strong></dd>
+
+    <% end %>
+  </dl>
+
+
+
   <%= link_to t('.back', :default => t("helpers.links.back")),
               recipes_path, :class => 'btn'  %>
 

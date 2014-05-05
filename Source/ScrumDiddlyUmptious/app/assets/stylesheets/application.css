@@ -5,3 +5,30 @@
  *= require_self
  *= require_tree .
 */
+
+.nav{
+  background-color: #99CCFF;
+  position: fixed;
+  width: 100%;
+}
+
+.nav a{
+  color: #FFFFDB;
+}
+
+.ingredient-Info{
+  background-color: #FFFFDB;
+  padding: 15px;
+}
+
+dl{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-horizontal{
+  background-color: #FFFFDB;
+  width: auto;
+  display: table;
+  padding: 10px;
+}

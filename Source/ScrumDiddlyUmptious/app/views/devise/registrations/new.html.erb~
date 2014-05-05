@@ -15,8 +15,7 @@
   <div><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-<%= f.hidden_field :member, :value => true %>
-<%= f.hidden_field :admin, :value => false %>
+<%= f.hidden_field :role, :value => "member" %>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

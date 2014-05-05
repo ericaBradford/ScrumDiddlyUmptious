@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
   add_breadcrumb :index, :recipes_path
 
   def index
+
     @meat = ["chicken", "pork", "beef", "steak", "meat", "jello", "marshmellows", "parmigiano-reggiano", "gummy"]
     @alcohol = ["alcohol", "amaretto", "beer", "bourbon", "champagne", "grand marnier", "rum", "tequila", "whisky", "wine", "vodka", "liquer"]
     @dairy = ["aart", "amasi", "Ayran", "baked milk", "basundi", "bhuna khoyo", "blaand", "black kashk", "booza", "buffalo curd", "bulgarian yogurt", "2% milk", "regular milk", "2 percent milk", "two percent milk", "whole milk", "1% milk", "land o lakes butter", "buttermilk", "yogurt", "cheese", "cream", "gelato", "ice cream", "whey", "2% milk", "regular milk", "2 percent milk", "two percent milk", "whole milk", "1% milk", "land o lakes butter", "country crock butter"]
@@ -15,7 +16,7 @@ class RecipesController < ApplicationController
     @peanut = ["peanuts", "granola", "chex mix", "blackberry punch", "cherry punch", "molasses", "candy bar", "buttermilk", "caramel", "cream cheese", "cheese nut sage", "cheese pimento", "cheese sandwich", "chili", "chop suey", "cocoa", "cooking oil", "curd", "instant coffee", "mayo", "meat substitute", "mock", "pancake flour", "pickle", "salad oil", "vinegar", "worcestershire"]
     @poultry = ["chicken", "duck", "geese", "turkey", "quail", @egg, "squab", "guinea fowl"]
 
-    allRecipes = Recipe.order("title").page(params[:page]).per(10)
+    allRecipes = Recipe.order("title")
     @recipes = Array.new
     #check if user is signed in to see if there is any filtering needed
     if user_signed_in?
@@ -124,7 +125,7 @@ class RecipesController < ApplicationController
       end
     #result if user isn't signed in
     else
-      @recipes = allRecipes
+      @recipes = allRecipes.page(params[:page]).per(10)
     end
   end
 
