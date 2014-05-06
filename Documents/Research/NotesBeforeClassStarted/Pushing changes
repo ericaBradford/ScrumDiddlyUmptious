@@ -1,24 +1,15 @@
-New file?
-git add <nameOfFile>
+*git add .
+*git commit -m 'message'
+*git push origin nameOfBranchHere
+-------------------------------------------------
 
-git add -u
+time to switch branches?
+First commit to your branch. Then...
+*git checkout master
+*git merge branchName
+*git push origin master
+*git checkout -b 'newBranch'
 
+----------------------------------------------
 
-git commit -m 'message'
-git push -u
-
-
-
-
-make and switch to new branch
-git checkout -b 'nameHere'
-
-this branch is now your 'head' or where your commits will go
-
-switch between branches
-git checkout branchName
-i.e. git checkout master OR git checkout createRecipes
-
-Merge branch into master
-git checkout master
-git merge branchName
+checkout just changes what is in your local copy. You have to push the changes as well. Merging apparantly also only works on your local copy. So push that to.

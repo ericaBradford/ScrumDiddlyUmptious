@@ -1,7 +1,7 @@
 <%= form_for ([@user, @preferences]), :html => { :class => 'form-horizontal' } do |f| %>
   <% if @preferences.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@preferences.errors.count, "error") %> prohibited this preference from being saved:</h2>
+      <h2><%= pluralize(@preferences.errors.count, "error") %> errors:</h2>
 
       <ul>
       <% @preferences.errors.full_messages.each do |message| %>

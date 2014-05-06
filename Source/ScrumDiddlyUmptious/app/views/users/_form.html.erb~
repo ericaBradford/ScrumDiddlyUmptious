@@ -2,7 +2,7 @@
 
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this preference from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> errors:</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |message| %>
@@ -11,61 +11,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :encrypted_password, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :encrypted_password, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :reset_password_token, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :reset_password_token, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :reset_password_sent_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :reset_password_sent_at, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :remember_created_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :remember_created_at, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :current_sign_in_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :current_sign_in_at, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :last_sign_in_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :last_sign_in_at, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :current_sign_in_ip, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :current_sign_in_ip, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :last_sign_in_ip, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :last_sign_in_ip, :class => 'text_field' %>
-    </div>
-  </div>
   <div class="control-group">
     <%= f.label :username, :class => 'control-label' %>
     <div class="controls">
@@ -73,15 +18,15 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :role, :class => 'control-label' %>
+    <%= f.label :email, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :role, :class => 'text_field' %>
+      <%= f.text_field :email, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :foodsToFilter, :class => 'control-label' %>
+    <%= f.label :role, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :foodsToFilter, :class => 'text_field' %>
+      <%= f.text_field :role, :class => 'text_field' %>
     </div>
   </div>
 

@@ -14,10 +14,5 @@ front-end
 
 BUGS
   fix reset password
-
-
-admin stuff
-  let admin edit users
-  promote user to admin
-  let admin ban users
+  fix create preferences on create
   fix breadcrumbs for admin-user show page

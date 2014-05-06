@@ -1,3 +1,4 @@
+#this is kind of like the global user controller. Admin functions should go here.
 class UsersController < ApplicationController
   add_breadcrumb "Home", :recipes_path
 
@@ -10,6 +11,23 @@ class UsersController < ApplicationController
       format.html
       format.json {render json: @users}
       format.xml {render :xml => @users}
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+    !authorize! :update, @user
+    add_breadcrumb @user.username, user_path(@user)
+    add_breadcrumb "Edit", edit_user_path(@user)
+  end
+
+  def update
+    @user = User.find(params[:id])
+    
+    if @user.update(user_params)
+      redirect_to @user, notice: "User successfully updated."
+    else
+      render 'edit'
     end
   end
 
@@ -34,5 +52,12 @@ class UsersController < ApplicationController
   def promote
     @user = User.find_by_email(:email)
     @admin = current_user.id
+  end
+
+
+ private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :role)
   end
 end

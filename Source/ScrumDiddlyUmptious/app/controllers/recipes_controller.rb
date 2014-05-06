@@ -25,8 +25,8 @@ class RecipesController < ApplicationController
       preference = Preference.find_by_id_Users(current_user.id)
       @blacklistFoods = Array.new
        #populate blacklistFoods if there are foods in the foodsToFilter variable in preferences
-      if !preference.foodsToFilter.empty?
-        @blacklistFoods = preference.foodsToFilter.split(",").collect{|x| x.strip}
+      if !preference.blacklistFoods.empty?
+        @blacklistFoods = preference.blacklistFoods.split(",").collect{|x| x.strip}
       end
       #vegan, vegetarian, pescatarian
       if preference.isVegan? || preference.isVegetarian? || preference.isPescatarian?

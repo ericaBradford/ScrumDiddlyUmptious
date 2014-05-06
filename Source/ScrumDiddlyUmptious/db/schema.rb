@@ -11,30 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506000904) do
+ActiveRecord::Schema.define(version: 20140506035640) do
 
   create_table "preferences", force: true do |t|
     t.integer "id_Users"
-    t.string  "foodsToFilter"
-    t.boolean "isPescatarian"
-    t.boolean "isVegetarian"
-    t.boolean "isVegan"
-    t.boolean "isDiabetic"
-    t.boolean "noAlcohol"
-    t.boolean "isAllergicGluten"
-    t.boolean "isAllergicPeanuts"
-    t.boolean "isAllergicTreenuts"
-    t.boolean "isAllergicDairy"
-    t.boolean "isAllergicEggs"
-    t.boolean "isAllergicWheat"
-    t.boolean "isAllergicSoy"
-    t.boolean "isAllergicFish"
-    t.boolean "isAllergicShellfish"
-    t.boolean "isAsianVegetarian"
-    t.boolean "isHindu"
-    t.boolean "isMuslim"
-    t.boolean "isJain"
-    t.boolean "isKosher"
+    t.string  "blacklistFoods",      default: ""
+    t.boolean "isPescatarian",       default: false
+    t.boolean "isVegetarian",        default: false
+    t.boolean "isVegan",             default: false
+    t.boolean "isDiabetic",          default: false
+    t.boolean "noAlcohol",           default: false
+    t.boolean "isAllergicGluten",    default: false
+    t.boolean "isAllergicPeanuts",   default: false
+    t.boolean "isAllergicTreenuts",  default: false
+    t.boolean "isAllergicDairy",     default: false
+    t.boolean "isAllergicEggs",      default: false
+    t.boolean "isAllergicWheat",     default: false
+    t.boolean "isAllergicSoy",       default: false
+    t.boolean "isAllergicFish",      default: false
+    t.boolean "isAllergicShellfish", default: false
+    t.boolean "isAsianVegetarian",   default: false
+    t.boolean "isHindu",             default: false
+    t.boolean "isMuslim",            default: false
+    t.boolean "isJain",              default: false
+    t.boolean "isKosher",            default: false
   end
 
   create_table "recipes", force: true do |t|

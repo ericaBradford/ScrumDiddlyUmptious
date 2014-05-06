@@ -1,7 +1,7 @@
 class PreferencesController < ApplicationController
   before_action :get_user
   before_action :fixed_params, only: [:update, :create]
-  add_breadcrumb "Home", recipes_path
+  add_breadcrumb "Home", :recipes_path
 
   # GET /preferences
   # GET /preferences.json

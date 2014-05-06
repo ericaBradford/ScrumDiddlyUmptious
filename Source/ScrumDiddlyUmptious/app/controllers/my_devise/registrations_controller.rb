@@ -1,14 +1,14 @@
+#this class is about the current user, no admin functions should be in here
 class MyDevise::RegistrationsController < Devise::RegistrationsController
   add_breadcrumb "Home", :recipes_path
 
   def create
     super
-    @preference = Preference.new(:id_Users => current_user.id)
+    @preference = Preference.new(id_Users: params[:id])
     @preference.save
   end
 
   def edit
-#this might cause problems later...being as later an admin can update a user
     @user = current_user
     add_breadcrumb @user.username, user_path(@user)
     super

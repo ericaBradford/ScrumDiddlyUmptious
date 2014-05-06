@@ -4,8 +4,6 @@ class RecipesController < ApplicationController
 
 
   def index
-
-
     @meat = ["chicken", "pork", "beef", "steak", "meat", "jello", "marshmellows", "parmigiano-reggiano", "gummy"]
     @alcohol = ["alcohol", "amaretto", "beer", "bourbon", "champagne", "grand marnier", "rum", "tequila", "whisky", "wine", "vodka", "liquer"]
     @dairy = ["aart", "amasi", "Ayran", "baked milk", "basundi", "bhuna khoyo", "blaand", "black kashk", "booza", "buffalo curd", "bulgarian yogurt", "2% milk", "regular milk", "2 percent milk", "two percent milk", "whole milk", "1% milk", "land o lakes butter", "buttermilk", "yogurt", "cheese", "cream", "gelato", "ice cream", "whey", "2% milk", "regular milk", "2 percent milk", "two percent milk", "whole milk", "1% milk", "land o lakes butter", "country crock butter"]
@@ -18,7 +16,6 @@ class RecipesController < ApplicationController
     @treenut = ["nut", "almond", "cashew", "filbert", "pecan", "pistachio", "macadamia"]
     @peanut = ["peanuts", "granola", "chex mix", "blackberry punch", "cherry punch", "molasses", "candy bar", "buttermilk", "caramel", "cream cheese", "cheese nut sage", "cheese pimento", "cheese sandwich", "chili", "chop suey", "cocoa", "cooking oil", "curd", "instant coffee", "mayo", "meat substitute", "mock", "pancake flour", "pickle", "salad oil", "vinegar", "worcestershire"]
     @poultry = ["chicken", "duck", "geese", "turkey", "quail", @egg, "squab", "guinea fowl"]
-
 
 
     allRecipes = Recipe.order("title")
@@ -181,9 +178,6 @@ class RecipesController < ApplicationController
   end
 
   private
-
-    def createBlacklistFoods
-    end
 
     def recipe_params
       params.require(:recipe).permit(:title, :directions, :description, :cookTime, :costOfIngredients, :canPrepareAhead, :id_Users, :ingredients, :picture)

@@ -1,0 +1,6 @@
+class CreatePreferencesTable < ActiveRecord::Migration
+  def change
+    create_table :preferences_tables do |t|
+    end
+  end
+end

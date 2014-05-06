@@ -1,0 +1,4 @@
+class DropPreferencesTable < ActiveRecord::Migration
+  def change
+  end
+end
