@@ -19,6 +19,12 @@
     </div>
   </div>
   <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label :ingredients, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :ingredients, :class => 'text_field' %>
@@ -49,8 +55,11 @@
       <%= f.check_box :canPrepareAhead, :class => 'text_field' %>
     </div>
   </div>
-
-  <%= f.file_field :picture %>
+  <div class="control-group">
+    <div class="control">
+      <%= f.file_field :picture %>
+    </div>
+  </div>
 
   <%= f.hidden_field :id_Users, :value => current_user.id %>
 

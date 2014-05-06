@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  add_breadcrumb :index, :users_path
+  add_breadcrumb "Home", :recipes_path
 
   def index
     @users = User.all
+
+    authorize! :index, @users
 
     respond_to do |format|
       format.html
@@ -20,14 +22,17 @@ class UsersController < ApplicationController
       format.xml {render :xml => @user}
     end
     add_breadcrumb @user.username, user_path(@user)
+    add_breadcrumb :index, :users_path
   end
 
   def editRole
-    @admin = current_user.id
+    @admin = current_user
+      if @admin.role == "admin"
+      end
   end
 
   def promote
-    @user = User.find(params[userId])
+    @user = User.find_by_email(:email)
     @admin = current_user.id
   end
 end

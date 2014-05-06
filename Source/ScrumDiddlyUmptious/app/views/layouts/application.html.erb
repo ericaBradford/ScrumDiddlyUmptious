@@ -47,20 +47,25 @@
   <% end %>
    
 </ul>
+<div id="main">
+  <div class="breadcrumbs">
+    <%= render_breadcrumbs('>') %>
+  </div>
 
-<div class="breadcrumbs">
-  <%= render_breadcrumbs('>') %>
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+  <div class="container-fluid">
+    <%= yield %>
+  </div>
 </div>
 
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-
-<div class="container-fluid">
- <%= yield %>
+<div class="footer">
+  &copy; ScrumDiddlyUmptious 2014
 </div>
 
 </body>

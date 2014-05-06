@@ -19,7 +19,7 @@ en:
 
   breadcrumbs:
     recipes:
-      index: "Recipes"
+      index: "Home"
       show: "Recipe"
       edit: "Edit Recipe"
       new: "New"
@@ -30,3 +30,4 @@ en:
       new: "New User"
     preferences:
       index: "Preferences"
+      edit: "Edit Preferences"

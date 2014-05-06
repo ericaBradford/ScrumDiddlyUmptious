@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied."
+    flash[:alert] = "Access denied."
     redirect_to root_url
   end
 
@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_in)  { |u| u.permit(:username, :password, :remember_me, :role) }
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :role) }
-      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password, :role, :foodsToFilter) }
+      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password, :role) }
     end
 end

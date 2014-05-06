@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<ul class="nav nav-tabs navbar-fixed-top">
+<ul class="nav nav-tabs">
 
   <li><%= link_to "Recipes", recipes_path %></li>
 
@@ -61,6 +61,10 @@
 
 <div class="container-fluid">
  <%= yield %>
+</div>
+
+<div class="footer">
+  &copy; ScrumDiddlyUmptious 2014
 </div>
 
 </body>

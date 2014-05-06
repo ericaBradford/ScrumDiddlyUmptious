@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.main-info{
-  width: 25%;
-}
-
-.ingredients-info{
-  width: 50%;
+.ingredient-Info{
+  background-color: #f9f9f9;
+  width: 500px;
+  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
 }

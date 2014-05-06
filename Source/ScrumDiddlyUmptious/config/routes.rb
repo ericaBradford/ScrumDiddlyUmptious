@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users,
     :controllers => {:registrations => "my_devise/registrations"}
 
+  get '/users/editRole', to: 'users#editRole'
+
   resources :recipes
   resources :users do
     resources :preferences

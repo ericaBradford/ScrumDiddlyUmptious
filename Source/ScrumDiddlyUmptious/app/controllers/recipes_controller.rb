@@ -1,8 +1,9 @@
 class RecipesController < ApplicationController
   add_breadcrumb :index, :recipes_path
 
-  def index
 
+
+  def index
     @meat = ["chicken", "pork", "beef", "steak", "meat", "jello", "marshmellows", "parmigiano-reggiano", "gummy"]
     @alcohol = ["alcohol", "amaretto", "beer", "bourbon", "champagne", "grand marnier", "rum", "tequila", "whisky", "wine", "vodka", "liquer"]
     @dairy = ["aart", "amasi", "Ayran", "baked milk", "basundi", "bhuna khoyo", "blaand", "black kashk", "booza", "buffalo curd", "bulgarian yogurt", "2% milk", "regular milk", "2 percent milk", "two percent milk", "whole milk", "1% milk", "land o lakes butter", "buttermilk", "yogurt", "cheese", "cream", "gelato", "ice cream", "whey", "2% milk", "regular milk", "2 percent milk", "two percent milk", "whole milk", "1% milk", "land o lakes butter", "country crock butter"]
@@ -15,6 +16,7 @@ class RecipesController < ApplicationController
     @treenut = ["nut", "almond", "cashew", "filbert", "pecan", "pistachio", "macadamia"]
     @peanut = ["peanuts", "granola", "chex mix", "blackberry punch", "cherry punch", "molasses", "candy bar", "buttermilk", "caramel", "cream cheese", "cheese nut sage", "cheese pimento", "cheese sandwich", "chili", "chop suey", "cocoa", "cooking oil", "curd", "instant coffee", "mayo", "meat substitute", "mock", "pancake flour", "pickle", "salad oil", "vinegar", "worcestershire"]
     @poultry = ["chicken", "duck", "geese", "turkey", "quail", @egg, "squab", "guinea fowl"]
+
 
     allRecipes = Recipe.order("title")
     @recipes = Array.new
@@ -106,7 +108,7 @@ class RecipesController < ApplicationController
       recipeArray = Array.new
       #actual filter time!
       if @blacklistFoods.empty?
-        @recipes = allRecipes
+        @recipes = allRecipes.page(params[:page]).per(10)
       else
         dontInclude = false
         allRecipes.each do |recipe|
@@ -177,8 +179,7 @@ class RecipesController < ApplicationController
 
   private
 
-
     def recipe_params
-      params.require(:recipe).permit(:title, :directions, :cookTime, :costOfIngredients, :canPrepareAhead, :id_Users, :ingredients, :picture)
+      params.require(:recipe).permit(:title, :directions, :description, :cookTime, :costOfIngredients, :canPrepareAhead, :id_Users, :ingredients, :picture)
     end
 end

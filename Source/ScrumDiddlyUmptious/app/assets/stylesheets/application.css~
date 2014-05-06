@@ -6,28 +6,30 @@
  *= require_tree .
 */
 
-.nav{
-  background-color: #99CCFF;
+.recipe-info{
+ list-style-type: none; 
+}
+
+
+.loggedInUser{
+  color: #000;
+}
+
+.recipe-table{
+  max-width: 800px;
+}
+
+.recipe-table li{
+  font-size: 13px;
+}
+
+.recipe-table span{
+  font-size: 12px;
+}
+
+.footer{
+  background-color: #CCCCFF;
   position: fixed;
   width: 100%;
-}
-
-.nav a{
-  color: #FFFFDB;
-}
-
-.ingredient-Info{
-  background-color: #FFFFDB;
-  padding: 15px;
-}
-
-dl{
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.form-horizontal{
-  background-color: #FFFFDB;
-  width: 100%;
-  padding: 10px;
+  bottom: 0px;
 }

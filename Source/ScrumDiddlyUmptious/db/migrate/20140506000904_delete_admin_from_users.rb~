@@ -1,0 +1,4 @@
+class DeleteAdminFromUsers < ActiveRecord::Migration
+  def change
+  end
+end

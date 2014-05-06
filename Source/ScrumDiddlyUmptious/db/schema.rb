@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140504022934) do
+ActiveRecord::Schema.define(version: 20140506000904) do
 
   create_table "preferences", force: true do |t|
     t.integer "id_Users"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140504022934) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "description"
   end
 
   create_table "users", force: true do |t|

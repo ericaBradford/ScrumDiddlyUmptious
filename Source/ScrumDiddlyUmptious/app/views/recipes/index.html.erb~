@@ -1,38 +1,28 @@
 <%- model_class = Recipe -%>
-<table class="table table-striped">
+<table class="table table-striped recipe-table">
   <tbody>
     <% @recipes.each do |recipe| %>
-        <td class="double-rowspan">
-          <%= image_tag recipe.picture.url(:thumb) %>
-        </td>
-        <td class="main-info">
-          <%= link_to recipe.title, recipe_path(recipe) %><br />
-
-          <%= model_class.human_attribute_name(:cookTime) %>:
-          <%= recipe.cookTime.downcase %><br />
-
-          <%= model_class.human_attribute_name(:costOfIngredients) %>:
-          $<%= number_with_precision(recipe.costOfIngredients, :precision=>2) %><br />
-        </td>
-        <td class="ingredients-info">
-          <%= model_class.human_attribute_name(:ingredients) %>: <br />
-          <%= recipe.ingredients %>
-        </td>
-        <td>
-          <% if user_signed_in? %>
-            <% if recipe.id_Users == current_user.id  || current_user.role == 'admin'%>
-              <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                          edit_recipe_path(recipe), :class => 'btn btn-mini' %>
-              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                          recipe_path(recipe),
-                          :method => :delete,
-                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                          :class => 'btn btn-mini btn-danger' %>
-             
-            <% end %>
-           </td>
-          <% end %>
-        </td>
+        <tr>
+        <row>
+            <td class="span2">
+              <%= image_tag recipe.picture.url(:thumb) %>
+            </td>
+            <td class="span3">
+              <ul class="recipe-info">
+                <li><h4><%= link_to recipe.title, recipe_path(recipe) %></h4></li>
+                <li>
+                  <%= model_class.human_attribute_name(:cookTime) %>:
+                  <%= recipe.cookTime.downcase %>
+                </li>
+                <li>
+                  <%= model_class.human_attribute_name(:costOfIngredients) %>:
+                  $<%= number_with_precision(recipe.costOfIngredients, :precision=>2) %>
+                </li>
+            </td>
+            <td class="span5">
+              <span><%= recipe.description %></span>
+            </td>
+        <row>
       </tr>
     <% end %>
   </tbody>
@@ -44,3 +34,5 @@
             new_recipe_path,
             :class => 'btn btn-default' %>
 <% end %>
+
+

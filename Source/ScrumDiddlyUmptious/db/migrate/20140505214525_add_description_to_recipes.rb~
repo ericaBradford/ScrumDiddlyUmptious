@@ -1,0 +1,4 @@
+class AddDescriptionToRecipes < ActiveRecord::Migration
+  add_column :users, :admin, :text
+  end
+end
