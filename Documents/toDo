@@ -1,18 +1,10 @@
 THINGS TO DO
 
-admin stuff
 descriptions for food preferences
 rate recipes
 user comments on recipes
 save favorite recipes
-clean up code
 
 
 front-end
   get real data in db
-
-
-BUGS
-  fix reset password
-  fix create preferences on create
-  fix breadcrumbs for admin-user show page

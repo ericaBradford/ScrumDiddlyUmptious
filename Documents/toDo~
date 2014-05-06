@@ -1,11 +1,9 @@
 THINGS TO DO
 
-admin stuff
 descriptions for food preferences
 rate recipes
 user comments on recipes
 save favorite recipes
-clean up code
 
 
 front-end
@@ -14,10 +12,3 @@ front-end
 
 BUGS
   fix reset password
-
-
-admin stuff
-  let admin edit users
-  promote user to admin
-  let admin ban users
-  fix breadcrumbs for admin-user show page

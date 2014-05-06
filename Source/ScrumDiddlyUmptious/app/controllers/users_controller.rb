@@ -1,10 +1,10 @@
 #this is kind of like the global user controller. Admin functions should go here.
 class UsersController < ApplicationController
   add_breadcrumb "Home", :recipes_path
+  add_breadcrumb "Users", :users_path
 
   def index
     @users = User.all
-
     authorize! :index, @users
 
     respond_to do |format|
@@ -34,13 +34,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recipes = Recipe.where(id_Users: @user.id)
+    add_breadcrumb @user.username, user_path(@user)
 
     respond_to do |format|
       format.html
       format.xml {render :xml => @user}
     end
-    add_breadcrumb @user.username, user_path(@user)
-    add_breadcrumb :index, :users_path
   end
 
   def editRole

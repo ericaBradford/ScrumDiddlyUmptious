@@ -5,8 +5,11 @@
 
 <dl class="dl-horizontal">
 
+  <dt>Role:</dt>
+  <dd><%= @user.role %></dd>
+
   <% if @recipes %>
-    <dt><h3>Recipes</h3></dt>
+    <h3>Recipes</h3>
     <% @recipes.each do |recipe| %>
       <dd>
         <%= link_to recipe.title, recipe_path(recipe) %>
@@ -15,5 +18,12 @@
 
   <% else %>
     <dd> This user has not posted any recipes</dd>
+  <% end %>
+
+
+  <% if current_user.role == "admin" %>
+    <dt>Role:</dt>
+    <dd><%= @user.role %>
+    <%= link_to "Edit User", edit_user_path(@user), :class => 'btn' %>
   <% end %>
 </dl>

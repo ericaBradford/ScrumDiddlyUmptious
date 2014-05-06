@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 
   has_one :preferences
 
-  ROLES = %w[admin member banned]
+  @roles = %w[admin member banned]
 end

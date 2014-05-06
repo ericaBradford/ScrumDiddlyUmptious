@@ -5,6 +5,4 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :preferences
-
-  ROLES = %w[admin member banned]
 end

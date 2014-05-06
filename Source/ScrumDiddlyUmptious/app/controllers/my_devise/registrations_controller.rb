@@ -4,7 +4,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    @preference = Preference.new(id_Users: params[:id])
+    @preference = Preference.new(:id_Users => current_user.id)
     @preference.save
   end
 
