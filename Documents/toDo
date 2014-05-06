@@ -1,10 +1,23 @@
 THINGS TO DO
 
+admin stuff
+descriptions for food preferences
+rate recipes
+user comments on recipes
+save favorite recipes
+clean up code
+
+
 front-end
-fix reset password
+  get real data in db
 
 
+BUGS
+  fix reset password
 
 
-FEATURES
-promote user to admin
+admin stuff
+  let admin edit users
+  promote user to admin
+  let admin ban users
+  fix breadcrumbs for admin-user show page

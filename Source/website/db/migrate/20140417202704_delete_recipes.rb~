@@ -1,4 +1,0 @@
-class DeleteRecipes < ActiveRecord::Migration
-  def change
-  end
-end
