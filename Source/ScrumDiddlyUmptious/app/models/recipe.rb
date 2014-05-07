@@ -1,7 +1,9 @@
 class Recipe < ActiveRecord::Base
 
+#associations
   belongs_to :users
 
+#validations
   validates :title, :ingredients, :directions, :cookTime, :costOfIngredients, :id_Users, :description, :picture, presence: true
   validates :title, length: {in: 4..40, message: "must be 4-100 characters long"}
   validates :title, uniqueness: {case_sensitive: false, message: "There is already a recipe with that name"}
@@ -17,5 +19,8 @@ class Recipe < ActiveRecord::Base
   has_attached_file :picture, :styles => { :medium => "400x400>", :thumb => "150x150>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
+#letsrate
+  
+letsrate_rateable "Rating"
 
 end

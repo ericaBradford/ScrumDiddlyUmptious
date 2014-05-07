@@ -9,6 +9,7 @@ First commit to your branch. Then...
 *git merge branchName
 *git push origin master
 *git checkout -b 'newBranch'
+*git push origin 'newBranch'
 
 ----------------------------------------------
 

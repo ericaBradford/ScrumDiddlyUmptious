@@ -12,6 +12,11 @@
   <dd><%= simple_format(@recipe.directions) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= simple_format(@recipe.description) %></dd>
+
+  <dt><strong>Rating: </strong></dt>
+  <dd><%= rating_for @recipe, "Rating", :star => 5 %></dd>
+
+
   <dt><strong><%= model_class.human_attribute_name(:cookTime) %>:</strong></dt>
   <dd><%= @recipe.cookTime %></dd>
   <dt><strong><%= model_class.human_attribute_name(:costOfIngredients) %>:</strong></dt>
@@ -30,11 +35,13 @@
 <% if user_signed_in? %>
   <% if @recipe.id_Users == current_user.id  || current_user.role == 'admin'%>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                edit_recipe_path(@recipe), :class => 'btn' %>
+                edit_recipe_path(@recipe), :class => 'btn', data: {no_turbolink: true}  %>
     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                 recipe_path(@recipe),
                 :method => 'delete',
-                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :data => { :confirm => t('.confirm', no_turbolink: true, :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                 :class => 'btn btn-danger' %>
   <% end %>
 <% end %>
+
+<%= debug rating_for @recipe, "Rating", :star => 5 %><br /><br /><br /><br /><br />

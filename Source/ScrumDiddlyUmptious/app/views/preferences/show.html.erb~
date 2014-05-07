@@ -4,7 +4,7 @@
 
 <p>
   <strong>Blacklisted:</strong>
-  <%= @preference.foodsToFilter %>
+  <%= @preference.blacklistFoods %>
 </p>
 
 <p>

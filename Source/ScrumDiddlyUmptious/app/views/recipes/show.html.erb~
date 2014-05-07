@@ -10,6 +10,13 @@
   <dd><%= simple_format(@recipe.ingredients) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:directions) %>:</strong></dt>
   <dd><%= simple_format(@recipe.directions) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= simple_format(@recipe.description) %></dd>
+
+  <dt><strong>Rating: </strong></dt>
+  <dd><%= rating_for @recipe, "Rating", :star => 5 %></dd>
+
+
   <dt><strong><%= model_class.human_attribute_name(:cookTime) %>:</strong></dt>
   <dd><%= @recipe.cookTime %></dd>
   <dt><strong><%= model_class.human_attribute_name(:costOfIngredients) %>:</strong></dt>
@@ -36,3 +43,5 @@
                 :class => 'btn btn-danger' %>
   <% end %>
 <% end %>
+
+<%= debug rating_for @recipe, "Rating", :star => 5 %><br /><br /><br /><br /><br />

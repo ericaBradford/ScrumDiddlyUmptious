@@ -20,6 +20,9 @@
                   <%= model_class.human_attribute_name(:costOfIngredients) %>:
                   $<%= number_with_precision(recipe.costOfIngredients, :precision=>2) %>
                 </li>
+                <li>
+                  <%= rating_for recipe, "Rating", :star => 5 %>
+                </li>
             </td>
             <td class="span5">
               <span><%= recipe.description %></span>
@@ -34,7 +37,5 @@
 <% if user_signed_in? %>
   <%= link_to t('.new', :default => t("helpers.links.new")),
             new_recipe_path,
-            :class => 'btn btn-default' %>
+            :class => 'btn btn-default', data: {no_turbolink: true}  %>
 <% end %>
-
-

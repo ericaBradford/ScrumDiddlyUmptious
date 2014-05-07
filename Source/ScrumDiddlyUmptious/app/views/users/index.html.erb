@@ -18,7 +18,7 @@
         <td>
           <% if current_user.role == 'admin' %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                edit_user_path(user), :class => 'btn btn-mini' %>
+                edit_user_path(user), :class => 'btn btn-mini', data: {no_turbolink: true}  %>
           <% end %>
         </td>
       </tr>
@@ -28,4 +28,4 @@
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_user_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-primary', data: {no_turbolink: true}  %>

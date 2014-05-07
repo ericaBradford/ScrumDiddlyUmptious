@@ -1,0 +1,6 @@
+class CreateRatingCaches < ActiveRecord::Migration
+  def change
+    create_table :rating_caches do |t|
+    end
+  end
+end
