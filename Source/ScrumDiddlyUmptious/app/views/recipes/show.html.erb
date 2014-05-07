@@ -44,4 +44,12 @@
   <% end %>
 <% end %>
 
-<%= debug rating_for @recipe, "Rating", :star => 5 %><br /><br /><br /><br /><br />
+<h3>Comments: </h3>
+  <%= form_for([@recipe, @recipe.comments.build]) do |f| %>
+      <%= f.hidden_field :id_Users, :value => current_user.id %>
+      <div class="control-group">
+        <%= f.label :comment, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :comments, :class => 'text_field' %>
+    </div>
+  </div>

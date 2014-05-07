@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   get '/users/editRole', to: 'users#editRole'
 
-  resources :recipes
+  resources :recipes do
+    resources :comments
+  end
+
   resources :users do
     resources :preferences
   end

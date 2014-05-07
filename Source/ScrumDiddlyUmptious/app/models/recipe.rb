@@ -2,6 +2,7 @@ class Recipe < ActiveRecord::Base
 
 #associations
   belongs_to :users
+  has_many :comments
 
 #validations
   validates :title, :ingredients, :directions, :cookTime, :costOfIngredients, :id_Users, :description, :picture, presence: true

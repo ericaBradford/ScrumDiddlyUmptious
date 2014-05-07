@@ -21,6 +21,6 @@ class Recipe < ActiveRecord::Base
 
 #letsrate
   
-letsrate_rateable "rating"
+letsrate_rateable "Rating"
 
 end

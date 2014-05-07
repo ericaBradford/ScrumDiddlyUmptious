@@ -1,10 +1,16 @@
 THINGS TO DO
 
 descriptions for food preferences
-rate recipes
 user comments on recipes
 save favorite recipes
 
 
 front-end
   get real data in db
+
+
+
+drop db
+recreate db
+continue w/ forms
+controllers
