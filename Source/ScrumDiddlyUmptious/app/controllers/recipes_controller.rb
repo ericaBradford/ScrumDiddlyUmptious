@@ -25,9 +25,8 @@ class RecipesController < ApplicationController
       preference = Preference.find_by_id_Users(current_user.id)
       @blacklistFoods = Array.new
        #populate blacklistFoods if there are foods in the foodsToFilter variable in preferences
-      if !preference.blacklistFoods.empty?
         @blacklistFoods = preference.blacklistFoods.split(",").collect{|x| x.strip}
-      end
+      
       #vegan, vegetarian, pescatarian
       if preference.isVegan? || preference.isVegetarian? || preference.isPescatarian?
         @blacklistFoods.concat(@meat)
@@ -108,7 +107,7 @@ class RecipesController < ApplicationController
       recipeArray = Array.new
       #actual filter time!
       if @blacklistFoods.empty?
-        @recipes = allRecipes.page(params[:page]).per(10)
+        @recipes = allRecipes.page(params[:page]).per(5)
       else
         dontInclude = false
         allRecipes.each do |recipe|
@@ -123,11 +122,11 @@ class RecipesController < ApplicationController
           end
           dontInclude=false
         end
-        @recipes = Kaminari.paginate_array(recipeArray).page(params[:page]).per(10)
+        @recipes = Kaminari.paginate_array(recipeArray).page(params[:page]).per(5)
       end
     #result if user isn't signed in
     else
-      @recipes = allRecipes.page(params[:page]).per(10)
+      @recipes = allRecipes.page(params[:page]).per(5)
     end
   end
 
@@ -189,8 +188,6 @@ class RecipesController < ApplicationController
       @unfavorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", params[:id], current_user.id).first
       FavoriteRecipe.delete(@unfavorite.id)
       redirect_to :back, notice: "#{@recipe.title} removed from favorites"
-    else
-      redirect_to :back, notice: 'Error, type not correct'
     end
   end
 
