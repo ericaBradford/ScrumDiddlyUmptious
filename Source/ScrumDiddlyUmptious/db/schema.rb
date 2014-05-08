@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507042329) do
+ActiveRecord::Schema.define(version: 20140508012508) do
 
   create_table "comments", force: true do |t|
-    t.string   "id_Users"
+    t.string   "commenter"
     t.text     "comment"
     t.integer  "recipe_id"
     t.datetime "created_at"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20140507042329) do
   end
 
   add_index "comments", ["recipe_id"], name: "index_comments_on_recipe_id"
+
+  create_table "favorite_recipes", force: true do |t|
+    t.integer  "id_Recipes"
+    t.integer  "id_Users"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "preferences", force: true do |t|
     t.integer "id_Users"

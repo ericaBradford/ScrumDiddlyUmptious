@@ -1,0 +1,6 @@
+class CreateFavoriteRecipes < ActiveRecord::Migration
+  def change
+    create_table :favorite_recipes do |t|
+    end
+  end
+end

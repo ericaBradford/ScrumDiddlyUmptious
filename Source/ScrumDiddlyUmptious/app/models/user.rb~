@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :preferences
+    letsrate_rater
+
+  has_many :recipes
+
+  has_many :favorite_recipes
+  has_many :favorites, through: :favorite_recipes
 end

@@ -1,8 +1,11 @@
 class Recipe < ActiveRecord::Base
 
 #associations
-  belongs_to :users
+  belongs_to :user
   has_many :comments
+
+  has_many :favorite_recipes
+  has_many :users, through: :favorite_recipes, source: :user
 
 #validations
   validates :title, :ingredients, :directions, :cookTime, :costOfIngredients, :id_Users, :description, :picture, presence: true

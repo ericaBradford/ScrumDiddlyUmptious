@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_Recipes: MyString
+  integer: MyString
+  id_Users: 1
+
+two:
+  id_Recipes: MyString
+  integer: MyString
+  id_Users: 1

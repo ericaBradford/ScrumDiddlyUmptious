@@ -177,6 +177,23 @@ class RecipesController < ApplicationController
     redirect_to recipes_path, notice: "Recipe successfully deleted!"
   end
 
+  def favorite
+    type = params[:type]
+    @recipe = Recipe.find(params[:id])
+    @user = User.find(current_user.id)
+    if type == "favorite"
+      @favorite = FavoriteRecipe.new(:id_Recipes => @recipe.id, :id_Users => current_user.id)
+      @favorite.save
+      redirect_to :back, notice: "#{@recipe.title} added to favorites"
+    elsif type == "unfavorite"
+      @unfavorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", params[:id], current_user.id).first
+      FavoriteRecipe.delete(@unfavorite.id)
+      redirect_to :back, notice: "#{@recipe.title} removed from favorites"
+    else
+      redirect_to :back, notice: 'Error, type not correct'
+    end
+  end
+
   private
 
     def recipe_params
