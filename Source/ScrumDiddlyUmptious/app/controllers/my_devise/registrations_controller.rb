@@ -1,6 +1,5 @@
 #this class is about the current user, no admin functions should be in here
 class MyDevise::RegistrationsController < Devise::RegistrationsController
-  add_breadcrumb "Home", :recipes_path
 
   def create
     super
@@ -10,6 +9,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 
   def edit
     @user = current_user
+    add_breadcrumb "Home", :recipes_path
     add_breadcrumb @user.username, user_path(@user)
     super
   end

@@ -4,9 +4,12 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <%= f.email_field :email, autofocus: true, :class => 'form-control' %></div>
 
-  <div><%= f.submit "Resend unlock instructions" %></div>
-<% end %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                recipes_path, :class => 'btn' %>
+  </div>
 
 <%= render "devise/shared/links" %>

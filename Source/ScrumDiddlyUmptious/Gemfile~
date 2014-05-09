@@ -8,6 +8,8 @@ gem 'sqlite3'
 
 gem 'devise'
 gem 'cancan'
+gem 'sprockets-rails', '=2.0.0.backport1'
+gem 'sprockets', '=2.2.2.backport2'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
@@ -18,7 +20,8 @@ gem 'cancan'
 
   gem 'therubyracer'
   gem 'less-rails'
-  gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-sass', '~>3.1.1'
+  gem 'breadcrumbs_on_rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -51,3 +54,5 @@ gem 'kaminari'
 gem 'paperclip', "~> 4.1"
 
 gem 'letsrate'
+
+gem 'jquery-turbolinks'

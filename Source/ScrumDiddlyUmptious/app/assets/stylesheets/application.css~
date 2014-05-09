@@ -3,11 +3,46 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
+ *= require bootstrap
  *= require_tree .
 */
 
+@import "bootstrap-variables"
+@import "bootstrap"
+
+
 body{
   padding-bottom: 50px;
+}
+
+.nav{
+  background-color: #CCCCFF;
+  width: 100%;
+}
+
+#main{
+}
+
+.breadcrumbs{
+  padding: 15px;
+  background: #E6E6FF;
+}
+
+.nav-tabs li
+{
+  padding: 5px;
+
+  a{
+     color: #808080;
+   }
+}
+
+form{
+  width: 50%;
+}
+
+.control-group{
+  width: 100%;
 }
 
 .recipe-info{
@@ -44,5 +79,5 @@ body{
 }
 
 .comment-box{
-  margin-left: 15px;
+  margin-left: 25px;
 }

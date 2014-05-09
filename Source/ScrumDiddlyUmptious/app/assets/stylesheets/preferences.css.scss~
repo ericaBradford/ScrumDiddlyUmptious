@@ -3,6 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.field{
- display: block;
+.preferences_form{
+  margin-left: 5px;
 }

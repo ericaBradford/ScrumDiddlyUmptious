@@ -5,10 +5,19 @@
 
 <dl class="dl-horizontal">
 
+<%= debug @isFav %>
+
   <% if user_signed_in? %>
     <dd>
-      <%= link_to "favorite", favorite_recipe_path(@recipe, type: "favorite"), method: :put, :class => 'btn' %>
-      <%= link_to "unfavorite", favorite_recipe_path(@recipe, type: "unfavorite"), method: :put, :class => 'btn' %>
+      <% if @isFav == "false" %>
+        <%= link_to favorite_recipe_path(@recipe, type: "favorite"), method: :put, :class => 'btn btn-primary' do %>
+          <i class="glyphicon glyphicon-star">Favorite</i>
+        <% end %>
+      <% else %>
+        <%= link_to favorite_recipe_path(@recipe, type: "unfavorite"), method: :put, :class => 'btn btn-danger' do %>
+          <i class="glyphicon glyphicon-star-empty">Unfavorite</i>
+        <% end %>
+      <% end %>
     </dd>
   <% end %>
 
@@ -37,13 +46,14 @@
 </dl>
 
 
+
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              recipes_path, :class => 'btn'  %>
+              recipes_path, :class => 'btn btn-default'  %>
 
 <% if user_signed_in? %>
   <% if @recipe.id_Users == current_user.id  || current_user.role == 'admin'%>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                edit_recipe_path(@recipe), :class => 'btn', data: {no_turbolink: true}  %>
+                edit_recipe_path(@recipe), :class => 'btn btn-default', data: {no_turbolink: true}  %>
     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                 recipe_path(@recipe),
                 :method => 'delete',
@@ -77,9 +87,7 @@
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                recipes_path, :class => 'btn' %>
+                recipes_path, :class => 'btn btn-default' %>
     </div>
   <% end %>
 <% end %>
-
-<%= debug @favorite %>

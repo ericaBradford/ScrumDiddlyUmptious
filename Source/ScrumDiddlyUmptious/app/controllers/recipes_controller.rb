@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  add_breadcrumb :index, :recipes_path
+  add_breadcrumb "Home", :recipes_path
 
 
 
@@ -133,7 +133,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     authorize! :create, @recipe
-    add_breadcrumb :new, :new_recipe_path
+    add_breadcrumb "New", :new_recipe_path
   end
 
   def create
@@ -149,6 +149,12 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @chef = User.find(@recipe.id_Users)
+    @favorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", @recipe.id, current_user.id).first
+    if @favorite.blank?
+      @isFav = "false"
+    else
+      @isFav = "true"
+    end
     add_breadcrumb @recipe.title, recipe_path(@recipe)
   end
 
@@ -156,7 +162,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     authorize! :update, @recipe
     add_breadcrumb @recipe.title, recipe_path(@recipe)
-    add_breadcrumb :edit, edit_recipe_path(@recipe)    
+    add_breadcrumb "Edit", edit_recipe_path(@recipe)    
   end
 
   def update

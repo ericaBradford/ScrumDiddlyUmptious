@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', (current_user.id, :id) %> |
+<%= link_to 'Show', user_preference_path(current_user.id, :id) %> |
 <%= link_to 'Back', user_preferences_path(current_user.id) %>

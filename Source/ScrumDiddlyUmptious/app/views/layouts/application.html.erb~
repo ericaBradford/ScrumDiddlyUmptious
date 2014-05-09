@@ -11,15 +11,14 @@
 
 <ul class="nav nav-tabs">
 
-  <li><%= link_to "Recipes", recipes_path %></li>
+  <%= link_to "Recipes", recipes_path %>
 
   <% if user_signed_in? %>
       <% if current_user.role == 'admin' %>
-        <li><%= link_to "Users", users_path %></li>
+        <%= link_to "Users", users_path %>
       <% end %>
   <% end %>
 
-  <%# if user signed in, use username as trigger for dropdown %>
   <% if user_signed_in? %>
     <li class="dropdown">
       <a class="dropdown-toggle loggedInUser" data-toggle="dropdown" href="#">
@@ -33,23 +32,21 @@
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link', data: {no_turbolink: true}  %></li>
       </ul>
     </li>
-
-  <%# else, use Login to toggle %>
   <% else %>
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         Login <span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
-        <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
-        <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
-      </ul>
+        <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link', data: {no_turbolink: true}   %></li>
+        <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link', data: {no_turbolink: true}   %></li>
   <% end %>
+</ul>
    
 </ul>
 <div id="main">
   <div class="breadcrumbs">
-    <%= render_breadcrumbs('>') %>
+    <%= render_breadcrumbs %>
   </div>
 
   <% if notice %>

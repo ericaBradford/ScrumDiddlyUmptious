@@ -37,7 +37,7 @@ class PreferencesController < ApplicationController
     @preferences = Preference.find_by_id_Users(@user.id)
     @theUser = User.find(@user.id)
     add_breadcrumb @theUser.username, user_path(@theUser)
-    add_breadcrumb :edit, edit_user_preference_path(@user, @preferences.id)
+    add_breadcrumb "Edit", edit_user_preference_path(@user, @preferences.id)
   end
 
   # POST /preferences

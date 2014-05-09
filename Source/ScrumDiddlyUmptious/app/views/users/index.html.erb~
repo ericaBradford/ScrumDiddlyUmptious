@@ -13,19 +13,16 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.username, user_path(user.id) %></td>
+<%= debug user.username %>
         <td><%= user.email %></td>
       
         <td>
           <% if current_user.role == 'admin' %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                edit_user_path(user), :class => 'btn btn-mini' %>
+                edit_user_path(user), :class => 'btn btn-mini', data: {no_turbolink: true}  %>
           <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_user_path,
-            :class => 'btn btn-primary', data: {no_turbolink: true}  %>

@@ -14,21 +14,15 @@
 
   <div class="control-group">
     <%= f.label :username, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :username, :class => 'text_field' %>
-    </div>
+    <%= f.text_field :username, :class => 'form-control' %>
   </div>
   <div class="control-group">
     <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
+    <%= f.text_field :email, :class => 'form-control' %>
   </div>
   <div class="control-group">
     <%= f.label :role, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :role, options_for_select(%w[member admin banned]) %>
-    </div>
+    <%= f.select :role, options_for_select(%w[member admin banned]) %>
   </div>
 
   <div class="form-actions">
