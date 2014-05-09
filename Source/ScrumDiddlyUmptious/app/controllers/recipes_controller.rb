@@ -149,11 +149,13 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @chef = User.find(@recipe.id_Users)
-    @favorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", @recipe.id, current_user.id).first
-    if @favorite.blank?
-      @isFav = "false"
-    else
-      @isFav = "true"
+    if user_signed_in?
+      @favorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", @recipe.id, current_user.id).first
+      if @favorite.blank?
+        @isFav = "false"
+      else
+        @isFav = "true"
+      end
     end
     add_breadcrumb @recipe.title, recipe_path(@recipe)
   end

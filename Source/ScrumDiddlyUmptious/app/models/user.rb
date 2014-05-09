@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :preferences
-    letsrate_rater
+
+  letsrate_rater
 
   has_many :recipes
 

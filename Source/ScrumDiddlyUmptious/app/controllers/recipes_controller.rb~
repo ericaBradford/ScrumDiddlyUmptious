@@ -191,7 +191,7 @@ class RecipesController < ApplicationController
       @favorite.save
       redirect_to :back, notice: "#{@recipe.title} added to favorites"
     elsif type == "unfavorite"
-      @unfavorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", params[:id], current_user.id).first
+      @unfavorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", @recipe.id, current_user.id).first
       FavoriteRecipe.delete(@unfavorite.id)
       redirect_to :back, notice: "#{@recipe.title} removed from favorites"
     end

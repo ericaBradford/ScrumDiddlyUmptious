@@ -37,5 +37,5 @@
 <% if user_signed_in? %>
   <%= link_to t('.new', :default => t("helpers.links.new")),
             new_recipe_path,
-            :class => 'btn btn-default' %>
+            :class => 'btn btn-default', data: {no_turbolink: true}  %>
 <% end %>
