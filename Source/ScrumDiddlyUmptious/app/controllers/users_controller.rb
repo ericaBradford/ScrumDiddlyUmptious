@@ -6,12 +6,6 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     authorize! :index, @users
-
-    respond_to do |format|
-      format.html
-      format.json {render json: @users}
-      format.xml {render :xml => @users}
-    end
   end
 
   def edit

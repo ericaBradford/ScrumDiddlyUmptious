@@ -55,9 +55,9 @@ class UsersController < ApplicationController
 
   def showFavs
     @user = current_user
-    recipeFavorites = FavoriteRecipe.where("id_Users = ?", @user.id)
+    @recipeFavorites = FavoriteRecipe.where("id_Users = ?", @user.id)
     @recipes = Array.new
-    recipeFavorites.each do |rf|
+    @recipeFavorites.each do |rf|
       recipe = Recipe.find(rf.id_Recipes)
       @recipes.push(recipe)
     end

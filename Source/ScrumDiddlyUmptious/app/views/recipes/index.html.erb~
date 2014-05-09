@@ -21,7 +21,7 @@
                   $<%= number_with_precision(recipe.costOfIngredients, :precision=>2) %>
                 </li>
                 <li>
-                  <%= rating_for recipe, "Rating", :star => 5 %>
+                  <%= rating_for recipe, "Rating" %>
                 </li>
             </td>
             <td class="span5">

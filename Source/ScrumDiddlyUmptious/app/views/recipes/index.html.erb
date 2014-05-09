@@ -21,7 +21,7 @@
                   $<%= number_with_precision(recipe.costOfIngredients, :precision=>2) %>
                 </li>
                 <li>
-                  <%= rating_for recipe, "Rating" %>
+                  <%= rating_for recipe, "Rating", :disable_after_rate => false %>
                 </li>
             </td>
             <td class="span5">

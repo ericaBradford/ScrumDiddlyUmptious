@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.raty.js
+//= require letsrate.js.erb
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap/dropdown
