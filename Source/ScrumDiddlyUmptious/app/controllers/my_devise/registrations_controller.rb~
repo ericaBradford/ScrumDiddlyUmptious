@@ -9,6 +9,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 
   def edit
     @user = current_user
+    add_breadcrumb "Home", :recipes_path
     add_breadcrumb @user.username, user_path(@user)
     super
   end
@@ -21,6 +22,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
       @recipes = Recipe.where("id_Users = :resource_id", {resource_id: resource.id})
       if @recipes
         @recipes.each do |recipe|
+          @favoriteRecipes = FavoriteRecipe.find_by_id_Recipes(recipe.id)
           recipe.destroy
         end
       end

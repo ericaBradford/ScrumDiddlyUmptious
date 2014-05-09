@@ -20,12 +20,19 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
     #this will have to be more and more edited as functions are inputted
     if resource.destroy
       @recipes = Recipe.where("id_Users = :resource_id", {resource_id: resource.id})
+      favorites = Array.new
       if @recipes
         @recipes.each do |recipe|
+          favoriteRecipe = FavoriteRecipe.find_by_id_Recipes(recipe.id)
+          favorites.push(favoriteRecipe)
           recipe.destroy
         end
       end
-    
+      if favorites
+        favorites.each do |fav|
+          fav.destroy
+        end
+      end
     preference = Preference.find_by_id_Users(user.id)
     preference.destroy
 
