@@ -1,14 +1,10 @@
 THINGS TO DO
 
-descriptions for food preferences
-user comments on recipes
-save favorite recipes
+check about being able to rerate
 
 
-front-end
-  get real data in db
+new users aren't being displayed properly in user index
+ratings suddenly gone, as well
 
 
-
-continue w/ forms
-controllers
+styling still needs help

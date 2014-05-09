@@ -1,16 +1,13 @@
 THINGS TO DO
 
-descriptions for food preferences
-user comments on recipes
-save favorite recipes
+check about being able to rerate
 
 
-front-end
-  get real data in db
+if recipe deleted, favorites delete too
 
 
+new users aren't being displayed properly in user index
+ratings suddenly gone, as well
 
-drop db
-recreate db
-continue w/ forms
-controllers
+
+styling still needs help
