@@ -8,11 +8,11 @@
   <% if user_signed_in? %>
     <dd>
       <% if @isFav == "false" %>
-        <%= link_to favorite_recipe_path(@recipe, type: "favorite"), method: :put, :class => 'btn btn-primary' do %>
+        <%= link_to make_favorite_path(:recipe_id => @recipe.id, :type => "favorite"), method: :put, :class => 'btn btn-primary' do %>
           <i class="glyphicon glyphicon-star">Favorite</i>
         <% end %>
       <% else %>
-        <%= link_to favorite_recipe_path(@recipe, type: "unfavorite"), method: :put, :class => 'btn btn-danger' do %>
+        <%= link_to make_favorite_path(:recipe_id => @recipe.id, :type => "unfavorite"), method: :put, :class => 'btn btn-danger' do %>
           <i class="glyphicon glyphicon-star-empty">Unfavorite</i>
         <% end %>
       <% end %>

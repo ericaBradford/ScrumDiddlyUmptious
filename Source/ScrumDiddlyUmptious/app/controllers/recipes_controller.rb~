@@ -151,9 +151,9 @@ class RecipesController < ApplicationController
     @chef = User.find(@recipe.id_Users)
     @favorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", @recipe.id, current_user.id).first
     if @favorite.blank?
-      @fav = "false"
+      @isFav = "false"
     else
-      @fav = "true"
+      @isFav = "true"
     end
     add_breadcrumb @recipe.title, recipe_path(@recipe)
   end
@@ -184,7 +184,7 @@ class RecipesController < ApplicationController
 
   def favorite
     type = params[:type]
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
     @user = User.find(current_user.id)
     if type == "favorite"
       @favorite = FavoriteRecipe.new(:id_Recipes => @recipe.id, :id_Users => current_user.id)

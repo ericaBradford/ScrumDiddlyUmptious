@@ -7,12 +7,16 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :comments
-    put :favorite, on: :member
   end
+
+  get '/users/favorites', to: 'users#showFavs', :as => "favorites"
 
   resources :users do
     resources :preferences
   end
+
+
+  put '/recipe/favorite/:recipe_id/:type', to: "recipes#favorite", :as => "make_favorite"
 
   root 'recipes#index'
 

@@ -53,6 +53,16 @@ class UsersController < ApplicationController
     @admin = current_user.id
   end
 
+  def showFavs
+    @user = current_user
+    @recipeFavorites = FavoriteRecipe.where("id_Users = ?", @user.id)
+    @recipes = Array.new
+    @recipeFavorites.each do |rf|
+      recipe = Recipe.find(rf.id_Recipes)
+      @recipes.push(recipe)
+    end
+  end
+
 
  private
 

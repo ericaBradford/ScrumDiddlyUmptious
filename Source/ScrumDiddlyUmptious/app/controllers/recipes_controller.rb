@@ -184,14 +184,14 @@ class RecipesController < ApplicationController
 
   def favorite
     type = params[:type]
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
     @user = User.find(current_user.id)
     if type == "favorite"
       @favorite = FavoriteRecipe.new(:id_Recipes => @recipe.id, :id_Users => current_user.id)
       @favorite.save
       redirect_to :back, notice: "#{@recipe.title} added to favorites"
     elsif type == "unfavorite"
-      @unfavorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", params[:id], current_user.id).first
+      @unfavorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", @recipe.id, current_user.id).first
       FavoriteRecipe.delete(@unfavorite.id)
       redirect_to :back, notice: "#{@recipe.title} removed from favorites"
     end
