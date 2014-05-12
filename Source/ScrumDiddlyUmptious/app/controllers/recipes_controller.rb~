@@ -18,7 +18,10 @@ class RecipesController < ApplicationController
     @poultry = ["chicken", "duck", "geese", "turkey", "quail", @egg, "squab", "guinea fowl"]
 
 
-    allRecipes = Recipe.order("title")
+    @search = Recipe.search do
+      fulltext params[:search]
+    end
+    allRecipes = @search.results
     @recipes = Array.new
     #check if user is signed in to see if there is any filtering needed
     if user_signed_in?
@@ -149,11 +152,13 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @chef = User.find(@recipe.id_Users)
-    @favorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", @recipe.id, current_user.id).first
-    if @favorite.blank?
-      @isFav = "false"
-    else
-      @isFav = "true"
+    if user_signed_in?
+      @favorite = FavoriteRecipe.where("id_Recipes = ? AND id_Users = ?", @recipe.id, current_user.id).first
+      if @favorite.blank?
+        @isFav = "false"
+      else
+        @isFav = "true"
+      end
     end
     add_breadcrumb @recipe.title, recipe_path(@recipe)
   end

@@ -44,7 +44,20 @@
   <% end %>
 </ul>
    
+
+  <div class="search"> 
+    <li class="control-group">
+      <%= form_tag recipes_path, :method => :get do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil, :class => 'btn btn-primary btn-sm' %>
+      <% end %>
+    </li>
+  </div>
+
 </ul>
+
+
+
 <div id="main">
   <div class="breadcrumbs">
     <%= render_breadcrumbs %>

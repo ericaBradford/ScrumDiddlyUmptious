@@ -18,7 +18,11 @@ class RecipesController < ApplicationController
     @poultry = ["chicken", "duck", "geese", "turkey", "quail", @egg, "squab", "guinea fowl"]
 
 
-    allRecipes = Recipe.order("title")
+    @search = Recipe.search do
+      fulltext params[:search]
+      paginate :page =>params[:page], :per_page => 5
+    end
+    allRecipes = @search.results
     @recipes = Array.new
     #check if user is signed in to see if there is any filtering needed
     if user_signed_in?
@@ -107,7 +111,7 @@ class RecipesController < ApplicationController
       recipeArray = Array.new
       #actual filter time!
       if @blacklistFoods.empty?
-        @recipes = allRecipes.page(params[:page]).per(5)
+        @recipes = allRecipes
       else
         dontInclude = false
         allRecipes.each do |recipe|
@@ -122,11 +126,11 @@ class RecipesController < ApplicationController
           end
           dontInclude=false
         end
-        @recipes = Kaminari.paginate_array(recipeArray).page(params[:page]).per(5)
+        @recipes = recipeArray
       end
     #result if user isn't signed in
     else
-      @recipes = allRecipes.page(params[:page]).per(5)
+      @recipes = allRecipes
     end
   end
 

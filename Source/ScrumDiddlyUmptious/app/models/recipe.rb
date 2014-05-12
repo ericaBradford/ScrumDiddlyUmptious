@@ -25,7 +25,11 @@ class Recipe < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
 #letsrate
-  
 letsrate_rateable "Rating"
+
+#sunspot search functionality
+  searchable do
+    text :title, :directions, :ingredients, :description
+  end
 
 end
