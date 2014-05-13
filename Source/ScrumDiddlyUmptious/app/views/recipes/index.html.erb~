@@ -21,7 +21,7 @@
                   $<%= number_with_precision(recipe.costOfIngredients, :precision=>2) %>
                 </li>
                 <li>
-                  <%= rating_for recipe, "Rating" %>
+                  <%= rating_for recipe, "Rating", :disable_after_rate => false %>
                 </li>
             </td>
             <td class="span5">
@@ -32,10 +32,15 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @recipes %>
+
+<%= will_paginate @recipes, :container => false, :params => { :search_text => params[:search_text]} %>
 
 <% if user_signed_in? %>
   <%= link_to t('.new', :default => t("helpers.links.new")),
             new_recipe_path,
             :class => 'btn btn-default', data: {no_turbolink: true}  %>
 <% end %>
+
+
+
+<%= debug @recipes %>

@@ -32,7 +32,8 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @recipes %>
+
+<%= will_paginate @recipes, :container => false, :params => { :search_text => params[:search_text]} %>
 
 <% if user_signed_in? %>
   <%= link_to t('.new', :default => t("helpers.links.new")),

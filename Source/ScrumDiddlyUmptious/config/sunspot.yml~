@@ -20,3 +20,7 @@ test:
     port: 8981
     log_level: WARNING
     path: /solr/test
+    
+
+
+    Sunspot.config.pagination.default_per_page = 5

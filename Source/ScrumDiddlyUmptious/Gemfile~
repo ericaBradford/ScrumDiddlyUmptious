@@ -47,10 +47,11 @@ gem 'spring',        group: :development
 
 gem 'mailcatcher'
 
-gem 'kaminari'
-
 gem 'paperclip', "~> 4.1"
 
 gem 'letsrate'
 
 gem 'jquery-turbolinks'
+
+gem 'sunspot_rails'
+gem 'sunspot_solr'

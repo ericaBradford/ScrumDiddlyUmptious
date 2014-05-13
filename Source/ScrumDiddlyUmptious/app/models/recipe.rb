@@ -29,7 +29,59 @@ letsrate_rateable "Rating"
 
 #sunspot search functionality
   searchable do
-    text :title, :directions, :ingredients, :description
+    text :title, :boost => 5
+    text :ingredients, :boost => 3
+    text :directions, :description
+  end
+
+
+#constants
+  def self.meat
+    ["chicken", "pork", "beef", "steak", "meat", "jello", "marshmellows", "parmigiano-reggiano", "gummy"]
+  end
+
+  def self.fish
+    ["anchovies", "bass", "catfish", "cod", "flounder", "grouper", "haddock", "hake", "halibut", "herring", "mahi mahi", "perch", "pike", "pollock", "salmon", "scrod", "swordfish", "sole", "snapper", "tilapia", "trout", "tuna", "caesar salad", "caesar dressing", "worcestershire", "bouillapaisse", "fish", "imitation fish", "imitation shellfish", "imitation crab", "meatloaf", "barbecue sauce", "caponata"]
+  end
+
+  def self.shellfish
+    ["lobster", "oyster", "shrimp", "clam", "crab", "sushi"]
+  end
+
+  def self.alcohol
+    ["alcohol", "amaretto", "beer", "bourbon", "champagne", "grand marnier", "rum", "tequila", "whisky", "wine", "vodka", "liquer"]
+  end
+
+  def self.dairy
+    ["aart", "amasi", "Ayran", "baked milk", "basundi", "bhuna khoyo", "blaand", "black kashk", "booza", "buffalo curd", "bulgarian yogurt", "2% milk", "regular milk", "2 percent milk", "two percent milk", "whole milk", "1% milk", "land o lakes butter", "buttermilk", "yogurt", "cheese", "cream", "gelato", "ice cream", "whey", "2% milk", "regular milk", "2 percent milk", "two percent milk", "whole milk", "1% milk", "land o lakes butter", "country crock butter"]
+  end
+
+  def self.egg
+    ["egg", "eggs", "omelete", "quiche"]
+  end
+
+  def self.soy
+    ["soy", "edamame", "miso", "tempeh", "tofu"]
+  end
+
+  def self.wheat
+    ["wheat", "flour", "bread", "pasta", "cake", "cookie", "noodle", "pizza", "cereal"]
+  end
+
+  def self.gluten
+     ["white flour", "whole wheat flour", "durum wheat", "wheat", "graham flour", "triticale", "kamut", "semolina", "spelt", "wheat germ", "wheat bran", "pasta", "noodles", "flour tortillas", "cookie", "cake", "muffin", "pastry", "cereal", "crackers", "beer", "oats", "gravy", "dressing"]
+  end
+
+  def self.treenut
+    ["nut", "almond", "cashew", "filbert", "pecan", "pistachio", "macadamia"]
+  end
+
+  def self.peanut
+    ["peanuts", "granola", "chex mix", "blackberry punch", "cherry punch", "molasses", "candy bar", "buttermilk", "caramel", "cream cheese", "cheese nut sage", "cheese pimento", "cheese sandwich", "chili", "chop suey", "cocoa", "cooking oil", "curd", "instant coffee", "mayo", "meat substitute", "mock", "pancake flour", "pickle", "salad oil", "vinegar", "worcestershire"]
+  end
+
+  def self.poultry
+    ["chicken", "duck", "geese", "turkey", "quail", "egg", "eggs", "omelete", "quiche", "squab", "guinea fowl"]
   end
 
 end
