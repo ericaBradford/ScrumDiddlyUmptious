@@ -37,7 +37,7 @@ class PreferencesController < ApplicationController
     @preferences = Preference.find_by_id_Users(@user.id)
     @theUser = User.find(@user.id)
     add_breadcrumb @theUser.username, user_path(@theUser)
-    add_breadcrumb :edit, edit_user_preference_path(@user, @preferences.id)
+    add_breadcrumb "Edit", edit_user_preference_path(@user, @preferences.id)
   end
 
   # POST /preferences
@@ -97,6 +97,6 @@ class PreferencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def preference_params
-      params.require(:preference).permit(:isPescatarian, :isVegetarian, :isVegan, :isDiabetic, :isAllergicGluten, :isAllergicPeanuts, :isAllergicTreenuts, :isAllergicDairy, :isAllergicEggs, :isAllergicWheat, :isAllergicSoy, :isAllergicFish, :isAllergicShellfish, :isAsianVegetarian, :isHindu, :isMuslim, :isJain, :isKosher, :blacklistFoods, :user_id)
+      params.require(:preference).permit(:isPescatarian, :isVegetarian, :isVegan, :isDiabetic, :noAlcohol, :isAllergicGluten, :isAllergicPeanuts, :isAllergicTreenuts, :isAllergicDairy, :isAllergicEggs, :isAllergicWheat, :isAllergicSoy, :isAllergicFish, :isAllergicShellfish, :isAsianVegetarian, :isHindu, :isMuslim, :isJain, :isKosher, :blacklistFoods, :user_id)
     end
 end

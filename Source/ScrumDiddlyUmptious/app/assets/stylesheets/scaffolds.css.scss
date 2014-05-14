@@ -17,11 +17,8 @@ pre {
   font-size: 11px;
 }
 
-a {
+a:link {
   color: #fff;
-  &:visited {
-    color: #666;
-  }
   &:hover {
     color: #fff;
     background-color: #000;

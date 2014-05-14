@@ -1,0 +1,59 @@
+<%= form_tag recipes_path, :html => { :class => 'form-horizontal' }, :method => :get do %>
+
+  <div class="control-group">
+    <%= label_tag "Ingredients (seperate by a comma)" %>
+    <%= text_field_tag :ingredients %>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag "Cost of Ingredients" %>
+    <%= text_field_tag :costIngredients %>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag "Number of Ingredients" %>
+    <%= text_field_tag :numIngredients %>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag "Cook Time" %>
+    <%= text_field_tag :cookTime %>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag "Rating" %>
+    <%= select_tag :rating, options_for_select(%w[5 4 3 2 1]) %>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag "Classification of Cooking" %>
+    <%= select_tag :classification, options_for_select(%w[stove-top crock-pot microwave toaster steamer oven barbecue smoker]) %>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag "Cookware" %>
+    <%= select_tag :cookware, options_for_select(%w[saucepan frying-pan dutch-oven baking-pan beanpot chip-pan cookie-sheet cooking-pot crepe-pan double-boiler doufeu food-processor griddle karahi kettle pressure-cooker ramekin roasting-pan roasting-rack saute-pan stockpot]) %>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag "Category" %>
+    <%= text_field_tag :category %>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag "Can be Prepared Ahead of Time" %>
+    <%= check_box_tag :ingredients %>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag "Blacklist Ingredients" %>
+    <span>(note: your food preferences are already included in this)</span>
+    <%= text_field_tag :blacklist %>
+  </div>
+
+  <div class="form-actions">
+    <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+  </div>
+
+
+<% end %>

@@ -92,11 +92,11 @@ class PreferencesController < ApplicationController
 
     def fixed_params
       id_Users = params[:user_id]
-       params.require(:preference).permit(:isPescatarian, :isVegetarian, :isVegan, :isDiabetic, :isAllergicGluten, :isAllergicPeanuts, :isAllergicTreenuts, :isAllergicDairy, :isAllergicEggs, :isAllergicWheat, :isAllergicSoy, :isAllergicFish, :isAllergicShellfish, :isAsianVegetarian, :isHindu, :isMuslim, :isJain, :isKosher, :blacklistFoods, :id_Users)
+       params.require(:preference).permit(:isPescatarian, :isVegetarian, :isVegan, :isDiabetic, :noAlcohol, :isAllergicGluten, :isAllergicPeanuts, :isAllergicTreenuts, :isAllergicDairy, :isAllergicEggs, :isAllergicWheat, :isAllergicSoy, :isAllergicFish, :isAllergicShellfish, :isAsianVegetarian, :isHindu, :isMuslim, :isJain, :isKosher, :blacklistFoods, :id_Users)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def preference_params
-      params.require(:preference).permit(:isPescatarian, :isVegetarian, :isVegan, :isDiabetic, :isAllergicGluten, :isAllergicPeanuts, :isAllergicTreenuts, :isAllergicDairy, :isAllergicEggs, :isAllergicWheat, :isAllergicSoy, :isAllergicFish, :isAllergicShellfish, :isAsianVegetarian, :isHindu, :isMuslim, :isJain, :isKosher, :blacklistFoods, :user_id)
+      params.require(:preference).permit(:isPescatarian, :isVegetarian, :isVegan, :isDiabetic, :noAlcohol, :isAllergicGluten, :isAllergicPeanuts, :isAllergicTreenuts, :isAllergicDairy, :isAllergicEggs, :isAllergicWheat, :isAllergicSoy, :isAllergicFish, :isAllergicShellfish, :isAsianVegetarian, :isHindu, :isMuslim, :isJain, :isKosher, :blacklistFoods, :user_id)
     end
 end

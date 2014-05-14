@@ -30,11 +30,11 @@ en:
     cookTime: "Cook Time"
     canPrepareAhead: "Can Prepare Ahead"
    preference:
-    foodsToFilter: "Blacklist foods"
+    blacklistFoods: "Blacklist foods"
     isPescatarian: "Pescatarian"    
     isVegetarian: "Vegetarian"
     isVegan: "Vegan"
-    isDiabetic: "Diabetic"
+    isDiabetic: "Diabetic-Friendly"
     noAlcohol: "Non-Alcoholic"
     isAllergicGluten: "Gluten-Free"
     isAllergicPeanuts: "Peanut-Free"

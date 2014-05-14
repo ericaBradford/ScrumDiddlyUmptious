@@ -8,7 +8,7 @@
   <% if user_signed_in? %>
     <dd>
       <% if @isFav == "false" %>
-        <%= link_to make_favorite_path(:recipe_id => @recipe.id, :type => "favorite"), method: :put, :class => 'btn btn-primary' do %>
+        <%= link_to make_favorite_path(:recipe_id => @recipe.id, :type => "favorite"), method: :put, :class => 'btn btn-primary form-actions' do %>
           <i class="glyphicon glyphicon-star">Favorite</i>
         <% end %>
       <% else %>
@@ -29,7 +29,7 @@
   <dd><%= simple_format(@recipe.description) %></dd>
 
   <dt><strong>Rating: </strong></dt>
-  <dd><%= rating_for @recipe, "Rating", { disable_after_rate: false } %></dd>
+  <dd><%= rating_for @recipe, "Rating", :disable_after_rate => false %></dd>
 
 
   <dt><strong><%= model_class.human_attribute_name(:cookTime) %>:</strong></dt>

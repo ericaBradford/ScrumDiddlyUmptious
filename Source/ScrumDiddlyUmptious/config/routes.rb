@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users,
     :controllers => {:registrations => "my_devise/registrations"}
 
+  get '/recipes/search', to: 'recipes#advancedSearch', :as => "advancedSearch"
+
 
   resources :recipes do
     resources :comments

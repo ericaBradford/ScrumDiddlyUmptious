@@ -30,7 +30,7 @@ en:
     cookTime: "Cook Time"
     canPrepareAhead: "Can Prepare Ahead"
    preference:
-    foodsToFilter: "Blacklist foods"
+    blacklistFoods: "Blacklist foods"
     isPescatarian: "Pescatarian"    
     isVegetarian: "Vegetarian"
     isVegan: "Vegan"

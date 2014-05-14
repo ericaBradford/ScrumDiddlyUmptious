@@ -1,0 +1,9 @@
+<%= form_tag recipes_path, :html => { :class => 'form-horizontal' }, :method => :get do %>
+
+
+  <div class="form-actions">
+    <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+  </div>
+
+
+<% end %>

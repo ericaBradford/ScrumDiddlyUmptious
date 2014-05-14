@@ -2,10 +2,7 @@ class RecipesController < ApplicationController
   add_breadcrumb "Home", :recipes_path
 
   def index
-    search = Recipe.search do
-      fulltext params[:search]
-    end
-    @allRecipes = search.results
+    search
     @recipesHolder = Array.new
     #check if user is signed in to see if there is any filtering needed
     if user_signed_in?
@@ -100,8 +97,19 @@ class RecipesController < ApplicationController
   end
 
 
+  def advancedSearch
+  end
+
+
 
   private
+
+    def search
+      search = Recipe.search do
+        fulltext params[:search]
+      end
+      @allRecipes = search.results
+    end
 
     def check_preferences
       preference = Preference.find_by_id_Users(current_user.id)
@@ -123,7 +131,7 @@ class RecipesController < ApplicationController
         end
       end
       if preference.isDiabetic?
-        @blacklistFoods.push("sugar", "candy", "raisins", "syrup", "bacon", "soda", "white bread", "cake", "whole milk")
+        @blacklistFoods.push("sugar", "candy", "raisins", "syrup", "bacon", "soda", "white bread", "cake", "whole milk", "ice cream")
       end
 
       if preference.noAlcohol?
