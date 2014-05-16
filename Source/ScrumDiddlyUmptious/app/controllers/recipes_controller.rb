@@ -63,7 +63,7 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
 
-    if @recipe.update(recipe_params)
+    if @recipe.update(recipe_edit_params)
       redirect_to @recipe, notice: "Recipe successfully updated."
     else
       render 'edit'
@@ -100,6 +100,18 @@ class RecipesController < ApplicationController
   def advancedSearch
   end
 
+  def searchResults
+   @num = params[:numIngredients]
+   @time = params[:cookTime]
+   @rating = params[:rating]
+   @prepareAhead = params[:prepareAhead]
+   if params[:blacklist] != ""
+     @blacklistSearch = params[:blacklist].to_s.split(",").collect{|x| x.strip}
+   end
+   redirect_to root_path(:blacklistSearch => @blacklistSearch, 
+   :classification => params[:classification], :cookware => params[:cookware], :category => params[:category])
+  end
+
 
 
   private
@@ -107,6 +119,9 @@ class RecipesController < ApplicationController
     def search
       search = Recipe.search do
         fulltext params[:search]
+        fulltext params[:classification]
+        fulltext params[:cookware]
+        fulltext params[:category]
       end
       @allRecipes = search.results
     end
@@ -116,6 +131,10 @@ class RecipesController < ApplicationController
       @blacklistFoods = Array.new
        #populate blacklistFoods if there are foods in the foodsToFilter variable in preferences
       @blacklistFoods = preference.blacklistFoods.split(",").collect{|x| x.strip}
+
+      if params.has_key?('blacklistSearch')
+        @blacklistFoods.concat(params[:blacklistSearch])
+      end
       
       #vegan, vegetarian, pescatarian
       if preference.isVegan? || preference.isVegetarian? || preference.isPescatarian?
@@ -231,6 +250,14 @@ class RecipesController < ApplicationController
 
 
     def recipe_params
-      params.require(:recipe).permit(:title, :directions, :description, :cookTime, :costOfIngredients, :canPrepareAhead, :id_Users, :ingredients, :picture)
+      params.require(:recipe).permit(:title, :directions, :description, :cookTime, :costOfIngredients, :category, :canPrepareAhead, :id_Users, :ingredients, :picture)
+    end
+
+    def recipe_edit_params
+params.require(:recipe).permit(:title, :directions, :description, :cookTime, :costOfIngredients, :canPrepareAhead, :ingredients, :picture, :category)
+    end
+
+    def search_params
+      params.permit(:ingredients, :costIngredients, :numIngredients, :cookTime, :rating, :classification, :cookware, :category, :prepareAhead, :blacklist)
     end
 end

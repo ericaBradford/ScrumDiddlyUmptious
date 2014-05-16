@@ -32,6 +32,8 @@
   <dd><%= rating_for @recipe, "Rating", :disable_after_rate => false %></dd>
 
 
+  <dt><strong><%= model_class.human_attribute_name(:category) %>:</strong></dt>
+  <dd><%= @recipe.category %></dd>
   <dt><strong><%= model_class.human_attribute_name(:cookTime) %>:</strong></dt>
   <dd><%= @recipe.cookTime %></dd>
   <dt><strong><%= model_class.human_attribute_name(:costOfIngredients) %>:</strong></dt>
@@ -89,3 +91,5 @@
     </div>
   <% end %>
 <% end %>
+
+<%= debug @recipe.category %>

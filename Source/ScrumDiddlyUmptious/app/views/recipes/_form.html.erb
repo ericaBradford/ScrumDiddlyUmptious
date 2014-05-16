@@ -28,6 +28,10 @@
     <%= f.label :directions, :class => 'control-label' %>
     <%= f.text_area :directions, :class => 'form-control' %>
   </div>
+    <div class="control-group">
+    <%= f.label :category, :class => 'control-label' %>
+        <%= f.select :category, options_for_select(%w[appetizer beverage breakfast dessert dinner lunch side-dish snack]), :class => 'form-control' %>
+  </div>
   <div class="control-group">
     <%= f.label :cookTime, :class => 'control-label' %>
     <%= f.text_field :cookTime, :class => 'form-control' %>

@@ -8,7 +8,7 @@ class Recipe < ActiveRecord::Base
   has_many :users, through: :favorite_recipes, source: :user
 
 #validations
-  validates :title, :ingredients, :directions, :cookTime, :costOfIngredients, :id_Users, :description, :picture, presence: true
+  validates :title, :ingredients, :directions, :cookTime, :costOfIngredients, :id_Users, :description, :category, :picture, presence: true
   validates :title, length: {in: 4..40, message: "must be 4-100 characters long"}
   validates :title, uniqueness: {case_sensitive: false, message: "There is already a recipe with that name"}
   validates :description, length: {in: 10..300, message: "must be 10-300 characters long"}
@@ -29,7 +29,11 @@ letsrate_rateable "Rating"
 
 #sunspot search functionality
   searchable do
-    text :title, :directions, :ingredients, :description
+    text :title, :boost => 5
+    text :ingredients, :boost => 3
+    text :directions, :description, :cookTime
+    double :costOfIngredients
+    boolean :canPrepareAhead
   end
 
 

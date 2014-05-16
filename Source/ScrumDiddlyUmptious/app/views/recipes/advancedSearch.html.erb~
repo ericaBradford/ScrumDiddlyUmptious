@@ -1,4 +1,4 @@
-<%= form_tag recipes_path, :html => { :class => 'form-horizontal' }, :method => :get do %>
+<%= form_tag results_path, :html => { :class => 'form-horizontal' }, :method => :get do %>
 
   <div class="control-group">
     <%= label_tag "Ingredients (seperate by a comma)" %>
@@ -6,7 +6,7 @@
   </div>
 
   <div class="control-group">
-    <%= label_tag "Cost of Ingredients" %>
+    <%= label_tag "Cost of Ingredients $" %>
     <%= text_field_tag :costIngredients %>
   </div>
 
@@ -22,31 +22,31 @@
 
   <div class="control-group">
     <%= label_tag "Rating" %>
-    <%= select_tag :rating, options_for_select(%w[5 4 3 2 1]) %>
+    <%= select_tag :rating, options_for_select(%w[5 4 3 2 1]), :include_blank => true %>
   </div>
 
   <div class="control-group">
     <%= label_tag "Classification of Cooking" %>
-    <%= select_tag :classification, options_for_select(%w[stove-top crock-pot microwave toaster steamer oven barbecue smoker]) %>
+    <%= select_tag :classification, options_for_select(%w[barbecue crock-pot microwave smoker steamer stove-top toaster oven]), :include_blank => true %>
   </div>
 
   <div class="control-group">
     <%= label_tag "Cookware" %>
-    <%= select_tag :cookware, options_for_select(%w[saucepan frying-pan dutch-oven baking-pan beanpot chip-pan cookie-sheet cooking-pot crepe-pan double-boiler doufeu food-processor griddle karahi kettle pressure-cooker ramekin roasting-pan roasting-rack saute-pan stockpot]) %>
+    <%= select_tag :cookware, options_for_select(%w[baking-pan beanpot blender chip-pan cookie-sheet cooking-pot crepe-pan double-boiler doufeu dutch-oven food-processor frying-pan griddle karahi kettle pressure-cooker ramekin roasting-pan roasting-rack saucepan saute-pan stockpot]), :include_blank => true %>
   </div>
 
   <div class="control-group">
     <%= label_tag "Category" %>
-    <%= text_field_tag :category %>
+    <%= select_tag :category, options_for_select(%w[beverage breakfast dessert dinner lunch side-dish]), :include_blank => true %>
   </div>
 
   <div class="control-group">
     <%= label_tag "Can be Prepared Ahead of Time" %>
-    <%= check_box_tag :ingredients %>
+    <%= check_box_tag :prepareAhead %>
   </div>
 
   <div class="control-group">
-    <%= label_tag "Blacklist Ingredients" %>
+    <%= label_tag "Blacklist Ingredients (seperate by comma)" %>
     <span>(note: your food preferences are already included in this)</span>
     <%= text_field_tag :blacklist %>
   </div>

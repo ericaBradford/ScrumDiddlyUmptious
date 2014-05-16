@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users,
     :controllers => {:registrations => "my_devise/registrations"}
 
+  get '/recipes/search', to: 'recipes#advancedSearch', :as => "advancedSearch"
+
 
   resources :recipes do
     resources :comments
@@ -17,7 +19,6 @@ Rails.application.routes.draw do
 
 
   put '/recipe/favorite/:recipe_id/:type', to: "recipes#favorite", :as => "make_favorite"
-  get '/recipes/search', to: 'recipes#advancedSearch', :as => "advancedSearch"
 
   root 'recipes#index'
 
