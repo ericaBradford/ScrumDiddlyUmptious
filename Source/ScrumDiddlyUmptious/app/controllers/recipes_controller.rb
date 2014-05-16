@@ -112,17 +112,12 @@ class RecipesController < ApplicationController
    @rating = params[:rating]
    @prepareAhead = params[:prepareAhead]
    @cost = params[:costIngredients]
-   @ingredients = params[:ingredients]
-   if @num != "" || @time != "" || @rating != "" || @prepareAhead != "" || @cost != "" || @ingredients != ""
-     @moreSearchNeeded = true
-   else
-     @moreSearchNeeded = false
-   end
    if params[:blacklist] != ""
      @blacklistSearch = params[:blacklist].to_s.split(",").collect{|x| x.strip}
    end
+
    redirect_to root_path(:blacklistSearch => @blacklistSearch, 
-   :classification => params[:classification], :cookware => params[:cookware], :category => params[:category])
+   :classification => params[:classification], :cookware => params[:cookware], :category => params[:category], :ingredients => params[:ingredients], :rating => params[:rating])
   end
 
 
@@ -134,10 +129,24 @@ class RecipesController < ApplicationController
         fulltext params[:search]
         fulltext params[:classification]
         fulltext params[:cookware]
-        fulltext params[:category]
+        fulltext params[:category] do
+          fields(:category)
+        end
+        fulltext params[:ingredients] do
+          fields(:ingredients)
+        end
+        fulltext params[:rating] do
+          fields(:average_rating)
+        end
+        #order_by :rating, :desc
       end
       @allRecipes = search.results
     end
+
+    def getAverage
+    
+    end
+
 
     #the reason this method exists is because the other searches need to be done before this one goes. That's because of how @allRecipes is assigned first in the search action. So this is for after that to perform searches on what remains
     def advancedSearch
@@ -162,9 +171,6 @@ class RecipesController < ApplicationController
               searchResults.push(recipe)
             end
           end
-        end
-        if @ingredients != ""
-          
         end
       end
     end

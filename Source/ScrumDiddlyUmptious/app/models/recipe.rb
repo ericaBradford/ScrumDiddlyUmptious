@@ -31,9 +31,14 @@ letsrate_rateable "Rating"
   searchable do
     text :title, :boost => 5
     text :ingredients, :boost => 3
-    text :directions, :description, :category
+    text :directions, :description, :category, :average_rating
     double :costOfIngredients
     boolean :canPrepareAhead
+    string :average_rating
+  end
+
+  def average_rating
+    Rates.find_by_sql("SELECT avg FROM Rates WHERE rateable_id = ?", :id).first!
   end
 
 
