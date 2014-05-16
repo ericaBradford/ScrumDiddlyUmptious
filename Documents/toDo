@@ -15,6 +15,7 @@ num ingredients
 cook time
 prep in advance
 rating
-category
 
-bug!: when admin edit's recipe, the "chef" is changed
+
+search by ingredients seperate by comma
+ingredients need to be changed to an array or something. This is getting messy and I need them to be seperated out so that I can get number of ingredients for search

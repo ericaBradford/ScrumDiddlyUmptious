@@ -39,4 +39,5 @@
             :class => 'btn btn-default', data: {no_turbolink: true}  %>
 <% end %>
 
-<%= debug params[:category] %>
+
+<%= debug @currentRecipes %>

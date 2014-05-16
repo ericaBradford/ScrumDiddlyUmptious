@@ -3,6 +3,10 @@ class RecipesController < ApplicationController
 
   def index
     search
+    #if the user is searching based off of a specific column or something that can't use full text search, this will be called
+    if @moreSearchNeeded
+      advancedSearch
+    end
     @recipesHolder = Array.new
     #check if user is signed in to see if there is any filtering needed
     if user_signed_in?
@@ -96,15 +100,24 @@ class RecipesController < ApplicationController
     end
   end
 
-
-  def advancedSearch
+  #displays the advanced search form page
+  def displayAdvancedSearchPage
+    render 'advancedSearch'
   end
 
-  def searchResults
+  #this is the action that the form is sent to. This gets the variables and gets easy to search variables ready for the search method
+  def prepareSearch
    @num = params[:numIngredients]
    @time = params[:cookTime]
    @rating = params[:rating]
    @prepareAhead = params[:prepareAhead]
+   @cost = params[:costIngredients]
+   @ingredients = params[:ingredients]
+   if @num != "" || @time != "" || @rating != "" || @prepareAhead != "" || @cost != "" || @ingredients != ""
+     @moreSearchNeeded = true
+   else
+     @moreSearchNeeded = false
+   end
    if params[:blacklist] != ""
      @blacklistSearch = params[:blacklist].to_s.split(",").collect{|x| x.strip}
    end
@@ -115,7 +128,7 @@ class RecipesController < ApplicationController
 
 
   private
-
+    #this is the search method that Sunspot uses to do its full text searches
     def search
       search = Recipe.search do
         fulltext params[:search]
@@ -124,6 +137,36 @@ class RecipesController < ApplicationController
         fulltext params[:category]
       end
       @allRecipes = search.results
+    end
+
+    #the reason this method exists is because the other searches need to be done before this one goes. That's because of how @allRecipes is assigned first in the search action. So this is for after that to perform searches on what remains
+    def advancedSearch
+      #double check that @allRecipes needs to be changed for advanced search
+      if @num != "" || @time != "" || @rating != "" || @prepareAhead != "" || @cost != "" || @ingredients != ""
+        searchResults = Array.new
+        if @num != ""
+          
+        end
+        if @time != ""
+          
+        end
+        if @rating != ""
+          
+        end
+        if @prepareAhead != ""
+          
+        end
+        if @cost != ""
+          @allRecipes.each do |recipe|
+            if recipe.costOfIngredients <= @cost
+              searchResults.push(recipe)
+            end
+          end
+        end
+        if @ingredients != ""
+          
+        end
+      end
     end
 
     def check_preferences
