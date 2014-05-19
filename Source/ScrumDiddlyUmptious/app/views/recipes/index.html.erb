@@ -1,16 +1,5 @@
 <div id="facets">
   <h3>Rating</h3>
-  <ul>
-    <% for row in @search.facet(:canPrepareAhead).rows %>
-      <li>
-        <% if params[:prepare_ahead].blank? %>
-          <%= link_to row.value, :prepare_ahead => row.value %> (<%= row.count %>)
-        <% else %>
-          <strong><%= row.value %></strong> (<%= link_to "remove", :prepare_Ahead => nil %>)
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
 </div>
 
 
