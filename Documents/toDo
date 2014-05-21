@@ -1,18 +1,14 @@
 THINGS TO DO
 medium fi mockup (all major pages)
 advanced search
-go through ps mockup and document the color hexes
-
-better project summaries. Weekly check
-
 
 
 when no results, "create a recipe that matches what you are looking for?"
 
 
-cost		  need to do comparison "asked <= cost"
-num ingredients	  need method to calculate num ingredients. Also need to turn ingredients into array
-cook time	  need to do comparison "asked <= cook time"
+cost		  	  need to do comparison "asked <= cost"
+num ingredients	  need method to calculate num ingredients. Also                 			    need to turn ingredients into array
+cook time	  	  need to do comparison "asked <= cook time"
 prep in advance   facet? let's try this one, I guess...
 rating		  need method to get rating.
 
@@ -29,8 +25,6 @@ Maybe I should just use facets for rating and prep in advance.....
 
 
 
-
-New color pallet
 Multiple shopping lists (today’s, tomorrow’s, the week’s)
 
 On Recipe show, “add to Menu” btn
@@ -42,9 +36,18 @@ Change how ingredients are done (in able to do the math thingy above)
 “Recipes to try” menu (experimentation menu?)
 Profile pic
 Wizard of Oz testing
-Push PS file to git
- Keep up on Trello & git & make summaries good
-30 hours a week, min.		Goal: 50 hrs per week
-Opinions on layout before Wizard of Oz testing
+
+
+
+Photoshop stuff left
+On recipe show, “add to menu” btn
+Way for people to specify how much of that ingredient they already have
 icons on every button?
+fix scrollbar on advanced search rating
+not able to fix advanced search and stuff. Urg.
+
+
+
+Advanced search
+Preferences
 
