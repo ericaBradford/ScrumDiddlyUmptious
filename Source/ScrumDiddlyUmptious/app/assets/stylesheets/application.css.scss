@@ -7,32 +7,62 @@
  *= require_tree .
 */
 
+@import "bootstrap";
 
 
 body{
+  position: relative;
   padding-bottom: 50px;
-  background-color: #f8f5ef;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background-color: #ebf4ed;
+}
+
+.logo{
+  z-index: 100;
+  position: absolute;
+  top: 15px;
+  left: 15px;
 }
 
 a:link{
-  color: #808080;
+  color: #43146d;
 }
 
-.btn a:link{
-    color: #fff;
+.header{
+  list-style-type: none;
+  background-color: #00a651;
+  height: 50px;
+    a{
+      font-size: 22px;
+      color: #fff;
+    }
 }
 
-.nav{
-  background-color: #CCCCFF;
-  width: 100%;
+.sidebarNavSeperator{
+  height: 100%;
+  width: 3px;
+  background-color: #43146d;
 }
+
+ul.sidebar-nav{
+  list-style-type: none;
+  margin-top: 20px;
+  a{
+    color: #62437e;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  li{
+    padding: 5px;
+  }
+}
+
 
 .search{
-  float: right;
   width: 400px;
-}
-
-#main{
 }
 
 .breadcrumbs{
@@ -40,14 +70,36 @@ a:link{
   padding: 15px;
 }
 
-.nav-tabs li
-{
-  padding: 5px;
-
-  a{
-     color: #808080;
-   }
+.main{
+  margin-top: 70px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 10px 10px 5px #888888;
 }
+
+.scrollable{
+  height: 600px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.recipe{
+  display: inline;
+  float: left;
+  width: 200px;
+  height: 300px;
+}
+
+.recipes{
+  display: inline-block;
+}
+
+.clearfix{
+  clear:both;
+}
+
 
 
 form{
@@ -63,8 +115,12 @@ form{
 }
 
 
-.loggedInUser{
+.headerMenu{
   color: #000;
+  float: right;
+  padding-right: 15px;
+  padding-top: 10px;
+  margin-left: -500px;
 }
 
 .recipe-table{
@@ -84,12 +140,13 @@ form{
 }
 
 .footer{
-  background-color: #CCCCFF;
+  background-color: #00a651;
   position: fixed;
   width: 100%;
   bottom: 0px;
   height: 30px;
   padding-top: 3px;
+  color: #fff;
 }
 
 .comment-box{

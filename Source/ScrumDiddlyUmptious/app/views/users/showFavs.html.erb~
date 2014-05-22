@@ -3,42 +3,20 @@
 </div>
 
 <% if @recipeFavorites.empty? %>
-  <h5>You have no favorites yet</h5>
+  <h4>You have no favorites yet =(</h4>
 <% else %>
-  <table class="table table-striped recipe-table">
-    <tbody>
-      <% @recipes.each do |recipe| %>
-          <tr>
-          <row>
-              <td class="span2">
-                <%= image_tag recipe.picture.url(:thumb) %>
-              </td>
-              <td class="span3">
-                <ul class="recipe-info">
-                  <li><h4><%= link_to recipe.title, recipe_path(recipe) %></h4></li>
-                  <li>
-                    <%= recipe.cookTime %>:
-                    <%= recipe.cookTime.downcase %>
-                  </li>
-                  <li>
-                    <%= recipe.costOfIngredients %>:
-                    $<%= number_with_precision(recipe.costOfIngredients, :precision=>2) %>
-                  </li>
-                  <li>
-                    <%= rating_for recipe, "Rating", :star => 5 %>
-                  </li>
-                  <li>
-                    <%= link_to make_favorite_path(:recipe_id => recipe.id, :type => "unfavorite"), method: :put, :class => 'btn btn-danger' do %>
-                      <i class="glyphicon glyphicon-star-empty">Unfavorite</i>
-                    <% end %>
-                  </li>
-              </td>
-              <td class="span5">
-                <span><%= recipe.description %></span>
-              </td>
-          <row>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="recipes">
+    <% @recipes.each do |recipe| %>
+      <div class="recipe">
+        <h4><%= link_to recipe.title, recipe_path(recipe) %></h4>
+        <%= image_tag recipe.picture.url(:thumb) %>
+        <%= rating_for recipe, "Rating", :star => 5 %>
+
+        <%= link_to make_favorite_path(:recipe_id => recipe.id, :type => "unfavorite"), method: :put, :class => 'btn btn-danger' do %>
+          <i class="glyphicon glyphicon-star-empty">Unfavorite</i>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
 <% end %>

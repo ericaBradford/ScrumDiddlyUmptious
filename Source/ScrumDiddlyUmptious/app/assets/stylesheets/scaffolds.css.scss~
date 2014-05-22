@@ -1,5 +1,4 @@
 body {
-  color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -17,11 +16,8 @@ pre {
   font-size: 11px;
 }
 
-a {
-  color: #fff;
+a:link {
   &:hover {
-    color: #fff;
-    background-color: #000;
   }
 }
 
