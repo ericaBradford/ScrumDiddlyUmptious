@@ -6,49 +6,49 @@
   </div>
 
   <div class="control-group">
-    <%= label_tag "Cost of Ingredients $" %>
-    <%= text_field_tag :costIngredients %>
+    <%= label_tag "Cost of Ingredients $", nil, :class => "control-label" %>
+    <%= text_field_tag :costIngredients, nil, :class => "form-control" %>
   </div>
 
   <div class="control-group">
-    <%= label_tag "Number of Ingredients" %>
-    <%= text_field_tag :numIngredients %>
+    <%= label_tag "Number of Ingredients", nil, :class => "control-label" %>
+    <%= text_field_tag :numIngredients, nil, :class => "form-control" %>
   </div>
 
   <div class="control-group">
-    <%= label_tag "Cook Time" %>
-    <%= text_field_tag :cookTime %>
+    <%= label_tag "Cook Time", nil, :class => "control-label" %>
+    <%= text_field_tag :cookTime, nil, :class => "form-control" %>
   </div>
 
   <div class="control-group">
-    <%= label_tag "Rating" %>
-    <%= select_tag :rating, options_for_select(%w[5 4 3 2 1]), :include_blank => true %>
+    <%= label_tag "Rating", nil, :class => "control-label" %>
+    <%= select_tag :rating, options_for_select(%w[5 4 3 2 1]), :include_blank => true, :class => "form-control" %>
   </div>
 
   <div class="control-group">
-    <%= label_tag "Classification of Cooking" %>
+    <%= label_tag "Classification of Cooking", nil, :class => "control-label" %>
     <%= select_tag :classification, options_for_select(%w[barbecue crock-pot microwave smoker steamer stove-top toaster oven]), :include_blank => true %>
   </div>
 
   <div class="control-group">
-    <%= label_tag "Cookware" %>
+    <%= label_tag "Cookware", nil, :class => "control-label" %>
     <%= select_tag :cookware, options_for_select(%w[baking-pan beanpot blender chip-pan cookie-sheet cooking-pot crepe-pan double-boiler doufeu dutch-oven food-processor frying-pan griddle karahi kettle pressure-cooker ramekin roasting-pan roasting-rack saucepan saute-pan stockpot]), :include_blank => true %>
   </div>
 
   <div class="control-group">
-    <%= label_tag "Category" %>
-    <%= select_tag :category, options_for_select(%w[beverage breakfast dessert dinner lunch side-dish]), :include_blank => true %>
+    <%= label_tag "Category", nil, :class => "control-label" %>
+    <%= select_tag :category, options_for_select(%w[appetizer beverage breakfast dessert dinner lunch side-dish snack]), :include_blank => true %>
   </div>
 
   <div class="control-group">
-    <%= label_tag "Can be Prepared Ahead of Time" %>
+    <%= label_tag "Can be Prepared Ahead of Time", nil, :class => "control-label" %>
     <%= check_box_tag :prepareAhead %>
   </div>
 
   <div class="control-group">
-    <%= label_tag "Blacklist Ingredients (seperate by comma)" %>
+    <%= label_tag "Blacklist Ingredients (seperate by comma)", nil, :class => "control-label" %>
     <span>(note: your food preferences are already included in this)</span>
-    <%= text_field_tag :blacklist %>
+    <%= text_field_tag :blacklist, nil, :class => "form-control" %>
   </div>
 
   <div class="form-actions">

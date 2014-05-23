@@ -9,13 +9,14 @@
 </head>
 <body>
 
-<ul class="header">
 
   <%= image_tag("logo2.png", alt: "ScrumDiddlyUmptious", size: "500x80", class: "logo") %>
 
+<ul class="header">
+
   <% if user_signed_in? %>
-    <li class="dropdown">
-      <a class="dropdown-toggle headerMenu" data-toggle="dropdown" href="#">
+    <li class="dropdown headerMenu">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         Logged in as <strong><%= current_user.username %></strong><span class="caret"></span>
       </a>
 
@@ -26,8 +27,8 @@
       </ul>
     </li>
   <% else %>
-    <li class="dropdown">
-      <a class="dropdown-toggle headerMenu" data-toggle="dropdown" href="#">
+    <li class="dropdown headerMenu">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         Login <span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
@@ -65,24 +66,24 @@
       </ul>
     </div>
 
-<div class="sidebarNavSeperator">
-</div>
-
     <div class="col-md-9">
       <div class="breadcrumbs">
         <%= render_breadcrumbs %>
       </div>
 
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
+      <div class="scrollable">
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
   
-      <div class="container-fluid">
-        <%= yield %>
+        <div class="container-fluid">
+          <%= yield %>
+        </div>
       </div>
+
     </div>
   </div>
 </div>

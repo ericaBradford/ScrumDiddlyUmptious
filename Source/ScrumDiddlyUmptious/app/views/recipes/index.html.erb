@@ -8,9 +8,11 @@ facet for ratings will go here n stuff
 <div class="recipes">
   <% @recipes.each do |recipe| %>
     <div class="recipe">
-      <h4><%= link_to recipe.title, recipe_path(recipe) %></h4>
-      <%= image_tag recipe.picture.url(:thumb) %>
-      <%= rating_for recipe, "Rating", :disable_after_rate => false %>
+      <div class="recipeContents">
+        <h4><%= link_to recipe.title, recipe_path(recipe) %></h4>
+        <%= image_tag recipe.picture.url(:thumb) %>
+        <%= rating_for recipe, "Rating", :disable_after_rate => false %>
+      </div>
     </div>
   <% end %>
 </div>

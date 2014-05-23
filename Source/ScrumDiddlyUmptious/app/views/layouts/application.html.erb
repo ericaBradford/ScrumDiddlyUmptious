@@ -9,13 +9,14 @@
 </head>
 <body>
 
+
+  <%= link_to image_tag("logo2.png", alt: "ScrumDiddlyUmptious", size: "500x80", class: "logo"), recipes_path %>
+
 <ul class="header">
 
-  <%= image_tag("logo2.png", alt: "ScrumDiddlyUmptious", size: "500x80", class: "logo") %>
-
   <% if user_signed_in? %>
-    <li class="dropdown">
-      <a class="dropdown-toggle headerMenu" data-toggle="dropdown" href="#">
+    <li class="dropdown headerMenu">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         Logged in as <strong><%= current_user.username %></strong><span class="caret"></span>
       </a>
 
@@ -26,8 +27,8 @@
       </ul>
     </li>
   <% else %>
-    <li class="dropdown">
-      <a class="dropdown-toggle headerMenu" data-toggle="dropdown" href="#">
+    <li class="dropdown headerMenu">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         Login <span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
@@ -64,9 +65,6 @@
 
       </ul>
     </div>
-
-<div class="sidebarNavSeperator">
-</div>
 
     <div class="col-md-9">
       <div class="breadcrumbs">

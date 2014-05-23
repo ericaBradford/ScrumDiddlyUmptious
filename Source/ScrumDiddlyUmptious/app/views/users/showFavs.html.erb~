@@ -20,3 +20,6 @@
     <% end %>
   </div>
 <% end %>
+<div class="clearfix"/>
+
+<%= will_paginate @recipe, :container => false %>
