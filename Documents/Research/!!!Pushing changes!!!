@@ -20,3 +20,6 @@ checkout just changes what is in your local copy. You have to push the changes a
 In Windows only change is:
 *git add . -A		(the A is necessary!)
 *git commit -m "comment here"		(must be double quotes)
+
+--------------------------------------------------
+git pull origin search
