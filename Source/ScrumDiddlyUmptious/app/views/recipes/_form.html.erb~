@@ -13,8 +13,8 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <%= f.text_field :title, :class => 'form-control' %>
+    <%= f.label :title, nil, class: "control-label" %>
+    <%= f.text_field :title, nil, class: "form-control" %>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
@@ -30,7 +30,7 @@
   </div>
     <div class="control-group">
     <%= f.label :category, :class => 'control-label' %>
-        <%= select_tag :category, options_for_select(%w[appetizer beverage breakfast dessert dinner lunch side-dish snack]), :class => 'form-control' %>
+        <%= f.select :category, options_for_select(%w[appetizer beverage breakfast dessert dinner lunch side-dish snack]), :class => 'form-control' %>
   </div>
   <div class="control-group">
     <%= f.label :cookTime, :class => 'control-label' %>

@@ -25,3 +25,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @user, :container => false %>

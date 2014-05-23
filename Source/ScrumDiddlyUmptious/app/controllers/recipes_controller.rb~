@@ -138,7 +138,6 @@ class RecipesController < ApplicationController
         fulltext params[:rating] do
           fields(:average_rating)
         end
-        facet(:canPrepareAhead)
         #order_by :rating, :desc
       end
       @allRecipes = search.results

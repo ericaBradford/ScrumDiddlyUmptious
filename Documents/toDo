@@ -1,6 +1,9 @@
 THINGS TO DO
 implement design into web page
 advanced search
+redo ingredients
+profile pic
+shopping list
 
 
 
@@ -10,10 +13,10 @@ when no results, "create a recipe that matches what you are looking for?"
 
 
 cost		  	  need to do comparison "asked <= cost"
-num ingredients	  need method to calculate num ingredients. Also                 			    need to turn ingredients into array
-cook time	  	  need to do comparison "asked <= cook time"
-prep in advance   facet? let's try this one, I guess...
-rating		  need method to get rating.
+num ingredients	  	need method to calculate num ingredients. Also                 			    	need to turn ingredients into array
+cook time	  	need to do comparison "asked <= cook time"
+prep in advance   	facet? let's try this one, I guess...
+rating		  	need method to get rating.
 
 
 search by ingredients seperate by comma
@@ -30,21 +33,15 @@ Maybe I should just use facets for rating and prep in advance.....
 
 
 
-Multiple shopping lists (today’s, tomorrow’s, the week’s)
+Multiple shopping lists (today's, tomorrow's, the week's)
 
-On Recipe show, “add to Menu” btn
+On Recipe show, "add to Menu" btn
 Menu(previously bookmarks) automatically adds ingredients to list
 Way for people to specify how much of that ingredient they already have
-Auto-adjust the amount needed for the shopping list based on what’s above
+Auto-adjust the amount needed for the shopping list based on what's above
 
-Change how ingredients are done (in able to do the math thingy above)
-“Recipes to try” menu (experimentation menu?)
-Profile pic
+"Recipes to try" menu (experimentation menu?)
 icons on every button?
+outline on apple
 
-
-
-Photoshop stuff left
-On recipe show, “add to menu” btn
-Way for people to specify how much of that ingredient they already have
-multiple shopping lists (today's, tomorrow's, the week's)
+think through how current menu and shopping list connect together

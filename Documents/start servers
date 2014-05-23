@@ -1,0 +1,3 @@
+rake sunspot:solr:run
+
+rails s

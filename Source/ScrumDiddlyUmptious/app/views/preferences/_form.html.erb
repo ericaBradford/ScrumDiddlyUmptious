@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="row">
-    <div class="span4">
+    <div class="col-md-4">
       <h3>General</h3>
       <div class="field">
         <%= f.label :isPescatarian %>
@@ -48,10 +48,10 @@
         <%= f.label :isKosher %>
         <%= f.check_box :isKosher %>
       </div>
-    <%# end of span5 num 1 %>
+    <%# end of span4 num 1 %>
     </div>
 
-    <div class="span4">
+    <div class="col-md-4">
       <h3>Health</h3>
       <div class="field">
         <%= f.label :isDiabetic %>
@@ -85,6 +85,11 @@
         <%= f.label :isAllergicWheat %>
         <%= f.check_box :isAllergicWheat %>
       </div>
+    <%# end of span4 num 2%>
+    </div>
+
+
+    <div class="col-md-4">
       <div class="field">
         <%= f.label :isAllergicSoy %>
         <%= f.check_box :isAllergicSoy %>
@@ -97,24 +102,23 @@
         <%= f.label :isAllergicShellfish %>
         <%= f.check_box :isAllergicShellfish %>
       </div>
-    <%# end of span5 num 2%>
-    </div>
+      <div class="field">
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      </div>
+      <div class="field">
+        <%= f.label :blacklistFoods %>
+        <span>(Seperate by comma)</span><br />
+        <%= f.text_field :blacklistFoods %>
+      </div>
 
-    <div class="field">
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-    </div>
-  <%# end of row div %>
-  </div>
-
-  <div class="field">
-    <%= f.label :blacklistFoods %>
-    <span>(Seperate by comma)</span><br />
-    <%= f.text_field :blacklistFoods %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+      <div class="form-actions">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 recipes_path, :class => 'btn' %>
+      </div>
+
+    </div>
+
+  <%# end of row div %>
   </div>
 <% end %>
