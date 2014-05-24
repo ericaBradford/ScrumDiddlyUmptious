@@ -1,6 +1,18 @@
 <div id="facets">
   <h3>Rating</h3>
 facet for ratings will go here n stuff
+  <h3>Recipes that can be prepared ahead of time<h3>
+    <ul>
+    <% for row in @search.facet(:canPrepareAhead).rows %>
+      <li>
+        <% if params[:canPrepareAhead].exists? %>
+          <%= link_to row.value, :canPrepareAhead => row.value %> (<%= row.count %>)
+        <% else %>
+          <strong><%= row.value %></strong> (<%= link_to "remove", :canPrepareAhead => nil %>)
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 </div>
 
 
@@ -8,7 +20,7 @@ facet for ratings will go here n stuff
 <div class="recipes">
   <% @recipes.each do |recipe| %>
     <div class="recipe">
-      <div class="positionRecipe">
+      <div class="recipeContents">
         <h4><%= link_to recipe.title, recipe_path(recipe) %></h4>
         <%= image_tag recipe.picture.url(:thumb) %>
         <%= rating_for recipe, "Rating", :disable_after_rate => false %>
