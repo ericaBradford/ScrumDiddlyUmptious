@@ -1,21 +1,3 @@
-<div id="facets">
-  <h3>Rating</h3>
-facet for ratings will go here n stuff
-  <h3>Recipes that can be prepared ahead of time<h3>
-    <ul>
-    <% for row in @search.facet(:canPrepareAhead).rows %>
-      <li>
-        <% if params[:canPrepareAhead].exists? %>
-          <%= link_to row.value, :canPrepareAhead => row.value %> (<%= row.count %>)
-        <% else %>
-          <strong><%= row.value %></strong> (<%= link_to "remove", :canPrepareAhead => nil %>)
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-
 <%- model_class = Recipe -%>
 <div class="recipes">
   <% @recipes.each do |recipe| %>
@@ -37,3 +19,6 @@ facet for ratings will go here n stuff
             new_recipe_path,
             :class => 'btn btn-default', data: {no_turbolink: true}  %>
 <% end %>
+
+
+<%= debug @average %>

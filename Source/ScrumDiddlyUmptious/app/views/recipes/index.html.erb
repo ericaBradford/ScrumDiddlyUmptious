@@ -1,11 +1,3 @@
-<div id="facets">
-  <h3>Rating</h3>
-facet for ratings will go here n stuff
-  <h3>Recipes that can be prepared ahead of time<h3>
-more facets here
-</div>
-
-
 <%- model_class = Recipe -%>
 <div class="recipes">
   <% @recipes.each do |recipe| %>
@@ -27,3 +19,6 @@ more facets here
             new_recipe_path,
             :class => 'btn btn-default', data: {no_turbolink: true}  %>
 <% end %>
+
+
+<%= debug @searchResults %>

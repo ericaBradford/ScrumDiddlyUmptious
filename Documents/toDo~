@@ -1,5 +1,4 @@
 THINGS TO DO
-implement design into web page
 advanced search
 redo ingredients
 profile pic
@@ -12,11 +11,12 @@ shopping list
 when no results, "create a recipe that matches what you are looking for?"
 
 
-cost		  	  need to do comparison "asked <= cost"
 num ingredients	  	need method to calculate num ingredients. Also                 			    	need to turn ingredients into array
-cook time	  	need to do comparison "asked <= cook time"
+cook time	  	need to do comparison "asked <= cook time".......redo how do cooktime?
 prep in advance   	facet? let's try this one, I guess...
 rating		  	need method to get rating.
+
+
 
 
 search by ingredients seperate by comma
@@ -29,15 +29,11 @@ go into rates table, query to find rateable_id, use that to find recipe, get avg
 Maybe I should just use facets for rating and prep in advance.....
 
 
-
-
-
-
 Multiple shopping lists (today's, tomorrow's, the week's)
 
 On Recipe show, "add to Menu" btn
 Menu(previously bookmarks) automatically adds ingredients to list
-Way for people to specify how much of that ingredient they already have
+Way for people to specify how much of that ingredient they already havese
 Auto-adjust the amount needed for the shopping list based on what's above
 
 "Recipes to try" menu (experimentation menu?)

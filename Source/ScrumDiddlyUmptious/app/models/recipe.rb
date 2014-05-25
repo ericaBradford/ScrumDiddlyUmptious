@@ -34,11 +34,10 @@ letsrate_rateable "Rating"
     text :directions, :description, :category, :average_rating
     double :costOfIngredients
     boolean :canPrepareAhead
-    string :average_rating
   end
 
   def average_rating
-    Rates.find_by_sql("SELECT avg FROM Rates WHERE rateable_id = ?", :id).first!
+    Rates.find_by_sql("SELECT stars FROM Rates WHERE rateable_id = ?", :id).first!
   end
 
 

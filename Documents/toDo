@@ -11,10 +11,8 @@ shopping list
 when no results, "create a recipe that matches what you are looking for?"
 
 
-cost		  	need to do comparison "asked <= cost"
 num ingredients	  	need method to calculate num ingredients. Also                 			    	need to turn ingredients into array
-cook time	  	need to do comparison "asked <= cook time"
-prep in advance   	facet? let's try this one, I guess...
+cook time	  	need to do comparison "asked <= cook time".......redo how do cooktime?
 rating		  	need method to get rating.
 
 

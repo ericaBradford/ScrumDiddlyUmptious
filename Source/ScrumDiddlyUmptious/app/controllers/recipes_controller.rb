@@ -107,17 +107,12 @@ class RecipesController < ApplicationController
 
   #this is the action that the form is sent to. This gets the variables and gets easy to search variables ready for the search method
   def prepareSearch
-   @num = params[:numIngredients]
-   @time = params[:cookTime]
-   @rating = params[:rating]
-   @prepareAhead = params[:prepareAhead]
-   @cost = params[:costIngredients]
    if params[:blacklist] != ""
      @blacklistSearch = params[:blacklist].to_s.split(",").collect{|x| x.strip}
    end
 
    redirect_to root_path(:blacklistSearch => @blacklistSearch, 
-   :classification => params[:classification], :cookware => params[:cookware], :category => params[:category], :ingredients => params[:ingredients], :rating => params[:rating], :costOfIngredients => params[:costOfIngredients])
+   :classification => params[:classification], :cookware => params[:cookware], :category => params[:category], :ingredients => params[:ingredients], :costOfIngredients => params[:costOfIngredients], :num => params[:numIngredients], :time => params[:cookTime], :rating => params[:rating], :prepareAhead => params[:prepareAhead], :cost => params[:costIngredients])
   end
 
 
@@ -136,40 +131,55 @@ class RecipesController < ApplicationController
         fulltext params[:ingredients] do
           fields(:ingredients)
         end
-        facet :canPrepareAhead
-        #fulltext params[:rating] do
-        #  fields(:average_rating)
-        #end
+        fulltext params[:rating] do
+          fields(:average_rating)
+        end
         #order_by :rating, :desc
       end
       @allRecipes = search.results
+      if params[:costOfIngredients] || params[:numIngredients] || params[:cookTime] || params[:rating] || params[:prepareAhead] || params[:costIngredients]
+        @moreSearchNeeded = true
+      end
     end
+
+
 
     #the reason this method exists is because the other searches need to be done before this one goes. That's because of how @allRecipes is assigned first in the search action. So this is for after that to perform searches on what remains
     def advancedSearch
       #double check that @allRecipes needs to be changed for advanced search
-      if @num != "" || @time != "" || @rating != "" || @prepareAhead != "" || @cost != "" || @ingredients != ""
+      if params[:costOfIngredients] || params[:numIngredients] || params[:cookTime] || params[:rating] || params[:prepareAhead] || params[:costIngredients]
         searchResults = Array.new
-        if @num != ""
-          
-        end
-        if @time != ""
-          
-        end
-        if @rating != ""
-          
-        end
-        if @prepareAhead != ""
-          
-        end
-        if @cost != ""
-          @allRecipes.each do |recipe|
-            if recipe.costOfIngredients <= @cost
+
+        @allRecipes.each do |recipe|
+          if params[:numIngredients] != ""
+            
+          end
+          if params[:cookTime] != ""
+            
+          end
+          if params[:rating] != ""
+            if recipe.average_rating <= params[:rating].to_f
               searchResults.push(recipe)
             end
           end
+          if !params[:prepareAhead].blank?
+            @prepare = params[:prepareAhead]
+            if recipe.canPrepareAhead == "1"
+              searchResults.push(recipe)
+            end
+          end
+          if params[:cost] != ""
+              if recipe.costOfIngredients <= params[:cost].to_f
+                searchResults.push(recipe)
+              end
+          end
         end
       end
+      if !searchResults.empty?
+        @allRecipes.clear
+        @allRecipes = searchResults
+      end
+      @moreSearchNeeded = false
     end
 
     def check_preferences
