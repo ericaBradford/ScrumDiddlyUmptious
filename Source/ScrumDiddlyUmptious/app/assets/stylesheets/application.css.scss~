@@ -96,10 +96,6 @@ ul.sidebar-nav{
   overflow-x: hidden;
 }
 
-h1{
- color: #00a651;
-}
-
 strong{
   color: #43146d;
 }

@@ -11,7 +11,7 @@ search: current search method gets recipes that match at least 1 of the conditio
 
 
 
-cook time	  	need to do comparison "asked <= cook time".......regex find hr or hour or hrs or hours and take the number(s?) in front of it and times by 60, then add to number(s?) in front of min or mins or minute or minutes
+cook time	currently set up as "15mins - 10 mins", decide if going to do that or "15 minutes or less"
 
 
 

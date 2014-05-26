@@ -155,21 +155,21 @@ class RecipesController < ApplicationController
           end
           if params[:cookTime] != ""
             @cookTimeString = params[:cookTime]
-            @cookTimeRange = findCookTimeMins
-            @cookTimeMinutes = recipe.cookTimeInMinutes
+            @cookTimeRange = findSearchedCookTimeMins
+            @individualRecipeCookTimeMinutes = recipe.cookTimeInMinutes
             if @cookTimeRange[0] != "" && @cookTimeRange[1] != ""
               #if it isn't over 10 hours of under 5
-              if @cookTimeMinutes <= @cookTimeRange[0] && @cookTimeMinutes >= @cookTimeRange[1]
+              if @individualRecipeCookTimeMinutes <= @cookTimeRange[0] || @individualRecipeCookTimeMinutes >= @cookTimeRange[1]
                 searchResults.push(recipe)
               end
-            elsif @cookTimeRange[0] == ""
+            elsif @individualRecipeCookTimeRange[0] == ""
               #10+ hours
-              if @cookTimeMinutes >= @cookTimeRange[1]
+              if @individualRecipeCookTimeMinutes >= @cookTimeRange[1]
                 searchResults.push(recipe)
               end
             elsif @cookTimeRange[1] == ""
               #5 min and under
-                if @cookTimeMinutes <= @cookTimeRange[0]
+                if @individualRecipeCookTimeMinutes <= @cookTimeRange[0]
                   searchResults.push(recipe)
                 end
             end
@@ -202,24 +202,24 @@ class RecipesController < ApplicationController
       @moreSearchNeeded = false
     end
 
-    def findCookTimeMins
-      if @cookTimeString = "10+ hours"
+    def findSearchedCookTimeMins
+      if @cookTimeString == "10+ hours"
         @cookTimeRange = ["", 600]
-      elsif @cookTimeString = "10-5 hours"
+      elsif @cookTimeString == "10-5 hours"
         @cookTimeRange = [600, 301]
-      elsif @cookTimeString = "5-3 hours"
+      elsif @cookTimeString == "5-3 hours"
         @cookTimeRange = [300, 121]
-      elsif @cookTimeString = "2 hours"
-        @cookTimeRange = [121, 61]
-      elsif @cookTimeString = "1 hour"
-        @cookTimeRange = [60, 31]
-      elsif @cookTimeString = "30 minutes"
-        @cookTimeRange = [30, 16]
-      elsif @cookTimeString = "15 minutes"
-        @cookTimeRange = [15, 11]
-      elsif @cookTimeString = "10 minutes"
-        @cookTimeRange = [10, 6]
-      elsif @cookTimeString = "5 minutes"
+      elsif @cookTimeString == "2 hours"
+        @cookTimeRange = [121, ""]
+      elsif @cookTimeString == "1 hour"
+        @cookTimeRange = [60, ""]
+      elsif @cookTimeString == "30 minutes"
+        @cookTimeRange = [30, ""]
+      elsif @cookTimeString == "15 minutes"
+        @cookTimeRange = [15, ""]
+      elsif @cookTimeString == "10 minutes"
+        @cookTimeRange = [10, ""]
+      elsif @cookTimeString == "5 minutes"
         @cookTimeRange = [5, ""]
       end
       return @cookTimeRange
