@@ -13,8 +13,8 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :title, nil, class: "control-label" %>
-    <%= f.text_field :title, nil, class: "form-control" %>
+    <%= f.label :title, nil, :class => 'control-label' %>
+    <%= f.text_field :title, :class => 'form-control' %>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
@@ -22,6 +22,7 @@
   </div>
   <div class="control-group">
     <%= f.label :ingredients, :class => 'control-label' %>
+    <span> (One ingredient on each line)</span>
     <%= f.text_area :ingredients, :class => 'form-control' %>
   </div>
   <div class="control-group">
@@ -34,6 +35,7 @@
   </div>
   <div class="control-group">
     <%= f.label :cookTime, :class => 'control-label' %>
+    <span>(In minutes, please)</span>
     <%= f.text_field :cookTime, :class => 'form-control' %>
   </div>
   <div class="control-group">

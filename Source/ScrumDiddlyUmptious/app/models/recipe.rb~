@@ -39,7 +39,13 @@ letsrate_rateable "Rating"
 
   def average_rating
     @average_rating_record = RatingCache.find_by_sql("SELECT * FROM Rating_caches WHERE cacheable_id = #{id}")
-    return @average_rating.avg
+    @average_rating = @average_rating_record.first.avg.to_f
+    return @average_rating
+  end
+
+  def numIngredients
+    @number = :ingredients.lines.count
+    return @number
   end
 
 

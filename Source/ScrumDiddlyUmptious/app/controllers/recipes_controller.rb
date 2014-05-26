@@ -140,16 +140,18 @@ class RecipesController < ApplicationController
     end
 
 
-
     #the reason this method exists is because the other searches need to be done before this one goes. That's because of how @allRecipes is assigned first in the search action. So this is for after that to perform searches on what remains
     def advancedSearch
       #double check that @allRecipes needs to be changed for advanced search
-      if params[:costOfIngredients] || params[:numIngredients] || params[:cookTime] || params[:rating] || params[:prepareAhead] || params[:costIngredients]
+      if params[:costOfIngredients] || params[:num] || params[:cookTime] || params[:rating] || params[:prepareAhead] || params[:costIngredients]
         searchResults = Array.new
 
         @allRecipes.each do |recipe|
-          if params[:numIngredients] != ""
-            
+          if params[:num] != ""
+            @number = recipe.numIngredients
+            if @number <= params[:num].to_i
+              searchResults.push(recipe)
+            end
           end
           if params[:cookTime] != ""
             

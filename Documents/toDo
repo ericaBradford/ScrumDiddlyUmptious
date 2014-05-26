@@ -6,17 +6,15 @@ shopping list
 
 
 
+search: current search method gets recipes that match at least 1 of the conditions. I need something that has to match ALL of the ingredients
+
+
 when no results, "create a recipe that matches what you are looking for?"
 
 
-num ingredients	  	need method to calculate num ingredients. Also                 			    	need to turn ingredients into array
-cook time	  	need to do comparison "asked <= cook time".......redo how do cooktime?
+cook time	  	need to do comparison "asked <= cook time".......regex find hr or hour or hrs or hours and take the number(s?) in front of it and times by 60, then add to number(s?) in front of min or mins or minute or minutes
 
 
-
-
-search by ingredients seperate by comma
-ingredients need to be changed to an array or something. This is getting messy and I need them to be seperated out so that I can get number of ingredients for search
 
 
 

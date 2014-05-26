@@ -22,7 +22,7 @@
   <dd><%= image_tag @recipe.picture.url (:medium)%></dd><br />
 
   <dt><strong><%= model_class.human_attribute_name(:ingredients) %>:</strong></dt>
-  <dd><%= simple_format(@recipe.ingredients) %></dd>
+  <dd><%= simple_format(@ingredients) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:directions) %>:</strong></dt>
   <dd><%= simple_format(@recipe.directions) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
@@ -91,5 +91,3 @@
     </div>
   <% end %>
 <% end %>
-
-<%= debug @recipe.category %>

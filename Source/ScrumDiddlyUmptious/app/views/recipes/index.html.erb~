@@ -1,20 +1,3 @@
-<div id="facets">
-  <h3>Rating</h3>
-  <ul>
-    <% for row in @search.facet(:average_rating).rows %>
-      <li>
-        <% if params[:rating].blank? %>
-          <%= link_to row.value, :rating => row.value %> (<%= row.count %>)
-        <% else %>
-          <strong><%= row.value %></strong> (<%= link_to "remove", :rating => nil %>)
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-
-
 <%- model_class = Recipe -%>
 <div class="recipes">
   <% @recipes.each do |recipe| %>
@@ -38,4 +21,6 @@
 <% end %>
 
 
-<%= debug @searchResults %>
+<%= debug params[:num].to_i %>
+<%= debug @number %>
+<%= debug @evenBetter %>

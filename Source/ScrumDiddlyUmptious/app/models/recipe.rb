@@ -43,6 +43,11 @@ letsrate_rateable "Rating"
     return @average_rating
   end
 
+  def numIngredients
+    @number = self.ingredients.lines.count
+    return @number
+  end
+
 
 #constants
   def self.meat
