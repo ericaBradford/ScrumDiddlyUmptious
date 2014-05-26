@@ -13,8 +13,6 @@ when no results, "create a recipe that matches what you are looking for?"
 
 num ingredients	  	need method to calculate num ingredients. Also                 			    	need to turn ingredients into array
 cook time	  	need to do comparison "asked <= cook time".......redo how do cooktime?
-prep in advance   	facet? let's try this one, I guess...
-rating		  	need method to get rating.
 
 
 
@@ -22,11 +20,6 @@ rating		  	need method to get rating.
 search by ingredients seperate by comma
 ingredients need to be changed to an array or something. This is getting messy and I need them to be seperated out so that I can get number of ingredients for search
 
-
-go into rates table, query to find rateable_id, use that to find recipe, get avg from rates table using rabeable_id to get the average
-
-
-Maybe I should just use facets for rating and prep in advance.....
 
 
 Multiple shopping lists (today's, tomorrow's, the week's)

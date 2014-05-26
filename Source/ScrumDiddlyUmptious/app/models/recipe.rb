@@ -31,13 +31,16 @@ letsrate_rateable "Rating"
   searchable do
     text :title, :boost => 5
     text :ingredients, :boost => 3
-    text :directions, :description, :category, :average_rating
+    text :directions, :description, :category
+    string :average_rating
     double :costOfIngredients
     boolean :canPrepareAhead
   end
 
   def average_rating
-    Rates.find_by_sql("SELECT stars FROM Rates WHERE rateable_id = ?", :id).first!
+    @average_rating_record = RatingCache.find_by_sql("SELECT * FROM Rating_caches WHERE cacheable_id = #{id}")
+    @average_rating = @average_rating_record.first.avg.to_f
+    return @average_rating
   end
 
 

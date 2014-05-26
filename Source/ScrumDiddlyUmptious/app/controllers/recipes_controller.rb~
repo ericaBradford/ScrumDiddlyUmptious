@@ -131,9 +131,6 @@ class RecipesController < ApplicationController
         fulltext params[:ingredients] do
           fields(:ingredients)
         end
-        fulltext params[:rating] do
-          fields(:average_rating)
-        end
         #order_by :rating, :desc
       end
       @allRecipes = search.results
@@ -158,7 +155,8 @@ class RecipesController < ApplicationController
             
           end
           if params[:rating] != ""
-            if recipe.average_rating <= params[:rating].to_f
+            @rating = recipe.average_rating
+            if @rating <= params[:rating].to_f
               searchResults.push(recipe)
             end
           end
@@ -173,10 +171,8 @@ class RecipesController < ApplicationController
                 searchResults.push(recipe)
               end
           end
-         @average = recipe.average_rating
         end
       end
-      @searchResults = searchResults
       if !searchResults.empty?
         @allRecipes.clear
         @allRecipes = searchResults
