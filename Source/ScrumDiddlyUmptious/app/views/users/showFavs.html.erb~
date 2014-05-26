@@ -8,18 +8,18 @@
   <div class="recipes">
     <% @recipes.each do |recipe| %>
       <div class="recipe">
-        <h4><%= link_to recipe.title, recipe_path(recipe) %></h4>
-        <%= image_tag recipe.picture.url(:thumb) %>
-        <%= rating_for recipe, "Rating", :star => 5 %>
+        <div class="recipeContents">
+          <h4><%= link_to recipe.title, recipe_path(recipe) %></h4>
+          <%= image_tag recipe.picture.url(:thumb) %>
+          <%= rating_for recipe, "Rating", :star => 5 %>
 
-        <%= link_to make_favorite_path(:recipe_id => recipe.id, :type => "unfavorite"), method: :put, :class => 'btn btn-danger' do %>
-          <i class="glyphicon glyphicon-star-empty">Unfavorite</i>
-        <% end %>
-
+          <%= link_to make_favorite_path(:recipe_id => recipe.id, :type => "unfavorite"), method: :put, :class => 'btn btn-danger' do %>
+            <i class="glyphicon glyphicon-star-empty">Unfavorite</i>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
+  <div class="clearfix"/>
 <% end %>
 <div class="clearfix"/>
-
-<%= will_paginate @recipe, :container => false %>

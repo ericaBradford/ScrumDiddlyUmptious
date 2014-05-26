@@ -1,15 +1,14 @@
 THINGS TO DO
 advanced search
-redo ingredients
-profile pic
 shopping list
+current menu
+profile pic
 
 
 
 search: current search method gets recipes that match at least 1 of the conditions. I need something that has to match ALL of the ingredients
 
 
-when no results, "create a recipe that matches what you are looking for?"
 
 
 cook time	  	need to do comparison "asked <= cook time".......regex find hr or hour or hrs or hours and take the number(s?) in front of it and times by 60, then add to number(s?) in front of min or mins or minute or minutes

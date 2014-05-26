@@ -112,7 +112,7 @@ class RecipesController < ApplicationController
    end
 
    redirect_to root_path(:blacklistSearch => @blacklistSearch, 
-   :classification => params[:classification], :cookware => params[:cookware], :category => params[:category], :ingredients => params[:ingredients], :costOfIngredients => params[:costOfIngredients], :num => params[:numIngredients], :time => params[:cookTime], :rating => params[:rating], :prepareAhead => params[:prepareAhead], :cost => params[:costIngredients])
+   :classification => params[:classification], :cookware => params[:cookware], :category => params[:category], :ingredients => params[:ingredients], :costOfIngredients => params[:costOfIngredients], :num => params[:numIngredients], :cookTime => params[:cookTime], :rating => params[:rating], :prepareAhead => params[:prepareAhead], :cost => params[:costIngredients])
   end
 
 
@@ -154,7 +154,25 @@ class RecipesController < ApplicationController
             end
           end
           if params[:cookTime] != ""
-            
+            @cookTimeString = params[:cookTime]
+            @cookTimeRange = findCookTimeMins
+            @cookTimeMinutes = recipe.cookTimeInMinutes
+            if @cookTimeRange[0] != "" && @cookTimeRange[1] != ""
+              #if it isn't over 10 hours of under 5
+              if @cookTimeMinutes <= @cookTimeRange[0] && @cookTimeMinutes >= @cookTimeRange[1]
+                searchResults.push(recipe)
+              end
+            elsif @cookTimeRange[0] == ""
+              #10+ hours
+              if @cookTimeMinutes >= @cookTimeRange[1]
+                searchResults.push(recipe)
+              end
+            elsif @cookTimeRange[1] == ""
+              #5 min and under
+                if @cookTimeMinutes <= @cookTimeRange[0]
+                  searchResults.push(recipe)
+                end
+            end
           end
           if params[:rating] != ""
             @rating = recipe.average_rating
@@ -175,11 +193,36 @@ class RecipesController < ApplicationController
           end
         end
       end
-      if !searchResults.empty?
+      if searchResults.empty?
+        @allRecipes.clear
+      else
         @allRecipes.clear
         @allRecipes = searchResults
       end
       @moreSearchNeeded = false
+    end
+
+    def findCookTimeMins
+      if @cookTimeString = "10+ hours"
+        @cookTimeRange = ["", 600]
+      elsif @cookTimeString = "10-5 hours"
+        @cookTimeRange = [600, 301]
+      elsif @cookTimeString = "5-3 hours"
+        @cookTimeRange = [300, 121]
+      elsif @cookTimeString = "2 hours"
+        @cookTimeRange = [121, 61]
+      elsif @cookTimeString = "1 hour"
+        @cookTimeRange = [60, 31]
+      elsif @cookTimeString = "30 minutes"
+        @cookTimeRange = [30, 16]
+      elsif @cookTimeString = "15 minutes"
+        @cookTimeRange = [15, 11]
+      elsif @cookTimeString = "10 minutes"
+        @cookTimeRange = [10, 6]
+      elsif @cookTimeString = "5 minutes"
+        @cookTimeRange = [5, ""]
+      end
+      return @cookTimeRange
     end
 
     def check_preferences

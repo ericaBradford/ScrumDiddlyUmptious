@@ -48,6 +48,25 @@ letsrate_rateable "Rating"
     return @number
   end
 
+  def cookTimeInMinutes
+    @cookTimeArray = self.cookTime.split(" ")
+    if @cookTimeArray.count == 4
+      if @cookTimeArray[1] == "hour" || @cookTimeArray[1] == "hr" || @cookTimeArray[1] == "hours" || @cookTimeArray[1] == "hrs"
+        @cookTimeMins = (@cookTimeArray[0] * 60) + @cookTimeArray[2]
+      elsif @cookTimeArray[3] == "hour" || @cookTimeArray[3] == "hr" || @cookTimeArray[3] == "hours" || @cookTimeArray[3] == "hrs"
+        @cookTimeMins = (@cookTimeArray[2] * 60) + @cookTimeArray[0]
+      end
+    elsif @cookTimeArray.count == 2
+      if @cookTimeArray[1] == "minutes" || @cookTimeArray[1] == "min" || @cookTimeArray[1] == "minutes" || @cookTimeArray[1] == "mins"
+        @cokTimeMins = @cookTimeArray[0]
+      end
+    else
+      @cookTimeMins = "Uh oh!"
+    end
+    #@cookTimeMins = 
+    return @cookTimeMins
+  end
+
 
 #constants
   def self.meat

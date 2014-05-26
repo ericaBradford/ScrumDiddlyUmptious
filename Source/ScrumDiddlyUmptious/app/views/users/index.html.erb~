@@ -18,7 +18,7 @@
         <td>
           <% if current_user.role == 'admin' %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                edit_user_path(user), :class => 'btn btn-mini', data: {no_turbolink: true}  %>
+                edit_user_path(user), :class => 'btn btn-default', data: {no_turbolink: true}  %>
           <% end %>
         </td>
       </tr>
@@ -26,4 +26,4 @@
   </tbody>
 </table>
 
-<%= will_paginate @user, :container => false %>
+<%= will_paginate @user, :container => false, :class => 'btn btn-default' %>

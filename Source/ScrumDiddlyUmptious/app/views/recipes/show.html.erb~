@@ -1,7 +1,6 @@
+
+<h1> <%= @recipe.title %> </h1>
 <%- model_class = Recipe -%>
-<div class="page-header">
-  <h1> <%= @recipe.title %> </h1>
-</div>
 
 <dl class="dl-horizontal">
 
@@ -22,7 +21,7 @@
   <dd><%= image_tag @recipe.picture.url (:medium)%></dd><br />
 
   <dt><strong><%= model_class.human_attribute_name(:ingredients) %>:</strong></dt>
-  <dd><%= simple_format(@ingredients) %></dd>
+  <dd><%= simple_format(@recipe.ingredients) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:directions) %>:</strong></dt>
   <dd><%= simple_format(@recipe.directions) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
