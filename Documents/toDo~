@@ -1,8 +1,8 @@
 THINGS TO DO
-advanced search
 shopping list
 current menu
 profile pic
+icons on buttons?
 
 
 
@@ -10,21 +10,13 @@ search: current search method gets recipes that match at least 1 of the conditio
 
 
 
-Multiple shopping lists (today's, tomorrow's, the week's)
 
-On Recipe show, "add to Menu" btn
+
+On the Current Menu page, a user can add Menu titles(defaults: today's, tomorrow's, the week's, experimental) and delete them.
+On Recipe show there will be a drop down listing all the menus a user currently has listed, and a button next to it that says "add to menu".
+
 Menu(previously bookmarks) automatically adds ingredients to list
 Way for people to specify how much of that ingredient they already havese
 Auto-adjust the amount needed for the shopping list based on what's above
 
-"Recipes to try" menu (experimentation menu?)
-icons on every button?
-outline on apple
-
-think through how current menu and shopping list connect together
-
 print shopping list
-
-
-
-unvisited links are still appearing white...

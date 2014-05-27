@@ -142,61 +142,80 @@ class RecipesController < ApplicationController
 
     #the reason this method exists is because the other searches need to be done before this one goes. That's because of how @allRecipes is assigned first in the search action. So this is for after that to perform searches on what remains
     def advancedSearch
-      #double check that @allRecipes needs to be changed for advanced search
-      if params[:costOfIngredients] || params[:num] || params[:cookTime] || params[:rating] || params[:prepareAhead] || params[:costIngredients]
+
         searchResults = Array.new
         @allRecipes.each do |recipe|
+        correctNumIngredients = false
+        correctCookTime = false
+        correctRating = false
+        correctPrepareAhead = false
+        correctCost = false
 
-          if params[:num] != ""
-            @number = recipe.numIngredients
-            if @number <= params[:num].to_i
-              searchResults.push(recipe)
-            end
+        if params[:num] != ""
+          @number = recipe.numIngredients
+          if @number <= params[:num].to_i
+            correctNumIngredients = true
           end
+        else
+          correctNumIngredients = true
+        end
 
-          if params[:cookTime] != ""
-            @cookTimeString = params[:cookTime]
-            @cookTimeRange = findSearchedCookTimeMins
-            @individualRecipeCookTimeMinutes = recipe.cookTimeInMinutes
-            if @cookTimeRange[0] != "" && @cookTimeRange[1] != ""
-              #if it isn't over 10 hours of under 5
-              if @individualRecipeCookTimeMinutes <= @cookTimeRange[0] || @individualRecipeCookTimeMinutes >= @cookTimeRange[1]
-                searchResults.push(recipe)
-              end
-            elsif @individualRecipeCookTimeRange[0] == ""
-              #10+ hours
-              if @individualRecipeCookTimeMinutes >= @cookTimeRange[1]
-                searchResults.push(recipe)
-              end
-            elsif @cookTimeRange[1] == ""
-              #5 min and under
-                if @individualRecipeCookTimeMinutes <= @cookTimeRange[0]
-                  searchResults.push(recipe)
-                end
+        if params[:cookTime] != ""
+          @cookTimeString = params[:cookTime]
+          @cookTimeRange = findSearchedCookTimeMins
+          @individualRecipeCookTimeMinutes = recipe.cookTimeInMinutes
+          if @cookTimeRange[0] != "" && @cookTimeRange[1] != ""
+            #if it isn't over 10 hours of under 5
+            if @individualRecipeCookTimeMinutes <= @cookTimeRange[0] || @individualRecipeCookTimeMinutes >= @cookTimeRange[1]
+              correctCookTime = true
             end
-          end
-
-          if params[:rating] != ""
-            @rating = recipe.average_rating
-            if @rating >= params[:rating].to_f
-              searchResults.push(recipe)
+          elsif @cookTimeRange[0] == ""
+            #10+ hours
+            if @individualRecipeCookTimeMinutes >= @cookTimeRange[1]
+              correctCookTime = true
             end
-          end
-
-          if !params[:prepareAhead].blank?
-            @prepare = params[:prepareAhead]
-            if recipe.canPrepareAhead == "1"
-              searchResults.push(recipe)
-            end
-          end
-
-          if params[:cost] != ""
-              if recipe.costOfIngredients <= params[:cost].to_f
-                searchResults.push(recipe)
+          elsif @cookTimeRange[1] == ""
+            #5 min and under
+              if @individualRecipeCookTimeMinutes <= @cookTimeRange[0]
+                correctCookTime = true
               end
           end
+        else
+          correctCookTime = true
+        end
+
+        if params[:rating] != ""
+          @rating = recipe.average_rating
+          if @rating >= params[:rating].to_f
+            correctRating = true
+          end
+        else
+          correctRating = true
+        end
+
+        if !params[:prepareAhead].blank?
+          @prepare = params[:prepareAhead]
+          if recipe.canPrepareAhead == "1"
+            correctPrepareAhead = true
+          end
+        else
+          correctPrepareAhead = true
+        end
+
+        if params[:cost] != ""
+            if recipe.costOfIngredients <= params[:cost].to_f
+              correctCost = true
+            end
+        else
+          correctCost = true
+        end
+      #end of do for each recipe. This is where the if statement to check if all 
+      #conditions have been met should go.
+        if correctNumIngredients && correctCookTime && correctRating && correctPrepareAhead && correctCost
+          searchResults.push(recipe)
         end
       end
+
       if searchResults.empty?
         @allRecipes.clear
       else
