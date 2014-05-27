@@ -29,7 +29,3 @@
               :class => 'btn btn-default', data: {no_turbolink: true}  %>
   <% end %>
 <% end %>
-
-
-
-<%= debug @cookTimeRange[1] %>

@@ -10,13 +10,6 @@ search: current search method gets recipes that match at least 1 of the conditio
 
 
 
-
-cook time	  	need to do comparison "asked <= cook time".......regex find hr or hour or hrs or hours and take the number(s?) in front of it and times by 60, then add to number(s?) in front of min or mins or minute or minutes
-
-
-
-
-
 Multiple shopping lists (today's, tomorrow's, the week's)
 
 On Recipe show, "add to Menu" btn
@@ -29,3 +22,9 @@ icons on every button?
 outline on apple
 
 think through how current menu and shopping list connect together
+
+print shopping list
+
+
+
+unvisited links are still appearing white...

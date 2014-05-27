@@ -17,7 +17,10 @@ pre {
 }
 
 a:link {
+  color: #fff;
   &:hover {
+    color: #fff;
+    background-color: #000;
   }
 }
 
