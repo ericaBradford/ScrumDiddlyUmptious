@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
 
   has_many :favorite_recipes
   has_many :recipes, through: :favorite_recipes
+
+  has_attached_file :profilePic, styles => { :medium => "300x300>", :thumb => "75x75>"}
 end

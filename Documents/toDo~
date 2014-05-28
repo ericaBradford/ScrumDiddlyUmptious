@@ -3,10 +3,16 @@ shopping list
 current menu
 profile pic
 icons on buttons?
+login drop down on hover link color
+link to just go to your profile and have edit button on there. Same with Preferences
 
 
 
-search: current search method gets recipes that match at least 1 of the conditions. I need something that has to match ALL of the ingredients
+FATAL!!! update user deleted user profile
+FATAL!!! deleted users cannot destroy favs?
+Question: Should deleted user delete their rating as well? Might clutter db
+....just lost a ton of recipes, because root user was destroyed
+ERROR!!! when a mod loses their account, any recipe they touched is destroyed as well
 
 
 

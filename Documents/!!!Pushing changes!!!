@@ -1,0 +1,25 @@
+*git add .
+*git commit -m 'message'
+*git push origin nameOfBranchHere
+-------------------------------------------------
+
+time to switch branches?
+First commit to your branch. Then...
+*git checkout master
+*git merge branchName
+*git push origin master
+*git checkout -b 'newBranch'
+*git push origin 'newBranch'
+
+----------------------------------------------
+
+checkout just changes what is in your local copy. You have to push the changes as well. Merging apparantly also only works on your local copy. So push that to.
+
+
+----------------------------------------------------
+In Windows only change is:
+*git add . -A		(the A is necessary!)
+*git commit -m "comment here"		(must be double quotes)
+
+--------------------------------------------------
+git pull origin search

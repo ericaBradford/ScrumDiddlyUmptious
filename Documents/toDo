@@ -3,6 +3,30 @@ shopping list
 current menu
 profile pic
 icons on buttons?
+login drop down on hover link color
+link to just go to your profile and have edit button on there. Same with Preferences
+
+
+
+FATAL!!! update user deleted user profile
+FATAL!!! deleted users cannot destroy favs? The favs where still in the db
+Question: Should deleted user delete their rating as well? Might clutter db
+....just lost a ton of recipes, because root user was destroyed
+FATAL!!! when a mod loses their account, any recipe they touched is destroyed as well
+delete user's comments when they delete account
+
+when user removes account, delete: favorites(broken), their rating, comments, preferences(broken?)
+
+
+
+
+
+preferences
+rates
+rating_caches
+recipes
+
+current users: 3 and 18
 
 
 
