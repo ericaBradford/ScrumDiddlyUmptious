@@ -4,11 +4,6 @@ current menu
 print shopping list
 
 
-change to password not required to change stuff, yet current password isn't required
-devise registration create button padding
-update profile logs user out
-
-
 
 
 
@@ -35,6 +30,10 @@ Auto-adjust the amount needed for the shopping list based on what's above
 
 
 
+
+
+devise registration create button padding
+...or all profile pic stuff? On login isn't saving. Editing logs the user out and requires the password.
 
 
 FATAL!!! when a mod loses their account, any recipe they touched is destroyed as well
