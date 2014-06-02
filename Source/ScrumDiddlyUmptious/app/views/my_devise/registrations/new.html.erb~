@@ -30,6 +30,13 @@
       <%= f.password_field :password_confirmation, :class => 'form-control', autocomplete: "off" %>
     </div>
 
+  <div class="controls">
+    <%= f.label :avatar %>
+    <div class="controls">
+      <%= f.file_field :avatar %>
+    </div>
+  </div>
+
 <%= f.hidden_field :role, :value => "member" %>
 
   <div class="form-actions">

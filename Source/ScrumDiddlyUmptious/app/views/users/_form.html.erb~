@@ -47,10 +47,14 @@
     </div>
   </div>
 
+=begin
   <div class="controls">
     <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
+    <div class="controls">
+      <%= f.file_field :avatar %>
+    </div>
   </div>
+=end 
 
   <% if current_user.role == "admin" %>
     <div class="control-group">

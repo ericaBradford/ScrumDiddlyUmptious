@@ -1,6 +1,11 @@
 <%- model_class = User -%>
 <div class="page-header">
-  <h1><%= image_tag @user.avatar.url(:thumb) %> <%= @user.username %></h1>
+  <h1>
+    <%= if @user.avatar.url != "/images/original/missing.png" %>
+      <%= image_tag @user.avatar.url(:thumb) %> 
+    <% end %>
+    <%= @user.username %>
+  </h1>
 </div>
 
 <dl class="dl-horizontal">
@@ -18,7 +23,7 @@
   <% end %>
 
 
-  <% if current_user.role == "admin" %>
+  <% if @user.role == "admin" %>
     <dt>Role:</dt>
     <dd><%= @user.role %></dd>
     <%= link_to "Edit User", edit_user_path(@user), :class => 'btn btn-default', data: {no_turbolink: true}  %>
@@ -28,3 +33,5 @@
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_user_path,
               :class => 'btn btn-primary', data: {no_turbolink: true}  %>
+
+<%= debug @user.avatar.url %>

@@ -47,13 +47,6 @@
     </div>
   </div>
 
-  <div class="controls">
-    <%= f.label :avatar %>
-    <div class="controls">
-      <%= f.file_field :avatar %>
-    </div>
-  </div>
-
   <% if current_user.role == "admin" %>
     <div class="control-group">
       <%= f.label :role, :class => 'control-label' %>
