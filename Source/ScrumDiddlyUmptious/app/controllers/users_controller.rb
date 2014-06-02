@@ -1,7 +1,6 @@
 #this is kind of like the global user controller. Admin functions should go here.
 class UsersController < ApplicationController
   add_breadcrumb "Home", :recipes_path
-  add_breadcrumb "Users", :users_path
 
   def index
     @users = User.all.paginate(:page => params[:page], :per_page => 10)
@@ -17,7 +16,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    
     if @user.update(user_params)
       redirect_to @user, notice: "User successfully updated."
     else

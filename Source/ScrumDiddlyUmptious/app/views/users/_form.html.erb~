@@ -48,7 +48,8 @@
   </div>
 
   <div class="controls">
-    <%= form.file_field :avatar %>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
   </div>
 
   <% if current_user.role == "admin" %>
