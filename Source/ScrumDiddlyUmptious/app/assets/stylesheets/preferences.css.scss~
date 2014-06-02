@@ -3,7 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.preferences_form{
-  margin-left: auto;
-  margin-right: auto;
+.preferences{
+  margin-left: 25px;
+}
+
+.prefField{
+  display: inline;
+  padding: 15px;
+}
+
+.row{
+  margin-top: 5px;
 }

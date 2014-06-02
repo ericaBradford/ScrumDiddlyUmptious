@@ -15,6 +15,7 @@ class Ability
       can :crud, Recipe, :id_Users => user.id
       #users can update their own profile
       can :crud, User, :id => user.id
+      can :cancel, :all
     elsif user.role == "admin"
       can :manage, :all
     else

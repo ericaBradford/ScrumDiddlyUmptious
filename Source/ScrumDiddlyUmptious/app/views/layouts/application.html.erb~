@@ -10,26 +10,26 @@
 <body>
 
 
-  <%= image_tag("logo2.png", alt: "ScrumDiddlyUmptious", size: "500x80", class: "logo") %>
+  <%= link_to image_tag("logo2.png", alt: "ScrumDiddlyUmptious", size: "500x80", class: "logo"), recipes_path %>
 
 <ul class="header">
 
   <% if user_signed_in? %>
     <li class="dropdown headerMenu">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        Logged in as <strong><%= current_user.username %></strong><span class="caret"></span>
+        Logged in as <%= current_user.username %><span class="caret"></span>
       </a>
 
       <ul class="dropdown-menu">
-        <li><%= link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link' %></li>
-        <li><%= link_to 'Edit Preferences', edit_user_preference_path(current_user.id, :id), :class => 'navbar-link' %></li>
+        <li><%= link_to 'Profile', user_path(current_user.id), :class => 'navbar-link' %></li>
+        <li><%= link_to 'Preferences', user_preference_path(current_user.id, :id), :class => 'navbar-link' %></li>
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link', data: {no_turbolink: true}  %></li>
       </ul>
     </li>
   <% else %>
     <li class="dropdown headerMenu">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        Login <span class="caret"></span>
+        <h3>Login <span class="caret"></span></h3>
       </a>
       <ul class="dropdown-menu">
         <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link', data: {no_turbolink: true}   %></li>
@@ -54,12 +54,14 @@
 
         <li>
           <%= link_to "Advanced Search", advancedSearch_path, :class => 'advancedSearch' %>
-        </li>
+        </li><br />
 
         <li class="control-group">
           <%= form_tag recipes_path, :method => :get do %>
             <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Search", :name => nil, :class => 'btn btn-primary btn-sm' %>
+            <%= button_tag(type: 'submit', :class => 'btn btn-primary btn-sm') do %>
+              <span class="glyphicon glyphicon-search"> Search</i>
+            <% end %>
           <% end %>
         </li>
 

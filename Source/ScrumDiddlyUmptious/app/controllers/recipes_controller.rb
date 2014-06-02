@@ -28,7 +28,12 @@ class RecipesController < ApplicationController
 
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    if params[:costOfIngredientsBefore][0] != "$"
+      params[:costOfIngredients] = params[:costOfIngredientsBefore].slice(0)
+    else
+      params[:costOfIngredients] = params[:costOfIngredientsBefore]
+    end
+    @recipe = Recipe.new(fixed_recipe_params)
 
     if @recipe.save
       redirect_to @recipe, notice: "Recipe successfully created!"
@@ -67,6 +72,11 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
 
+    if params[:costOfIngredientsBefore][0] != "$"
+      params[:costOfIngredients] = params[:costOfIngredientsBefore].slice(0)
+    else
+      params[:costOfIngredients] = params[:costOfIngredientsBefore]
+    end
     if @recipe.update(recipe_edit_params)
       redirect_to @recipe, notice: "Recipe successfully updated."
     else
@@ -185,7 +195,7 @@ class RecipesController < ApplicationController
         end
 
         if params[:rating] != ""
-          @rating = recipe.average_rating
+          @rating = RatingCache.find_by_sql("SELECT * FROM Rating_caches WHERE cacheable_id = #{recipe.id}").first.avg.to_f
           if @rating >= params[:rating].to_f
             correctRating = true
           end
@@ -372,7 +382,11 @@ class RecipesController < ApplicationController
 
 
     def recipe_params
-      params.require(:recipe).permit(:title, :directions, :description, :cookTime, :costOfIngredients, :category, :canPrepareAhead, :id_Users, :ingredients, :picture)
+      params.require(:recipe).permit(:title, :directions, :description, :cookTime, :costOfIngredientsBefore, :category, :canPrepareAhead, :id_Users, :ingredients, :picture)
+    end
+
+    def fixed_recipe_params
+params.require(:recipe).permit(:title, :directions, :description, :cookTime, :costOfIngredients, :category, :canPrepareAhead, :id_Users, :ingredients, :picture)
     end
 
     def recipe_edit_params

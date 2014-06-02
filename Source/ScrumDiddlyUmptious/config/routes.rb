@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
   post '/rate' => 'rater#create', :as => 'rate'
+
+  get '/users/edit/:id', to: 'users#edit', :as => :edit_user
+  put '/users/update/:id', to: 'users#update', :as => :update_user
+
   devise_for :users,
     :controllers => {:registrations => "my_devise/registrations"}
+
+
+  delete 'users/delete/:id', to: 'my_devise/registrations#destroy', :as => 'cancel_account'
 
   get '/recipes/search', to: 'recipes#displayAdvancedSearchPage', :as => "advancedSearch"
   get '/recipes/search/results', to: 'recipes#prepareSearch', :as => "results"
@@ -17,7 +24,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :preferences
   end
-
 
   put '/recipe/favorite/:recipe_id/:type', to: "recipes#favorite", :as => "make_favorite"
 

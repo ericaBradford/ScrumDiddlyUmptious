@@ -1,6 +1,5 @@
-
-<h1> <%= @recipe.title %> </h1>
 <%- model_class = Recipe -%>
+  <h1> <%= @recipe.title %> </h1>
 
 <dl class="dl-horizontal">
 
@@ -8,11 +7,11 @@
     <dd>
       <% if @isFav == "false" %>
         <%= link_to make_favorite_path(:recipe_id => @recipe.id, :type => "favorite"), method: :put, :class => 'btn btn-primary' do %>
-          <i class="glyphicon glyphicon-star">Favorite</i>
+          <i class="glyphicon glyphicon-star">  Favorite</i>
         <% end %>
       <% else %>
         <%= link_to make_favorite_path(:recipe_id => @recipe.id, :type => "unfavorite"), method: :put, :class => 'btn btn-danger' do %>
-          <i class="glyphicon glyphicon-star-empty">Unfavorite</i>
+          <i class="glyphicon glyphicon-star-empty">  Unfavorite</i>
         <% end %>
       <% end %>
     </dd>

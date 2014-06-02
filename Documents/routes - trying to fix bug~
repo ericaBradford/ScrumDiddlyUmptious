@@ -1,0 +1,7 @@
+                 Prefix Verb   URI Pattern                                     Controller#Action
+
+  edit_user_registration GET    /users/edit(.:format)                           my_devise/registrations#edit
+                         PATCH  /users(.:format)                                my_devise/registrations#update
+                         PUT    /users(.:format)                                my_devise/registrations#update
+                         DELETE /users(.:format)                                my_devise/registrations#destroy
+

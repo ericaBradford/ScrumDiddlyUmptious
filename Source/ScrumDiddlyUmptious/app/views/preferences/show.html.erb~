@@ -1,110 +1,126 @@
 <p id="notice"></p>
 
-<h3>Food Preferences</h3>
+<h1>Preferences</h1>
 
-<p>
-  <strong>Blacklisted:</strong>
-  <%= @preference.blacklistFoods %>
-</p>
+<div class="preferences">
+  <h2>Food Preferences</h2>
 
-<p>
-  <strong>Pescatarian:</strong>
-  <%= @preference.isPescatarian %>
-</p>
+  <div class="row">
+    <div class="prefField">
+      <strong>Blacklisted:</strong>
+      <% if @preference.blacklistFoods %>
+        <span> No foods blacklisted </span>
+      <% else %>
+        <%= @preference.blacklistFoods %>
+      <% end %>
+    </div>
+  </div>
 
-<p>
-  <strong>Vegetarian:</strong>
-  <%= @preference.isVegetarian %>
-</p>
+  <div class="row">
+    <div class="prefField">
+      <strong>Pescatarian:</strong>
+      <%= @preference.isPescatarian %>
+    </div>
 
-<p>
-  <strong>Vegan:</strong>
-  <%= @preference.isVegan %>
-</p>
+    <div class="prefField">
+      <strong>Vegetarian:</strong>
+      <%= @preference.isVegetarian %>
+    </div>
 
-<h3>Health</h3>
+    <div class="prefField">
+      <strong>Vegan:</strong>
+      <%= @preference.isVegan %>
+    </div>
+  </div>
 
-<p>
-  <strong>Diabetic friendly:</strong>
-  <%= @preference.isDiabetic %>
-</p>
+  <h2>Religious-based Preferences</h2>
 
-<p>
-  <strong>Alcohol-free:</strong>
-  <%= @preference.noAlcohol %>
-</p>
+  <div class="row">
+    <div class="prefField">
+      <strong>Asian Vegetarian:</strong>
+      <%= @preference.isAsianVegetarian %>
+    </div>
 
-<p>
-  <strong>Gluten-free:</strong>
-  <%= @preference.isAllergicGluten %>
-</p>
+    <div class="prefField">
+      <strong>Hindu:</strong>
+      <%= @preference.isHindu %>
+    </div>
 
-<p>
-  <strong>Peanut-free:</strong>
-  <%= @preference.isAllergicPeanuts %>
-</p>
+    <div class="prefField">
+      <strong>Muslim:</strong>
+      <%= @preference.isMuslim %>
+    </div>
 
-<p>
+    <div class="prefField">
+      <strong>Jain:</strong>
+      <%= @preference.isJain %>
+    </div>
+
+    <div class="prefField">
+      <strong>Kosher:</strong>
+      <%= @preference.isKosher %>
+    </div>
+  </div>
+
+  <h2>Health</h2>
+
+  <div class="row">
+    <div class="prefField">
+      <strong>Diabetic friendly:</strong>
+      <%= @preference.isDiabetic %>
+    </div>
+
+    <div class="prefField">
+      <strong>Alcohol-free:</strong>
+      <%= @preference.noAlcohol %>
+    </div>
+
+    <div class="prefField">
+      <strong>Gluten-free:</strong>
+      <%= @preference.isAllergicGluten %>
+    </div>
+
+    <div class="prefField">
+      <strong>Peanut-free:</strong>
+      <%= @preference.isAllergicPeanuts %>
+    </div>
+
+<div class="prefField">
   <strong>Treenut-free:</strong>
   <%= @preference.isAllergicTreenuts %>
-</p>
+</div>
 
-<p>
+<div class="prefField">
   <strong>Dairy-free:</strong>
   <%= @preference.isAllergicDairy %>
-</p>
+</div>
 
-<p>
+<div class="prefField">
   <strong>Egg-free:</strong>
   <%= @preference.isAllergicEggs %>
-</p>
+</div>
 
-<p>
+<div class="prefField">
   <strong>Wheat-free:</strong>
   <%= @preference.isAllergicWheat %>
-</p>
+</div>
 
-<p>
+<div class="prefField">
   <strong>Soy-free:</strong>
   <%= @preference.isAllergicSoy %>
-</p>
+</div>
 
-<p>
+<div class="prefField">
   <strong>Fish-free:</strong>
   <%= @preference.isAllergicFish %>
-</p>
+</div>
 
-<p>
+<div class="prefField">
   <strong>Shellfish-free:</strong>
   <%= @preference.isAllergicShellfish %>
-</p>
-
-<h3>Religious-based Preferences</h3>
-
-<p>
-  <strong>Asian Vegetarian:</strong>
-  <%= @preference.isAsianVegetarian %>
-</p>
-
-<p>
-  <strong>Hindu:</strong>
-  <%= @preference.isHindu %>
-</p>
-
-<p>
-  <strong>Muslim:</strong>
-  <%= @preference.isMuslim %>
-</p>
-
-<p>
-  <strong>Jain:</strong>
-  <%= @preference.isJain %>
-</p>
-
-<p>
-  <strong>Kosher:</strong>
-  <%= @preference.isKosher %>
-</p>
+</div>
+</div>
+</div>
 
 
-<%= link_to 'Edit', edit_user_preference_path(current_user.id, :id), data: {no_turbolink: true}  %>
+<%= link_to 'Edit', edit_user_preference_path(current_user.id, :id), data: {no_turbolink: true}, :class => 'btn btn-primary'  %>

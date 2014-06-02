@@ -36,17 +36,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def editRole
-    @admin = current_user
-      if @admin.role == "admin"
-      end
-  end
-
-  def promote
-    @user = User.find_by_email(:email)
-    @admin = current_user.id
-  end
-
   def showFavs
     @user = current_user
     @recipeFavorites = FavoriteRecipe.where("id_Users = ?", @user.id)
@@ -61,6 +50,6 @@ class UsersController < ApplicationController
  private
 
   def user_params
-    params.require(:user).permit(:username, :email, :role)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :avatar, :role)
   end
 end

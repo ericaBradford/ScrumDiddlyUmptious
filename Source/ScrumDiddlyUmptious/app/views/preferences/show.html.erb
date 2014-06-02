@@ -1,110 +1,126 @@
 <p id="notice"></p>
 
-<h3>Food Preferences</h3>
+<h1>Preferences</h1>
 
-<p>
-  <strong>Blacklisted:</strong>
-  <%= @preference.blacklistFoods %>
-</p>
+<div class="preferences">
+  <h2>Food Preferences</h2>
 
-<p>
-  <strong>Pescatarian:</strong>
-  <%= @preference.isPescatarian %>
-</p>
+  <div class="row">
+    <div class="prefField">
+      <strong>Blacklisted:</strong>
+      <% if @preference.blacklistFoods %>
+        <span> No foods blacklisted </span>
+      <% else %>
+        <%= @preference.blacklistFoods %>
+      <% end %>
+    </div>
+  </div>
 
-<p>
-  <strong>Vegetarian:</strong>
-  <%= @preference.isVegetarian %>
-</p>
+  <div class="row">
+    <div class="prefField">
+      <strong>Pescatarian:</strong>
+      <%= @preference.isPescatarian %>
+    </div>
 
-<p>
-  <strong>Vegan:</strong>
-  <%= @preference.isVegan %>
-</p>
+    <div class="prefField">
+      <strong>Vegetarian:</strong>
+      <%= @preference.isVegetarian %>
+    </div>
 
-<h3>Health</h3>
+    <div class="prefField">
+      <strong>Vegan:</strong>
+      <%= @preference.isVegan %>
+    </div>
+  </div>
 
-<p>
-  <strong>Diabetic friendly:</strong>
-  <%= @preference.isDiabetic %>
-</p>
+  <h2>Religious-based Preferences</h2>
 
-<p>
-  <strong>Alcohol-free:</strong>
-  <%= @preference.noAlcohol %>
-</p>
+  <div class="row">
+    <div class="prefField">
+      <strong>Asian Vegetarian:</strong>
+      <%= @preference.isAsianVegetarian %>
+    </div>
 
-<p>
-  <strong>Gluten-free:</strong>
-  <%= @preference.isAllergicGluten %>
-</p>
+    <div class="prefField">
+      <strong>Hindu:</strong>
+      <%= @preference.isHindu %>
+    </div>
 
-<p>
-  <strong>Peanut-free:</strong>
-  <%= @preference.isAllergicPeanuts %>
-</p>
+    <div class="prefField">
+      <strong>Muslim:</strong>
+      <%= @preference.isMuslim %>
+    </div>
 
-<p>
-  <strong>Treenut-free:</strong>
-  <%= @preference.isAllergicTreenuts %>
-</p>
+    <div class="prefField">
+      <strong>Jain:</strong>
+      <%= @preference.isJain %>
+    </div>
 
-<p>
-  <strong>Dairy-free:</strong>
-  <%= @preference.isAllergicDairy %>
-</p>
+    <div class="prefField">
+      <strong>Kosher:</strong>
+      <%= @preference.isKosher %>
+    </div>
+  </div>
 
-<p>
-  <strong>Egg-free:</strong>
-  <%= @preference.isAllergicEggs %>
-</p>
+  <h2>Health</h2>
 
-<p>
-  <strong>Wheat-free:</strong>
-  <%= @preference.isAllergicWheat %>
-</p>
+  <div class="row">
+    <div class="prefField">
+      <strong>Diabetic friendly:</strong>
+      <%= @preference.isDiabetic %>
+    </div>
 
-<p>
-  <strong>Soy-free:</strong>
-  <%= @preference.isAllergicSoy %>
-</p>
+    <div class="prefField">
+      <strong>Alcohol-free:</strong>
+      <%= @preference.noAlcohol %>
+    </div>
 
-<p>
-  <strong>Fish-free:</strong>
-  <%= @preference.isAllergicFish %>
-</p>
+    <div class="prefField">
+      <strong>Gluten-free:</strong>
+      <%= @preference.isAllergicGluten %>
+    </div>
 
-<p>
-  <strong>Shellfish-free:</strong>
-  <%= @preference.isAllergicShellfish %>
-</p>
+    <div class="prefField">
+      <strong>Peanut-free:</strong>
+      <%= @preference.isAllergicPeanuts %>
+    </div>
 
-<h3>Religious-based Preferences</h3>
+    <div class="prefField">
+      <strong>Treenut-free:</strong>
+      <%= @preference.isAllergicTreenuts %>
+    </div>
 
-<p>
-  <strong>Asian Vegetarian:</strong>
-  <%= @preference.isAsianVegetarian %>
-</p>
+    <div class="prefField">
+      <strong>Dairy-free:</strong>
+      <%= @preference.isAllergicDairy %>
+    </div>
 
-<p>
-  <strong>Hindu:</strong>
-  <%= @preference.isHindu %>
-</p>
+    <div class="prefField">
+      <strong>Egg-free:</strong>
+      <%= @preference.isAllergicEggs %>
+    </div>
 
-<p>
-  <strong>Muslim:</strong>
-  <%= @preference.isMuslim %>
-</p>
+    <div class="prefField">
+      <strong>Wheat-free:</strong>
+      <%= @preference.isAllergicWheat %>
+    </div>
 
-<p>
-  <strong>Jain:</strong>
-  <%= @preference.isJain %>
-</p>
+    <div class="prefField">
+      <strong>Soy-free:</strong>
+      <%= @preference.isAllergicSoy %>
+    </div>
 
-<p>
-  <strong>Kosher:</strong>
-  <%= @preference.isKosher %>
-</p>
+    <div class="prefField">
+      <strong>Fish-free:</strong>
+      <%= @preference.isAllergicFish %>
+    </div>
+
+    <div class="prefField">
+      <strong>Shellfish-free:</strong>
+      <%= @preference.isAllergicShellfish %>
+    </div>
+  </div>
+</div>
 
 
 <%= link_to 'Edit', edit_user_preference_path(current_user.id, :id), data: {no_turbolink: true}, :class => 'btn btn-primary'  %>

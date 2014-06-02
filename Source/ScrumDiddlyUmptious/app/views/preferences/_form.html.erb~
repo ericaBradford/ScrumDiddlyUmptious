@@ -1,4 +1,4 @@
-<%= form_for ([@user, @preferences]), :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for ([@user, @preferences]), :html => { :class => 'form-horizontal preferences' } do |f| %>
   <% if @preferences.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@preferences.errors.count, "error") %> errors:</h2>
@@ -11,100 +11,93 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-4">
-      <h3>General</h3>
-      <div class="field">
-        <%= f.label :isPescatarian %>
-        <%= f.check_box :isPescatarian %>
-      </div>
-      <div class="field">
-        <%= f.label :isVegetarian %>
-        <%= f.check_box :isVegetarian %>
-      </div>
-      <div class="field">
-        <%= f.label :isVegan %>
-        <%= f.check_box :isVegan %>
-      </div>
+  <h2>General</h2>
+  <div class="prefField">
+    <%= f.label :isPescatarian %>
+    <%= f.check_box :isPescatarian %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isVegetarian %>
+    <%= f.check_box :isVegetarian %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isVegan %>
+    <%= f.check_box :isVegan %>
+  </div>
 
-      <h3>Religious</h3>
-      <div class="field">
-        <%= f.label :isAsianVegetarian %>
-        <%= f.check_box :isAsianVegetarian %>
-      </div>
-      <div class="field">
-        <%= f.label :isHindu %>
-        <%= f.check_box :isHindu %>
-      </div>
-      <div class="field">
-        <%= f.label :isMuslim %>
-        <%= f.check_box :isMuslim %>
-      </div>
-      <div class="field">
-        <%= f.label :isJain %>
-        <%= f.check_box :isJain %>
-      </div>
-      <div class="field">
-        <%= f.label :isKosher %>
-        <%= f.check_box :isKosher %>
-      </div>
-    <%# end of span4 num 1 %>
-    </div>
+  <h2>Religious</h2>
+  <div class="prefField">
+    <%= f.label :isAsianVegetarian %>
+    <%= f.check_box :isAsianVegetarian %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isHindu %>
+    <%= f.check_box :isHindu %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isMuslim %>
+    <%= f.check_box :isMuslim %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isJain %>
+    <%= f.check_box :isJain %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isKosher %>
+    <%= f.check_box :isKosher %>
+  </div>
 
-    <div class="col-md-4">
-      <h3>Health</h3>
-      <div class="field">
-        <%= f.label :isDiabetic %>
-        <%= f.check_box :isDiabetic %>
-      </div>
-      <div>
-        <%= f.label :noAlcohol %>
-        <%= f.check_box :noAlcohol %>
-      </div>
-      <div class="field">
-        <%= f.label :isAllergicGluten %>
-        <%= f.check_box :isAllergicGluten %>
-      </div>
-      <div class="field">
-        <%= f.label :isAllergicPeanuts %>
-        <%= f.check_box :isAllergicPeanuts %>
-      </div>
-      <div class="field">
-        <%= f.label :isAllergicTreenuts %>
-        <%= f.check_box :isAllergicTreenuts %>
-      </div>
-      <div class="field">
-        <%= f.label :isAllergicDairy %>
-        <%= f.check_box :isAllergicDairy %>
-      </div>
-      <div class="field">
-        <%= f.label :isAllergicEggs %>
-        <%= f.check_box :isAllergicEggs %>
-      </div>
-      <div class="field">
-        <%= f.label :isAllergicWheat %>
-        <%= f.check_box :isAllergicWheat %>
-      </div>
-    <%# end of span4 num 2%>
-    </div>
+  <h2>Health</h2>
+  <div class="prefField">
+    <%= f.label :isDiabetic %>
+    <%= f.check_box :isDiabetic %>
+  </div>
+  <div class="prefField">
+    <%= f.label :noAlcohol %>
+    <%= f.check_box :noAlcohol %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isAllergicGluten %>
+    <%= f.check_box :isAllergicGluten %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isAllergicPeanuts %>
+    <%= f.check_box :isAllergicPeanuts %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isAllergicTreenuts %>
+    <%= f.check_box :isAllergicTreenuts %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isAllergicDairy %>
+    <%= f.check_box :isAllergicDairy %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isAllergicEggs %>
+    <%= f.check_box :isAllergicEggs %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isAllergicWheat %>
+    <%= f.check_box :isAllergicWheat %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isAllergicSoy %>
+    <%= f.check_box :isAllergicSoy %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isAllergicFish %>
+    <%= f.check_box :isAllergicFish %>
+  </div>
+  <div class="prefField">
+    <%= f.label :isAllergicShellfish %>
+    <%= f.check_box :isAllergicShellfish %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
 
-
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :isAllergicSoy %>
-        <%= f.check_box :isAllergicSoy %>
-      </div>
-      <div class="field">
-        <%= f.label :isAllergicFish %>
-        <%= f.check_box :isAllergicFish %>
-      </div>
-      <div class="field">
-        <%= f.label :isAllergicShellfish %>
-        <%= f.check_box :isAllergicShellfish %>
-      </div>
-      <div class="field">
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-      </div>
+<div class="row">
+  <div class="col-md-12">
       <div class="field">
         <%= f.label :blacklistFoods %>
         <span>(Seperate by comma)</span><br />
@@ -114,11 +107,8 @@
       <div class="form-actions">
         <%= f.submit nil, :class => 'btn btn-primary' %>
         <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                recipes_path, :class => 'btn' %>
+                users_preferences_path, :class => 'btn' %>
       </div>
-
-    </div>
-
-  <%# end of row div %>
   </div>
+</div>
 <% end %>

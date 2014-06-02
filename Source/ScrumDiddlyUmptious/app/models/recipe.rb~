@@ -37,12 +37,6 @@ letsrate_rateable "Rating"
     boolean :canPrepareAhead
   end
 
-  def average_rating
-    @average_rating_record = RatingCache.find_by_sql("SELECT * FROM Rating_caches WHERE cacheable_id = #{id}")
-    @average_rating = @average_rating_record.first.avg.to_f
-    return @average_rating
-  end
-
   def numIngredients
     @number = self.ingredients.lines.count
     return @number

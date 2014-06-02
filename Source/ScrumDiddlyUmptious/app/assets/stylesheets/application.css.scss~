@@ -38,19 +38,13 @@ a:link{
       font-size: 22px;
       color: #fff;
     }
-  a:hover{
-    background-color: #fff;
-  }
-  strong{
-    color: #fff;
-  }
 }
 
 .headerMenu{
   color: #000;
   padding-right: 15px;
   float: right !important;
-  padding-top: 10px;
+  margin-top: -10px;
   padding-right: 120px;
 }
 
@@ -69,14 +63,13 @@ ul.sidebar-nav{
   }
 }
 
-
-.search{
-  width: 300px;
-}
-
 .breadcrumbs{
   background-color: #FBF9F5;
   padding: 15px;
+}
+
+h3{
+  color: #00a651;
 }
 
 .main{
@@ -94,6 +87,7 @@ ul.sidebar-nav{
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 20px;
 }
 
 strong{

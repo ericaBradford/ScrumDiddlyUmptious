@@ -19,13 +19,14 @@
       </div>
     <% end %>
   </div>
-  <div class="clearfix"/>
+  <div class="clearfix"></div>
 
   <%= will_paginate @recipes, :container => false, :params => { :search_text => params[:search_text]} %>
 
   <% if user_signed_in? %>
-    <%= link_to t('.new', :default => t("helpers.links.new")),
-              new_recipe_path,
-              :class => 'btn btn-default', data: {no_turbolink: true}  %>
+    <%= link_to new_recipe_path, data: {no_turbolink: true},
+              :class => 'btn btn-primary new-recipe-index' do %>
+          <i class="glyphicon glyphicon-plus">  New</i>
+        <% end %>
   <% end %>
 <% end %>
